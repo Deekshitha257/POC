@@ -1,1 +1,2 @@
+*.jar filter=lfs diff=lfs merge=lfs -text
 jars/aws-java-sdk-bundle-1.12.772.jar filter=lfs diff=lfs merge=lfs -text
