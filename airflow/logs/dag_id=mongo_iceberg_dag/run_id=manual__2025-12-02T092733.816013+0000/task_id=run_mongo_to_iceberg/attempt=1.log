@@ -1,0 +1,578 @@
+[2025-12-02T09:27:36.277+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-02T09:27:36.580+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T09:27:33.816013+00:00 [queued]>
+[2025-12-02T09:27:36.630+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T09:27:33.816013+00:00 [queued]>
+[2025-12-02T09:27:36.646+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-02T09:27:36.743+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_mongo_to_iceberg> on 2025-12-02 09:27:33.816013+00:00
+[2025-12-02T09:27:36.748+0000] {standard_task_runner.py:63} INFO - Started process 3238 to run task
+[2025-12-02T09:27:36.753+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dag', 'run_mongo_to_iceberg', 'manual__2025-12-02T09:27:33.816013+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmp_y0xok58']
+[2025-12-02T09:27:36.757+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask run_mongo_to_iceberg
+[2025-12-02T09:27:36.931+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T09:27:33.816013+00:00 [running]> on host 0febd45b162e
+[2025-12-02T09:27:37.216+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dag' AIRFLOW_CTX_TASK_ID='run_mongo_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-12-02T09:27:33.816013+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-02T09:27:33.816013+00:00'
+[2025-12-02T09:27:37.218+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-02T09:27:37.318+0000] {spark_read_mongo_dag.py:28} INFO - START run_spark_job
+[2025-12-02T09:27:37.323+0000] {spark_read_mongo_dag.py:30} INFO - Checking path: /opt/***/spark_jobs/mongo_pyspark.py exists=True
+[2025-12-02T09:27:37.325+0000] {spark_read_mongo_dag.py:30} INFO - Checking path: /opt/***/jars exists=True
+[2025-12-02T09:27:37.331+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-02T09:27:37.337+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-02T09:27:37.359+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-02T09:27:37.365+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-02T09:27:37.371+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-02T09:27:37.376+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-02T09:27:37.394+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-02T09:27:37.396+0000] {spark_read_mongo_dag.py:36} INFO - which spark-submit -> /home/***/.local/bin/spark-submit
+[2025-12-02T09:27:37.397+0000] {spark_read_mongo_dag.py:45} INFO - ENV SPARK_HOME=/opt/spark/spark-3.4.1-bin-hadoop3 JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+[2025-12-02T09:27:37.398+0000] {spark_read_mongo_dag.py:46} INFO - Env PATH head: ['/opt/spark/spark-3.4.1-bin-hadoop3/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/opt/spark/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/root/bin']
+[2025-12-02T09:27:37.400+0000] {spark_read_mongo_dag.py:49} INFO - Running command: spark-submit --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar /opt/***/spark_jobs/mongo_pyspark.py
+[2025-12-02T09:28:16.815+0000] {spark_read_mongo_dag.py:51} INFO - Process finished. returncode=1
+[2025-12-02T09:28:16.816+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,382 INFO mongo_to_iceberg - START main at 2025-12-02 09:27:44
+[2025-12-02T09:28:16.817+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,382 INFO mongo_to_iceberg - Checking required JARs under /opt/***/jars
+[2025-12-02T09:28:16.817+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,385 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-02T09:28:16.818+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,387 INFO mongo_to_iceberg - JAR: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-02T09:28:16.818+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,389 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-02T09:28:16.819+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,390 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-02T09:28:16.819+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,392 INFO mongo_to_iceberg - JAR: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-02T09:28:16.820+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,394 INFO mongo_to_iceberg - JAR: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-02T09:28:16.820+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,396 INFO mongo_to_iceberg - JAR: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-02T09:28:16.821+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,396 INFO mongo_to_iceberg - Mongo URI (masked): mongodb://admin:****@172.168.168.206:27017/ai_segmentation.conversations?authSource=admin
+[2025-12-02T09:28:16.821+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,396 INFO mongo_to_iceberg - Using Iceberg warehouse (must be s3a://): s3a://iceberg/
+[2025-12-02T09:28:16.822+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,396 INFO mongo_to_iceberg - S3 endpoint=http://minio:9000 path_style=true ssl_enabled=false
+[2025-12-02T09:28:16.822+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:27:44,396 INFO mongo_to_iceberg - Creating SparkSession...
+[2025-12-02T09:28:16.823+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:10,403 INFO mongo_to_iceberg - SparkSession created. Spark version=3.4.1
+[2025-12-02T09:28:16.823+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:13,883 INFO mongo_to_iceberg - spark.jars config=/opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar
+[2025-12-02T09:28:16.824+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:13,885 INFO mongo_to_iceberg - spark.mongodb.read.connection.uri=mongodb://admin:example@172.168.168.206:27017/ai_segmentation.conversations?authSource=admin
+[2025-12-02T09:28:16.824+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:13,885 INFO mongo_to_iceberg - spark.sql.catalog.iceberg_catalog.warehouse=s3a://iceberg/
+[2025-12-02T09:28:16.824+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:13,885 INFO mongo_to_iceberg - Starting read from MongoDB collection ai_segmentation.conversations
+[2025-12-02T09:28:16.825+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:15,793 ERROR mongo_to_iceberg - Exception during job: An error occurred while calling o60.load.
+[2025-12-02T09:28:16.825+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | : com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+[2025-12-02T09:28:16.825+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.wrapException(SaslAuthenticator.java:270)
+[2025-12-02T09:28:16.826+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.getNextSaslResponse(SaslAuthenticator.java:133)
+[2025-12-02T09:28:16.826+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.lambda$authenticate$0(SaslAuthenticator.java:63)
+[2025-12-02T09:28:16.826+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:277)
+[2025-12-02T09:28:16.827+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:59)
+[2025-12-02T09:28:16.827+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultAuthenticator.authenticate(DefaultAuthenticator.java:57)
+[2025-12-02T09:28:16.828+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.authenticate(InternalStreamConnectionInitializer.java:206)
+[2025-12-02T09:28:16.828+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.finishHandshake(InternalStreamConnectionInitializer.java:86)
+[2025-12-02T09:28:16.828+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:216)
+[2025-12-02T09:28:16.829+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:55)
+[2025-12-02T09:28:16.829+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:647)
+[2025-12-02T09:28:16.829+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openWithConcurrencyLimit(DefaultConnectionPool.java:993)
+[2025-12-02T09:28:16.830+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openOrGetAvailable(DefaultConnectionPool.java:934)
+[2025-12-02T09:28:16.830+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:203)
+[2025-12-02T09:28:16.830+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:192)
+[2025-12-02T09:28:16.831+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:96)
+[2025-12-02T09:28:16.831+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:186)
+[2025-12-02T09:28:16.831+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.ClientSessionBinding$SessionBindingConnectionSource.getConnection(ClientSessionBinding.java:196)
+[2025-12-02T09:28:16.832+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:144)
+[2025-12-02T09:28:16.832+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$withSourceAndConnection$1(SyncOperationHelper.java:126)
+[2025-12-02T09:28:16.832+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:152)
+[2025-12-02T09:28:16.833+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSourceAndConnection(SyncOperationHelper.java:125)
+[2025-12-02T09:28:16.833+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$executeRetryableRead$4(SyncOperationHelper.java:189)
+[2025-12-02T09:28:16.833+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$decorateReadWithRetries$12(SyncOperationHelper.java:292)
+[2025-12-02T09:28:16.834+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.async.function.RetryingSyncSupplier.get(RetryingSyncSupplier.java:67)
+[2025-12-02T09:28:16.834+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:194)
+[2025-12-02T09:28:16.835+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:176)
+[2025-12-02T09:28:16.835+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperationImpl.execute(AggregateOperationImpl.java:193)
+[2025-12-02T09:28:16.835+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperation.execute(AggregateOperation.java:153)
+[2025-12-02T09:28:16.870+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperation.execute(AggregateOperation.java:44)
+[2025-12-02T09:28:16.872+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:153)
+[2025-12-02T09:28:16.875+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.execute(MongoIterableImpl.java:130)
+[2025-12-02T09:28:16.877+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.iterator(MongoIterableImpl.java:90)
+[2025-12-02T09:28:16.879+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.forEach(MongoIterableImpl.java:116)
+[2025-12-02T09:28:16.880+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.into(MongoIterableImpl.java:125)
+[2025-12-02T09:28:16.881+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.schema.InferSchema.lambda$inferSchema$0(InferSchema.java:86)
+[2025-12-02T09:28:16.883+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.config.AbstractMongoConfig.withCollection(AbstractMongoConfig.java:173)
+[2025-12-02T09:28:16.884+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.config.ReadConfig.withCollection(ReadConfig.java:45)
+[2025-12-02T09:28:16.885+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.schema.InferSchema.inferSchema(InferSchema.java:82)
+[2025-12-02T09:28:16.886+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.MongoTableProvider.inferSchema(MongoTableProvider.java:62)
+[2025-12-02T09:28:16.887+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.getTableFromProvider(DataSourceV2Utils.scala:90)
+[2025-12-02T09:28:16.888+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.loadV2Source(DataSourceV2Utils.scala:140)
+[2025-12-02T09:28:16.888+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.$anonfun$load$1(DataFrameReader.scala:210)
+[2025-12-02T09:28:16.889+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at scala.Option.flatMap(Option.scala:271)
+[2025-12-02T09:28:16.890+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)
+[2025-12-02T09:28:16.891+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+[2025-12-02T09:28:16.892+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-12-02T09:28:16.893+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+[2025-12-02T09:28:16.893+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-12-02T09:28:16.894+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+[2025-12-02T09:28:16.895+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-12-02T09:28:16.895+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-12-02T09:28:16.896+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.Gateway.invoke(Gateway.java:282)
+[2025-12-02T09:28:16.897+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-12-02T09:28:16.897+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-12-02T09:28:16.898+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-12-02T09:28:16.898+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-12-02T09:28:16.899+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T09:28:16.899+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Caused by: com.mongodb.MongoCommandException: Command failed with error 18 (AuthenticationFailed): 'Authentication failed.' on server 172.168.168.206:27017. The full response is {"ok": 0.0, "errmsg": "Authentication failed.", "code": 18, "codeName": "AuthenticationFailed"}
+[2025-12-02T09:28:16.900+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:205)
+[2025-12-02T09:28:16.901+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:454)
+[2025-12-02T09:28:16.901+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:372)
+[2025-12-02T09:28:16.902+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:92)
+[2025-12-02T09:28:16.902+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:48)
+[2025-12-02T09:28:16.903+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.sendSaslStart(SaslAuthenticator.java:224)
+[2025-12-02T09:28:16.903+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.getNextSaslResponse(SaslAuthenticator.java:131)
+[2025-12-02T09:28:16.903+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	... 56 more
+[2025-12-02T09:28:16.904+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 
+[2025-12-02T09:28:16.904+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:15,798 ERROR mongo_to_iceberg - Traceback:
+[2025-12-02T09:28:16.904+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Traceback (most recent call last):
+[2025-12-02T09:28:16.905+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 283, in main
+[2025-12-02T09:28:16.905+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     spark.read
+[2025-12-02T09:28:16.905+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 307, in load
+[2025-12-02T09:28:16.906+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     return self._df(self._jreader.load())
+[2025-12-02T09:28:16.906+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-12-02T09:28:16.906+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     return_value = get_return_value(
+[2025-12-02T09:28:16.907+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 169, in deco
+[2025-12-02T09:28:16.907+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     return f(*a, **kw)
+[2025-12-02T09:28:16.907+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+[2025-12-02T09:28:16.908+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     raise Py4JJavaError(
+[2025-12-02T09:28:16.908+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | py4j.protocol.Py4JJavaError: An error occurred while calling o60.load.
+[2025-12-02T09:28:16.908+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | : com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+[2025-12-02T09:28:16.909+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.wrapException(SaslAuthenticator.java:270)
+[2025-12-02T09:28:16.909+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.getNextSaslResponse(SaslAuthenticator.java:133)
+[2025-12-02T09:28:16.909+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.lambda$authenticate$0(SaslAuthenticator.java:63)
+[2025-12-02T09:28:16.909+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:277)
+[2025-12-02T09:28:16.910+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:59)
+[2025-12-02T09:28:16.910+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultAuthenticator.authenticate(DefaultAuthenticator.java:57)
+[2025-12-02T09:28:16.910+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.authenticate(InternalStreamConnectionInitializer.java:206)
+[2025-12-02T09:28:16.911+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.finishHandshake(InternalStreamConnectionInitializer.java:86)
+[2025-12-02T09:28:16.911+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:216)
+[2025-12-02T09:28:16.911+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:55)
+[2025-12-02T09:28:16.911+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:647)
+[2025-12-02T09:28:16.912+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openWithConcurrencyLimit(DefaultConnectionPool.java:993)
+[2025-12-02T09:28:16.912+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openOrGetAvailable(DefaultConnectionPool.java:934)
+[2025-12-02T09:28:16.912+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:203)
+[2025-12-02T09:28:16.912+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:192)
+[2025-12-02T09:28:16.913+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:96)
+[2025-12-02T09:28:16.913+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:186)
+[2025-12-02T09:28:16.913+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.ClientSessionBinding$SessionBindingConnectionSource.getConnection(ClientSessionBinding.java:196)
+[2025-12-02T09:28:16.913+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:144)
+[2025-12-02T09:28:16.914+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$withSourceAndConnection$1(SyncOperationHelper.java:126)
+[2025-12-02T09:28:16.914+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:152)
+[2025-12-02T09:28:16.914+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSourceAndConnection(SyncOperationHelper.java:125)
+[2025-12-02T09:28:16.915+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$executeRetryableRead$4(SyncOperationHelper.java:189)
+[2025-12-02T09:28:16.915+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$decorateReadWithRetries$12(SyncOperationHelper.java:292)
+[2025-12-02T09:28:16.915+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.async.function.RetryingSyncSupplier.get(RetryingSyncSupplier.java:67)
+[2025-12-02T09:28:16.916+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:194)
+[2025-12-02T09:28:16.916+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:176)
+[2025-12-02T09:28:16.916+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperationImpl.execute(AggregateOperationImpl.java:193)
+[2025-12-02T09:28:16.917+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperation.execute(AggregateOperation.java:153)
+[2025-12-02T09:28:16.917+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperation.execute(AggregateOperation.java:44)
+[2025-12-02T09:28:16.917+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:153)
+[2025-12-02T09:28:16.918+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.execute(MongoIterableImpl.java:130)
+[2025-12-02T09:28:16.918+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.iterator(MongoIterableImpl.java:90)
+[2025-12-02T09:28:16.918+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.forEach(MongoIterableImpl.java:116)
+[2025-12-02T09:28:16.918+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.into(MongoIterableImpl.java:125)
+[2025-12-02T09:28:16.919+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.schema.InferSchema.lambda$inferSchema$0(InferSchema.java:86)
+[2025-12-02T09:28:16.919+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.config.AbstractMongoConfig.withCollection(AbstractMongoConfig.java:173)
+[2025-12-02T09:28:16.919+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.config.ReadConfig.withCollection(ReadConfig.java:45)
+[2025-12-02T09:28:16.919+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.schema.InferSchema.inferSchema(InferSchema.java:82)
+[2025-12-02T09:28:16.920+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.MongoTableProvider.inferSchema(MongoTableProvider.java:62)
+[2025-12-02T09:28:16.920+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.getTableFromProvider(DataSourceV2Utils.scala:90)
+[2025-12-02T09:28:16.920+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.loadV2Source(DataSourceV2Utils.scala:140)
+[2025-12-02T09:28:16.920+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.$anonfun$load$1(DataFrameReader.scala:210)
+[2025-12-02T09:28:16.921+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at scala.Option.flatMap(Option.scala:271)
+[2025-12-02T09:28:16.921+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)
+[2025-12-02T09:28:16.921+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+[2025-12-02T09:28:16.921+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-12-02T09:28:16.922+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+[2025-12-02T09:28:16.922+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-12-02T09:28:16.922+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+[2025-12-02T09:28:16.923+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-12-02T09:28:16.923+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-12-02T09:28:16.923+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.Gateway.invoke(Gateway.java:282)
+[2025-12-02T09:28:16.924+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-12-02T09:28:16.924+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-12-02T09:28:16.924+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-12-02T09:28:16.925+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-12-02T09:28:16.925+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T09:28:16.925+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Caused by: com.mongodb.MongoCommandException: Command failed with error 18 (AuthenticationFailed): 'Authentication failed.' on server 172.168.168.206:27017. The full response is {"ok": 0.0, "errmsg": "Authentication failed.", "code": 18, "codeName": "AuthenticationFailed"}
+[2025-12-02T09:28:16.926+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:205)
+[2025-12-02T09:28:16.926+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:454)
+[2025-12-02T09:28:16.927+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:372)
+[2025-12-02T09:28:16.927+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:92)
+[2025-12-02T09:28:16.927+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:48)
+[2025-12-02T09:28:16.928+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.sendSaslStart(SaslAuthenticator.java:224)
+[2025-12-02T09:28:16.928+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.getNextSaslResponse(SaslAuthenticator.java:131)
+[2025-12-02T09:28:16.928+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	... 56 more
+[2025-12-02T09:28:16.929+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 
+[2025-12-02T09:28:16.929+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 
+[2025-12-02T09:28:16.929+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:15,798 ERROR mongo_to_iceberg - HINTS: - Ensure Mongo credentials are correct and authSource is right.
+[2025-12-02T09:28:16.929+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:15,798 ERROR mongo_to_iceberg -        - Verify mongo container user/password (MONGO_INITDB_ROOT_USERNAME/PASSWORD).
+[2025-12-02T09:28:16.930+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:15,798 ERROR mongo_to_iceberg -        - If using networked services, ensure 'mongo' and 'minio' hostnames resolve from Spark executors.
+[2025-12-02T09:28:16.930+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:15,798 ERROR mongo_to_iceberg -        - Ensure ICEBERG_WAREHOUSE uses s3a:// and that hadoop-aws + aws-java-sdk jars are present.
+[2025-12-02T09:28:16.930+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Traceback (most recent call last):
+[2025-12-02T09:28:16.931+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 392, in <module>
+[2025-12-02T09:28:16.931+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     main()
+[2025-12-02T09:28:16.931+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 283, in main
+[2025-12-02T09:28:16.932+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     spark.read
+[2025-12-02T09:28:16.932+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 307, in load
+[2025-12-02T09:28:16.933+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-12-02T09:28:16.933+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 169, in deco
+[2025-12-02T09:28:16.934+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+[2025-12-02T09:28:16.934+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | py4j.protocol.Py4JJavaError: An error occurred while calling o60.load.
+[2025-12-02T09:28:16.934+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | : com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+[2025-12-02T09:28:16.935+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.wrapException(SaslAuthenticator.java:270)
+[2025-12-02T09:28:16.935+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.getNextSaslResponse(SaslAuthenticator.java:133)
+[2025-12-02T09:28:16.935+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.lambda$authenticate$0(SaslAuthenticator.java:63)
+[2025-12-02T09:28:16.936+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:277)
+[2025-12-02T09:28:16.936+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:59)
+[2025-12-02T09:28:16.936+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultAuthenticator.authenticate(DefaultAuthenticator.java:57)
+[2025-12-02T09:28:16.937+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.authenticate(InternalStreamConnectionInitializer.java:206)
+[2025-12-02T09:28:16.937+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.finishHandshake(InternalStreamConnectionInitializer.java:86)
+[2025-12-02T09:28:16.937+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:216)
+[2025-12-02T09:28:16.937+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:55)
+[2025-12-02T09:28:16.938+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:647)
+[2025-12-02T09:28:16.938+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openWithConcurrencyLimit(DefaultConnectionPool.java:993)
+[2025-12-02T09:28:16.938+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openOrGetAvailable(DefaultConnectionPool.java:934)
+[2025-12-02T09:28:16.939+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:203)
+[2025-12-02T09:28:16.939+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:192)
+[2025-12-02T09:28:16.939+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:96)
+[2025-12-02T09:28:16.940+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:186)
+[2025-12-02T09:28:16.940+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.ClientSessionBinding$SessionBindingConnectionSource.getConnection(ClientSessionBinding.java:196)
+[2025-12-02T09:28:16.940+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:144)
+[2025-12-02T09:28:16.941+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$withSourceAndConnection$1(SyncOperationHelper.java:126)
+[2025-12-02T09:28:16.941+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:152)
+[2025-12-02T09:28:16.941+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.withSourceAndConnection(SyncOperationHelper.java:125)
+[2025-12-02T09:28:16.942+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$executeRetryableRead$4(SyncOperationHelper.java:189)
+[2025-12-02T09:28:16.942+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.lambda$decorateReadWithRetries$12(SyncOperationHelper.java:292)
+[2025-12-02T09:28:16.942+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.async.function.RetryingSyncSupplier.get(RetryingSyncSupplier.java:67)
+[2025-12-02T09:28:16.943+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:194)
+[2025-12-02T09:28:16.943+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:176)
+[2025-12-02T09:28:16.943+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperationImpl.execute(AggregateOperationImpl.java:193)
+[2025-12-02T09:28:16.943+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperation.execute(AggregateOperation.java:153)
+[2025-12-02T09:28:16.944+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.operation.AggregateOperation.execute(AggregateOperation.java:44)
+[2025-12-02T09:28:16.944+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:153)
+[2025-12-02T09:28:16.944+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.execute(MongoIterableImpl.java:130)
+[2025-12-02T09:28:16.945+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.iterator(MongoIterableImpl.java:90)
+[2025-12-02T09:28:16.945+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.forEach(MongoIterableImpl.java:116)
+[2025-12-02T09:28:16.945+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.client.internal.MongoIterableImpl.into(MongoIterableImpl.java:125)
+[2025-12-02T09:28:16.945+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.schema.InferSchema.lambda$inferSchema$0(InferSchema.java:86)
+[2025-12-02T09:28:16.946+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.config.AbstractMongoConfig.withCollection(AbstractMongoConfig.java:173)
+[2025-12-02T09:28:16.946+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.config.ReadConfig.withCollection(ReadConfig.java:45)
+[2025-12-02T09:28:16.946+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.schema.InferSchema.inferSchema(InferSchema.java:82)
+[2025-12-02T09:28:16.947+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.spark.sql.connector.MongoTableProvider.inferSchema(MongoTableProvider.java:62)
+[2025-12-02T09:28:16.947+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.getTableFromProvider(DataSourceV2Utils.scala:90)
+[2025-12-02T09:28:16.947+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.loadV2Source(DataSourceV2Utils.scala:140)
+[2025-12-02T09:28:16.947+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.$anonfun$load$1(DataFrameReader.scala:210)
+[2025-12-02T09:28:16.948+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at scala.Option.flatMap(Option.scala:271)
+[2025-12-02T09:28:16.948+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)
+[2025-12-02T09:28:16.949+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+[2025-12-02T09:28:16.949+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-12-02T09:28:16.949+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+[2025-12-02T09:28:16.950+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-12-02T09:28:16.950+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+[2025-12-02T09:28:16.950+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-12-02T09:28:16.950+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-12-02T09:28:16.951+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.Gateway.invoke(Gateway.java:282)
+[2025-12-02T09:28:16.951+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-12-02T09:28:16.951+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-12-02T09:28:16.952+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-12-02T09:28:16.952+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-12-02T09:28:16.952+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T09:28:16.952+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Caused by: com.mongodb.MongoCommandException: Command failed with error 18 (AuthenticationFailed): 'Authentication failed.' on server 172.168.168.206:27017. The full response is {"ok": 0.0, "errmsg": "Authentication failed.", "code": 18, "codeName": "AuthenticationFailed"}
+[2025-12-02T09:28:16.953+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:205)
+[2025-12-02T09:28:16.953+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:454)
+[2025-12-02T09:28:16.953+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:372)
+[2025-12-02T09:28:16.954+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:92)
+[2025-12-02T09:28:16.954+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:48)
+[2025-12-02T09:28:16.954+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.sendSaslStart(SaslAuthenticator.java:224)
+[2025-12-02T09:28:16.955+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	at com.mongodb.internal.connection.SaslAuthenticator.getNextSaslResponse(SaslAuthenticator.java:131)
+[2025-12-02T09:28:16.955+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 	... 56 more
+[2025-12-02T09:28:16.955+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 
+[2025-12-02T09:28:16.956+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 09:28:15,806 INFO py4j.clientserver - Closing down clientserver connection
+[2025-12-02T09:28:16.956+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:42 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-02T09:28:16.956+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO SparkContext: Running Spark version 3.4.1
+[2025-12-02T09:28:16.957+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO ResourceUtils: ==============================================================
+[2025-12-02T09:28:16.957+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-12-02T09:28:16.957+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO ResourceUtils: ==============================================================
+[2025-12-02T09:28:16.958+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO SparkContext: Submitted application: MongoToParquetToMinIO
+[2025-12-02T09:28:16.958+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-12-02T09:28:16.958+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO ResourceProfile: Limiting resource is cpu
+[2025-12-02T09:28:16.959+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:46 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-12-02T09:28:16.959+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SecurityManager: Changing view acls to: ***
+[2025-12-02T09:28:16.959+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SecurityManager: Changing modify acls to: ***
+[2025-12-02T09:28:16.959+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SecurityManager: Changing view acls groups to: 
+[2025-12-02T09:28:16.960+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SecurityManager: Changing modify acls groups to: 
+[2025-12-02T09:28:16.960+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+[2025-12-02T09:28:16.960+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Utils: Successfully started service 'sparkDriver' on port 38637.
+[2025-12-02T09:28:16.960+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkEnv: Registering MapOutputTracker
+[2025-12-02T09:28:16.961+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkEnv: Registering BlockManagerMaster
+[2025-12-02T09:28:16.961+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-12-02T09:28:16.961+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-12-02T09:28:16.961+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-12-02T09:28:16.962+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-8e82b76b-28ab-4b7e-b4cf-35964a9dae53
+[2025-12-02T09:28:16.962+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-12-02T09:28:16.962+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-12-02T09:28:16.962+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-12-02T09:28:16.963+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2025-12-02T09:28:16.963+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://0febd45b162e:38637/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.963+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkContext: Added JAR /opt/***/jars/bson-4.11.2.jar at spark://0febd45b162e:38637/jars/bson-4.11.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.964+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkContext: Added JAR /opt/***/jars/mongodb-driver-core-4.11.2.jar at spark://0febd45b162e:38637/jars/mongodb-driver-core-4.11.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.964+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkContext: Added JAR /opt/***/jars/mongodb-driver-sync-4.11.2.jar at spark://0febd45b162e:38637/jars/mongodb-driver-sync-4.11.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.964+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://0febd45b162e:38637/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.965+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://0febd45b162e:38637/jars/hadoop-aws-3.3.4.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.965+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://0febd45b162e:38637/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.965+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Executor: Starting executor ID driver on host 0febd45b162e
+[2025-12-02T09:28:16.966+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-12-02T09:28:16.966+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Executor: Fetching spark://0febd45b162e:38637/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.966+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO TransportClientFactory: Successfully created connection to 0febd45b162e/172.19.0.8:38637 after 19 ms (0 ms spent in bootstraps)
+[2025-12-02T09:28:16.966+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Utils: Fetching spark://0febd45b162e:38637/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/fetchFileTemp16296724929636311483.tmp
+[2025-12-02T09:28:16.967+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Executor: Adding file:/tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/mongo-spark-connector_2.12-10.1.1.jar to class loader
+[2025-12-02T09:28:16.967+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Executor: Fetching spark://0febd45b162e:38637/jars/mongodb-driver-core-4.11.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.967+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:47 INFO Utils: Fetching spark://0febd45b162e:38637/jars/mongodb-driver-core-4.11.2.jar to /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/fetchFileTemp11774527630632430063.tmp
+[2025-12-02T09:28:16.968+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Adding file:/tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/mongodb-driver-core-4.11.2.jar to class loader
+[2025-12-02T09:28:16.968+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Fetching spark://0febd45b162e:38637/jars/mongodb-driver-sync-4.11.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.968+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Utils: Fetching spark://0febd45b162e:38637/jars/mongodb-driver-sync-4.11.2.jar to /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/fetchFileTemp9433922278884862660.tmp
+[2025-12-02T09:28:16.968+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Adding file:/tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/mongodb-driver-sync-4.11.2.jar to class loader
+[2025-12-02T09:28:16.969+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Fetching spark://0febd45b162e:38637/jars/bson-4.11.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.969+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Utils: Fetching spark://0febd45b162e:38637/jars/bson-4.11.2.jar to /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/fetchFileTemp12028094083255336049.tmp
+[2025-12-02T09:28:16.969+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Adding file:/tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/bson-4.11.2.jar to class loader
+[2025-12-02T09:28:16.969+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Fetching spark://0febd45b162e:38637/jars/hadoop-aws-3.3.4.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.970+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Utils: Fetching spark://0febd45b162e:38637/jars/hadoop-aws-3.3.4.jar to /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/fetchFileTemp7421777157257771852.tmp
+[2025-12-02T09:28:16.970+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Adding file:/tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/hadoop-aws-3.3.4.jar to class loader
+[2025-12-02T09:28:16.970+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Executor: Fetching spark://0febd45b162e:38637/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.970+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:48 INFO Utils: Fetching spark://0febd45b162e:38637/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/fetchFileTemp14990822660694059551.tmp
+[2025-12-02T09:28:16.971+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:49 INFO Executor: Adding file:/tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+[2025-12-02T09:28:16.971+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:49 INFO Executor: Fetching spark://0febd45b162e:38637/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764667666836
+[2025-12-02T09:28:16.971+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:27:49 INFO Utils: Fetching spark://0febd45b162e:38637/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/fetchFileTemp3027710586564619756.tmp
+[2025-12-02T09:28:16.971+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:06 INFO Executor: Adding file:/tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/userFiles-65eeb986-504d-44a0-8038-b75e6d92fa4c/aws-java-sdk-bundle-1.12.772.jar to class loader
+[2025-12-02T09:28:16.972+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:06 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43541.
+[2025-12-02T09:28:16.972+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:06 INFO NettyBlockTransferService: Server created on 0febd45b162e:43541
+[2025-12-02T09:28:16.972+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:06 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-12-02T09:28:16.973+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 0febd45b162e, 43541, None)
+[2025-12-02T09:28:16.973+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 INFO BlockManagerMasterEndpoint: Registering block manager 0febd45b162e:43541 with 434.4 MiB RAM, BlockManagerId(driver, 0febd45b162e, 43541, None)
+[2025-12-02T09:28:16.973+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 0febd45b162e, 43541, None)
+[2025-12-02T09:28:16.973+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 0febd45b162e, 43541, None)
+[2025-12-02T09:28:16.974+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T09:28:16.974+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 INFO BlockManager: BlockManager BlockManagerId(driver, 0febd45b162e, 43541, None) re-registering with master
+[2025-12-02T09:28:16.974+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 0febd45b162e, 43541, None)
+[2025-12-02T09:28:16.974+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 ERROR Inbox: Ignoring error
+[2025-12-02T09:28:16.975+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T09:28:16.975+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T09:28:16.975+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T09:28:16.975+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEnv.setupEndpointRefByURI(RpcEnv.scala:102)
+[2025-12-02T09:28:16.976+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEnv.setupEndpointRef(RpcEnv.scala:110)
+[2025-12-02T09:28:16.976+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.RpcUtils$.makeDriverRef(RpcUtils.scala:36)
+[2025-12-02T09:28:16.976+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.driverEndpoint$lzycompute(BlockManagerMasterEndpoint.scala:117)
+[2025-12-02T09:28:16.977+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$driverEndpoint(BlockManagerMasterEndpoint.scala:116)
+[2025-12-02T09:28:16.977+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.isExecutorAlive$lzycompute$1(BlockManagerMasterEndpoint.scala:611)
+[2025-12-02T09:28:16.977+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.isExecutorAlive$1(BlockManagerMasterEndpoint.scala:610)
+[2025-12-02T09:28:16.977+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:648)
+[2025-12-02T09:28:16.978+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T09:28:16.978+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T09:28:16.978+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T09:28:16.978+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T09:28:16.979+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T09:28:16.979+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T09:28:16.979+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T09:28:16.979+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T09:28:16.980+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T09:28:16.980+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: org.apache.spark.rpc.RpcEndpointNotFoundException: Cannot find endpoint: spark://CoarseGrainedScheduler@0febd45b162e:38637
+[2025-12-02T09:28:16.980+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$asyncSetupEndpointRefByURI$1(NettyRpcEnv.scala:148)
+[2025-12-02T09:28:16.981+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$asyncSetupEndpointRefByURI$1$adapted(NettyRpcEnv.scala:144)
+[2025-12-02T09:28:16.981+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Future.$anonfun$flatMap$1(Future.scala:307)
+[2025-12-02T09:28:16.981+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:41)
+[2025-12-02T09:28:16.981+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:16.982+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+[2025-12-02T09:28:16.982+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+[2025-12-02T09:28:16.982+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:16.982+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:16.983+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:16.983+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:16.983+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete(Promise.scala:53)
+[2025-12-02T09:28:16.984+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete$(Promise.scala:52)
+[2025-12-02T09:28:16.984+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+[2025-12-02T09:28:16.984+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+[2025-12-02T09:28:16.984+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:16.985+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+[2025-12-02T09:28:16.985+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+[2025-12-02T09:28:16.985+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:16.985+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:16.986+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:16.986+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:16.986+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete(Promise.scala:53)
+[2025-12-02T09:28:16.986+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete$(Promise.scala:52)
+[2025-12-02T09:28:16.987+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+[2025-12-02T09:28:16.987+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+[2025-12-02T09:28:16.987+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:16.987+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor$Batch.processBatch$1(BatchingExecutor.scala:67)
+[2025-12-02T09:28:16.988+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor$Batch.$anonfun$run$1(BatchingExecutor.scala:82)
+[2025-12-02T09:28:16.988+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T09:28:16.988+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+[2025-12-02T09:28:16.989+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor$Batch.run(BatchingExecutor.scala:59)
+[2025-12-02T09:28:16.989+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Future$InternalCallbackExecutor$.unbatchedExecute(Future.scala:875)
+[2025-12-02T09:28:16.989+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor.execute(BatchingExecutor.scala:110)
+[2025-12-02T09:28:16.989+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor.execute$(BatchingExecutor.scala:107)
+[2025-12-02T09:28:16.990+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Future$InternalCallbackExecutor$.execute(Future.scala:873)
+[2025-12-02T09:28:16.990+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:16.990+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:16.990+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:16.991+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:16.991+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.trySuccess(Promise.scala:94)
+[2025-12-02T09:28:16.991+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.trySuccess$(Promise.scala:94)
+[2025-12-02T09:28:16.991+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.trySuccess(Promise.scala:187)
+[2025-12-02T09:28:16.992+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.onSuccess$1(NettyRpcEnv.scala:225)
+[2025-12-02T09:28:16.992+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$5(NettyRpcEnv.scala:239)
+[2025-12-02T09:28:16.992+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$5$adapted(NettyRpcEnv.scala:238)
+[2025-12-02T09:28:16.992+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:16.993+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+[2025-12-02T09:28:16.993+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+[2025-12-02T09:28:16.993+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:16.994+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:16.994+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:16.994+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:16.994+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete(Promise.scala:53)
+[2025-12-02T09:28:16.995+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete$(Promise.scala:52)
+[2025-12-02T09:28:16.995+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+[2025-12-02T09:28:16.995+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.success(Promise.scala:86)
+[2025-12-02T09:28:16.995+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.success$(Promise.scala:86)
+[2025-12-02T09:28:16.996+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.success(Promise.scala:187)
+[2025-12-02T09:28:16.996+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.LocalNettyRpcCallContext.send(NettyRpcCallContext.scala:50)
+[2025-12-02T09:28:16.996+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcCallContext.reply(NettyRpcCallContext.scala:32)
+[2025-12-02T09:28:16.996+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.RpcEndpointVerifier$$anonfun$receiveAndReply$1.applyOrElse(RpcEndpointVerifier.scala:31)
+[2025-12-02T09:28:16.997+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 8 more
+[2025-12-02T09:28:16.997+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:07 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T09:28:16.997+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T09:28:16.998+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T09:28:16.998+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T09:28:16.998+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T09:28:16.998+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T09:28:16.999+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T09:28:16.999+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T09:28:16.999+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T09:28:17.000+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T09:28:17.000+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T09:28:17.000+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T09:28:17.000+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T09:28:17.001+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T09:28:17.001+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T09:28:17.001+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T09:28:17.002+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T09:28:17.002+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T09:28:17.002+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T09:28:17.003+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T09:28:17.003+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T09:28:17.003+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T09:28:17.004+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEnv.setupEndpointRefByURI(RpcEnv.scala:102)
+[2025-12-02T09:28:17.004+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEnv.setupEndpointRef(RpcEnv.scala:110)
+[2025-12-02T09:28:17.005+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.RpcUtils$.makeDriverRef(RpcUtils.scala:36)
+[2025-12-02T09:28:17.005+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.driverEndpoint$lzycompute(BlockManagerMasterEndpoint.scala:117)
+[2025-12-02T09:28:17.005+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$driverEndpoint(BlockManagerMasterEndpoint.scala:116)
+[2025-12-02T09:28:17.005+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.isExecutorAlive$lzycompute$1(BlockManagerMasterEndpoint.scala:611)
+[2025-12-02T09:28:17.006+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.isExecutorAlive$1(BlockManagerMasterEndpoint.scala:610)
+[2025-12-02T09:28:17.006+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:648)
+[2025-12-02T09:28:17.007+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T09:28:17.007+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T09:28:17.007+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T09:28:17.008+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T09:28:17.008+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T09:28:17.008+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T09:28:17.009+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T09:28:17.009+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: org.apache.spark.rpc.RpcEndpointNotFoundException: Cannot find endpoint: spark://CoarseGrainedScheduler@0febd45b162e:38637
+[2025-12-02T09:28:17.009+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$asyncSetupEndpointRefByURI$1(NettyRpcEnv.scala:148)
+[2025-12-02T09:28:17.009+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$asyncSetupEndpointRefByURI$1$adapted(NettyRpcEnv.scala:144)
+[2025-12-02T09:28:17.010+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Future.$anonfun$flatMap$1(Future.scala:307)
+[2025-12-02T09:28:17.010+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:41)
+[2025-12-02T09:28:17.010+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:17.010+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+[2025-12-02T09:28:17.011+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+[2025-12-02T09:28:17.011+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:17.011+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:17.011+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:17.012+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:17.012+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete(Promise.scala:53)
+[2025-12-02T09:28:17.012+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete$(Promise.scala:52)
+[2025-12-02T09:28:17.013+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+[2025-12-02T09:28:17.013+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+[2025-12-02T09:28:17.013+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:17.014+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+[2025-12-02T09:28:17.014+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+[2025-12-02T09:28:17.015+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:17.015+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:17.015+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:17.016+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:17.016+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete(Promise.scala:53)
+[2025-12-02T09:28:17.016+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete$(Promise.scala:52)
+[2025-12-02T09:28:17.017+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+[2025-12-02T09:28:17.017+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+[2025-12-02T09:28:17.018+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:17.018+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor$Batch.processBatch$1(BatchingExecutor.scala:67)
+[2025-12-02T09:28:17.018+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor$Batch.$anonfun$run$1(BatchingExecutor.scala:82)
+[2025-12-02T09:28:17.019+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T09:28:17.019+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+[2025-12-02T09:28:17.019+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor$Batch.run(BatchingExecutor.scala:59)
+[2025-12-02T09:28:17.019+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Future$InternalCallbackExecutor$.unbatchedExecute(Future.scala:875)
+[2025-12-02T09:28:17.020+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor.execute(BatchingExecutor.scala:110)
+[2025-12-02T09:28:17.020+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.BatchingExecutor.execute$(BatchingExecutor.scala:107)
+[2025-12-02T09:28:17.020+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Future$InternalCallbackExecutor$.execute(Future.scala:873)
+[2025-12-02T09:28:17.021+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:17.021+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:17.021+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:17.022+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:17.022+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.trySuccess(Promise.scala:94)
+[2025-12-02T09:28:17.022+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.trySuccess$(Promise.scala:94)
+[2025-12-02T09:28:17.022+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.trySuccess(Promise.scala:187)
+[2025-12-02T09:28:17.023+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.onSuccess$1(NettyRpcEnv.scala:225)
+[2025-12-02T09:28:17.023+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$5(NettyRpcEnv.scala:239)
+[2025-12-02T09:28:17.023+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$5$adapted(NettyRpcEnv.scala:238)
+[2025-12-02T09:28:17.024+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2025-12-02T09:28:17.024+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+[2025-12-02T09:28:17.024+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+[2025-12-02T09:28:17.024+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+[2025-12-02T09:28:17.025+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+[2025-12-02T09:28:17.025+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+[2025-12-02T09:28:17.025+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+[2025-12-02T09:28:17.026+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete(Promise.scala:53)
+[2025-12-02T09:28:17.026+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.complete$(Promise.scala:52)
+[2025-12-02T09:28:17.026+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+[2025-12-02T09:28:17.027+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.success(Promise.scala:86)
+[2025-12-02T09:28:17.027+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.Promise.success$(Promise.scala:86)
+[2025-12-02T09:28:17.027+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.concurrent.impl.Promise$DefaultPromise.success(Promise.scala:187)
+[2025-12-02T09:28:17.027+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.LocalNettyRpcCallContext.send(NettyRpcCallContext.scala:50)
+[2025-12-02T09:28:17.028+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.NettyRpcCallContext.reply(NettyRpcCallContext.scala:32)
+[2025-12-02T09:28:17.028+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.RpcEndpointVerifier$$anonfun$receiveAndReply$1.applyOrElse(RpcEndpointVerifier.scala:31)
+[2025-12-02T09:28:17.028+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 8 more
+[2025-12-02T09:28:17.029+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:10 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2025-12-02T09:28:17.029+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:10 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+[2025-12-02T09:28:17.029+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:15 INFO client: MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|mongo-spark-connector|source", "version": "4.11.2|10.1.1"}, "os": {"type": "Linux", "name": "Linux", "architecture": "amd64", "version": "6.6.87.2-microsoft-standard-WSL2"}, "platform": "Java/Debian/17.0.17+10-Debian-1deb12u1|Scala/2.12.17/Spark/3.4.1"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@4cdb8ee1, com.mongodb.Jep395RecordCodecProvider@4d4d0af7, com.mongodb.KotlinCodecProvider@6b94ca65]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[172.168.168.206:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+[2025-12-02T09:28:17.030+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:15 INFO cluster: Monitor thread successfully connected to server with description ServerDescription{address=172.168.168.206:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=43482900}
+[2025-12-02T09:28:17.030+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:15 INFO SparkContext: Invoking stop() from shutdown hook
+[2025-12-02T09:28:17.030+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:15 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2025-12-02T09:28:17.030+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:15 INFO SparkUI: Stopped Spark web UI at http://0febd45b162e:4040
+[2025-12-02T09:28:17.031+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2025-12-02T09:28:17.031+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO MemoryStore: MemoryStore cleared
+[2025-12-02T09:28:17.032+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO BlockManager: BlockManager stopped
+[2025-12-02T09:28:17.032+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2025-12-02T09:28:17.032+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2025-12-02T09:28:17.032+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO SparkContext: Successfully stopped SparkContext
+[2025-12-02T09:28:17.033+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO ShutdownHookManager: Shutdown hook called
+[2025-12-02T09:28:17.033+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO ShutdownHookManager: Deleting directory /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef
+[2025-12-02T09:28:17.033+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO ShutdownHookManager: Deleting directory /tmp/spark-94312475-4a06-4a75-b69d-8a5b1a0803ef/pyspark-446cf629-efa6-4fef-b23d-603b9721a524
+[2025-12-02T09:28:17.034+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 09:28:16 INFO ShutdownHookManager: Deleting directory /tmp/spark-c6ba0109-f7bf-441c-a166-c1117e936821
+[2025-12-02T09:28:17.037+0000] {spark_read_mongo_dag.py:63} ERROR - Exception in run_spark_job: spark-submit failed with exit 1
+[2025-12-02T09:28:17.037+0000] {spark_read_mongo_dag.py:64} ERROR - Traceback:
+Traceback (most recent call last):
+  File "/opt/***/dags/spark_read_mongo_dag.py", line 59, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+
+[2025-12-02T09:28:17.037+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-02T09:28:17.038+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 59, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+[2025-12-02T09:28:17.089+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dag, task_id=run_mongo_to_iceberg, run_id=manual__2025-12-02T09:27:33.816013+00:00, execution_date=20251202T092733, start_date=20251202T092736, end_date=20251202T092817
+[2025-12-02T09:28:17.143+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 9 for task run_mongo_to_iceberg (spark-submit failed with exit 1; 3238)
+[2025-12-02T09:28:17.196+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-02T09:28:17.219+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-02T09:28:17.367+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

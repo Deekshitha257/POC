@@ -1,0 +1,34 @@
+[2025-12-01T11:11:51.522+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-01T11:11:51.595+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spark_read_mongo_dag.submit_read_mongo manual__2025-12-01T11:09:41.355588+00:00 [queued]>
+[2025-12-01T11:11:51.605+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spark_read_mongo_dag.submit_read_mongo manual__2025-12-01T11:09:41.355588+00:00 [queued]>
+[2025-12-01T11:11:51.607+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2025-12-01T11:11:51.659+0000] {taskinstance.py:2330} INFO - Executing <Task(SparkSubmitOperator): submit_read_mongo> on 2025-12-01 11:09:41.355588+00:00
+[2025-12-01T11:11:51.681+0000] {standard_task_runner.py:63} INFO - Started process 655 to run task
+[2025-12-01T11:11:51.685+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'spark_read_mongo_dag', 'submit_read_mongo', 'manual__2025-12-01T11:09:41.355588+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmp6hlqj2df']
+[2025-12-01T11:11:51.688+0000] {standard_task_runner.py:91} INFO - Job 8: Subtask submit_read_mongo
+[2025-12-01T11:11:51.816+0000] {task_command.py:426} INFO - Running <TaskInstance: spark_read_mongo_dag.submit_read_mongo manual__2025-12-01T11:09:41.355588+00:00 [running]> on host e3ac7540bfdd
+[2025-12-01T11:11:51.960+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='spark_read_mongo_dag' AIRFLOW_CTX_TASK_ID='submit_read_mongo' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T11:09:41.355588+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T11:09:41.355588+00:00'
+[2025-12-01T11:11:51.961+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-01T11:11:51.989+0000] {base.py:84} INFO - Using connection ID 'spark_default' for task execution.
+[2025-12-01T11:11:51.991+0000] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master yarn --conf spark.master=local[*] --conf spark.jars=/opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar --conf spark.yarn.appMasterEnv.AIRFLOW_CONN_MONGO_DB=mongodb://172.168.168.206:27017 --conf spark.yarn.appMasterEnv.MONGO_DB=mydb --conf spark.yarn.appMasterEnv.MONGO_COLLECTION=customers --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar --name arrow-spark --queue root.default /opt/***/spark/jobs/mongo_pyspark.py
+[2025-12-01T11:11:52.222+0000] {spark_submit.py:571} INFO - /home/***/.local/lib/python3.9/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2025-12-01T11:11:52.223+0000] {spark_submit.py:571} INFO - JAVA_HOME is not set
+[2025-12-01T11:11:52.224+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-01T11:11:52.310+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --conf spark.master=local[*] --conf spark.jars=/opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar --conf spark.yarn.appMasterEnv.AIRFLOW_CONN_MONGO_DB=mongodb://172.168.168.206:27017 --conf spark.yarn.appMasterEnv.MONGO_DB=mydb --conf spark.yarn.appMasterEnv.MONGO_COLLECTION=customers --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar --name arrow-spark --queue root.default /opt/***/spark/jobs/mongo_pyspark.py. Error code is: 1.
+[2025-12-01T11:11:52.314+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=spark_read_mongo_dag, task_id=submit_read_mongo, run_id=manual__2025-12-01T11:09:41.355588+00:00, execution_date=20251201T110941, start_date=20251201T111151, end_date=20251201T111152
+[2025-12-01T11:11:52.365+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 8 for task submit_read_mongo (Cannot execute: spark-submit --master yarn --conf spark.master=local[*] --conf spark.jars=/opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar --conf spark.yarn.appMasterEnv.AIRFLOW_CONN_MONGO_DB=mongodb://172.168.168.206:27017 --conf spark.yarn.appMasterEnv.MONGO_DB=mydb --conf spark.yarn.appMasterEnv.MONGO_COLLECTION=customers --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar --name arrow-spark --queue root.default /opt/***/spark/jobs/mongo_pyspark.py. Error code is: 1.; 655)
+[2025-12-01T11:11:52.380+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-01T11:11:52.406+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-01T11:11:52.431+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

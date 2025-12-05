@@ -1,0 +1,98 @@
+[2025-12-01T10:30:01.919+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-01T10:30:01.957+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_test_connection.test_mongo_connection manual__2025-12-01T10:29:58.791889+00:00 [queued]>
+[2025-12-01T10:30:01.965+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_test_connection.test_mongo_connection manual__2025-12-01T10:29:58.791889+00:00 [queued]>
+[2025-12-01T10:30:01.972+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-01T10:30:02.134+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): test_mongo_connection> on 2025-12-01 10:29:58.791889+00:00
+[2025-12-01T10:30:02.140+0000] {standard_task_runner.py:63} INFO - Started process 195 to run task
+[2025-12-01T10:30:02.146+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_test_connection', 'test_mongo_connection', 'manual__2025-12-01T10:29:58.791889+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/mondo_***.py', '--cfg-path', '/tmp/tmp56clhn2g']
+[2025-12-01T10:30:02.149+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask test_mongo_connection
+[2025-12-01T10:30:02.638+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_test_connection.test_mongo_connection manual__2025-12-01T10:29:58.791889+00:00 [running]> on host 4b2cfd922636
+[2025-12-01T10:30:02.884+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mongo_test_connection' AIRFLOW_CTX_TASK_ID='test_mongo_connection' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T10:29:58.791889+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T10:29:58.791889+00:00'
+[2025-12-01T10:30:02.885+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-01T10:30:02.909+0000] {logging_mixin.py:188} INFO - Mongo URI used by Airflow: mongodb://172.168.168.206:27017
+[2025-12-01T10:30:02.938+0000] {logging_mixin.py:188} INFO - Databases available: ['admin', 'agent-ai', 'ai_segmentation', 'campaign-consumer', 'comms_service', 'config', 'dev-chatterist', 'event-mesh', 'gatherly', 'ileadiq', 'insights_db', 'iot', 'journey_agent', 'local', 'marchestrator', 'martech-ai', 'martech-etl-dev', 'martech-segment', 'scheduler', 'service-commerce', 'sirrus_ai', 'sso', 'sxp_onboard_db', 'test_db', 'ticketing_system', 'url-shortner']
+[2025-12-01T10:30:02.941+0000] {logging_mixin.py:188} INFO - 
+Database: admin
+[2025-12-01T10:30:02.942+0000] {logging_mixin.py:188} INFO - Collections: ['system.version']
+[2025-12-01T10:30:02.944+0000] {logging_mixin.py:188} INFO - 
+Database: agent-ai
+[2025-12-01T10:30:02.945+0000] {logging_mixin.py:188} INFO - Collections: ['agent_form_data', 'agent_forms']
+[2025-12-01T10:30:02.947+0000] {logging_mixin.py:188} INFO - 
+Database: ai_segmentation
+[2025-12-01T10:30:02.948+0000] {logging_mixin.py:188} INFO - Collections: ['conversations']
+[2025-12-01T10:30:02.950+0000] {logging_mixin.py:188} INFO - 
+Database: campaign-consumer
+[2025-12-01T10:30:02.950+0000] {logging_mixin.py:188} INFO - Collections: ['sms_logs', 'sms_webhook_logs', 'webhook_config', 'email_webhook_logs', 'ai_call_consumer_logs', 'email_consumer_logs', 'whatsapp_webhook_logs', 'journey_node_executions', 'journey_instances', 'sms_consumer_logs', 'journey_messages', 'whatsapp_consumer_logs', 'campaign_producer_logs', 'campaign', 'whatsapp_logs', 'ai_call_logs', 'email_logs']
+[2025-12-01T10:30:02.953+0000] {logging_mixin.py:188} INFO - 
+Database: comms_service
+[2025-12-01T10:30:02.953+0000] {logging_mixin.py:188} INFO - Collections: ['notifications-logs', 'cloudconnect_config', 'notifications-template', 'call_logs', 'chats', 'chats_webhook', 'notifications-jobs', 'push-notifications', 'chats_credentials', 'call_credentials', 'config']
+[2025-12-01T10:30:02.956+0000] {logging_mixin.py:188} INFO - 
+Database: config
+[2025-12-01T10:30:02.956+0000] {logging_mixin.py:188} INFO - Collections: ['system.sessions']
+[2025-12-01T10:30:02.959+0000] {logging_mixin.py:188} INFO - 
+Database: dev-chatterist
+[2025-12-01T10:30:02.959+0000] {logging_mixin.py:188} INFO - Collections: ['yukio_chatterist_messages', 'test_writes', 'chatterist_messages']
+[2025-12-01T10:30:02.962+0000] {logging_mixin.py:188} INFO - 
+Database: event-mesh
+[2025-12-01T10:30:02.962+0000] {logging_mixin.py:188} INFO - Collections: ['eventlogs', 'event']
+[2025-12-01T10:30:02.965+0000] {logging_mixin.py:188} INFO - 
+Database: gatherly
+[2025-12-01T10:30:02.965+0000] {logging_mixin.py:188} INFO - Collections: ['event_referral_logs', 'participation_details', 'customer', 'event_product_mappings', 'event', 'event_checkins', 'event_forms']
+[2025-12-01T10:30:02.968+0000] {logging_mixin.py:188} INFO - 
+Database: ileadiq
+[2025-12-01T10:30:02.968+0000] {logging_mixin.py:188} INFO - Collections: ['lead_logs', 'organisations', 'lead', 'request_tracker']
+[2025-12-01T10:30:02.971+0000] {logging_mixin.py:188} INFO - 
+Database: insights_db
+[2025-12-01T10:30:02.971+0000] {logging_mixin.py:188} INFO - Collections: ['platform_insights_old', 'platform_insights', 'campaign_insights', 'adset_insights', 'campaign_insights_old', 'ad_insights']
+[2025-12-01T10:30:02.974+0000] {logging_mixin.py:188} INFO - 
+Database: iot
+[2025-12-01T10:30:02.974+0000] {logging_mixin.py:188} INFO - Collections: ['devices', 'jobs', 'device_configs', 'inventory_devices_mappings', 'keys', 'inventories', 'device_logs']
+[2025-12-01T10:30:02.977+0000] {logging_mixin.py:188} INFO - 
+Database: journey_agent
+[2025-12-01T10:30:02.977+0000] {logging_mixin.py:188} INFO - Collections: ['sessions']
+[2025-12-01T10:30:02.979+0000] {logging_mixin.py:188} INFO - 
+Database: local
+[2025-12-01T10:30:02.980+0000] {logging_mixin.py:188} INFO - Collections: ['startup_log']
+[2025-12-01T10:30:02.982+0000] {logging_mixin.py:188} INFO - 
+Database: marchestrator
+[2025-12-01T10:30:02.982+0000] {logging_mixin.py:188} INFO - Collections: ['form_data', 'personalized_attributes', 'form', 'ads_platform', 'channel_provider', 'templates', 'journey', 'journey_templates', 'campaignlogs', 'global_config', 'journey_entities', 'campaigns']
+[2025-12-01T10:30:02.984+0000] {logging_mixin.py:188} INFO - 
+Database: martech-ai
+[2025-12-01T10:30:02.985+0000] {logging_mixin.py:188} INFO - Collections: ['Insights', 'Insights-Feedback']
+[2025-12-01T10:30:02.987+0000] {logging_mixin.py:188} INFO - 
+Database: martech-etl-dev
+[2025-12-01T10:30:02.988+0000] {logging_mixin.py:188} INFO - Collections: ['google_adgroup_ad_level', 'google_campaign_level', 'meta_ad_level', 'meta_creatives_level', 'meta_ads_insights', 'google_keywords_level', 'job_logs', 'ads-config', 'google_ad_asset_view', 'meta_campaign_level', 'google_creatives_level', 'google_ads_insights', 'google_asset_group_level', 'google_searchterms', 'google_asset_level', 'google_adgroup_level', 'meta_adset_level']
+[2025-12-01T10:30:02.990+0000] {logging_mixin.py:188} INFO - 
+Database: martech-segment
+[2025-12-01T10:30:02.990+0000] {logging_mixin.py:188} INFO - Collections: ['segment_users', 'valid_segments', 'segment_error', 'segments', 'segment_leads']
+[2025-12-01T10:30:02.993+0000] {logging_mixin.py:188} INFO - 
+Database: scheduler
+[2025-12-01T10:30:02.993+0000] {logging_mixin.py:188} INFO - Collections: ['Agenda']
+[2025-12-01T10:30:02.995+0000] {logging_mixin.py:188} INFO - 
+Database: service-commerce
+[2025-12-01T10:30:02.996+0000] {logging_mixin.py:188} INFO - Collections: ['my_collection', 'pins']
+[2025-12-01T10:30:02.998+0000] {logging_mixin.py:188} INFO - 
+Database: sirrus_ai
+[2025-12-01T10:30:02.999+0000] {logging_mixin.py:188} INFO - Collections: ['channel_partner', 'documents_template', 'lead_tasks', 'project_insight_inferno_payload', 'lead_widgets', 'project_landmark', 'generate_file', 'lead_communication_logs', 'reason_label', 'project_insight_inferno', 'organisation', 'user_bulk', 'cp_communication_logs', 'states', 'construction_progress', 'campaign_details', 'lead_bulk', 'project', 'project_building', 'project_brief', 'booking', 'past_project', 'follow_ups', 'users', 'chats_template', 'cost_sheet_logs', 'customer_payment_plan_milestone', 'store_lead_Journey', 'lead_site_visits', 'entity_label', 'customer_widgets', 'lead-site-visits', 'unit_types', 'user', 'lead_call_logs', 'allotment_letter', 'user_group', 'lead_form_config', 'routing-rules', 'bookingcounts', 'lead_task', 'lead', 'payment_logs', 'lead_webhooks', 'project_unit', 'generate_ai', 'interiors', 'address', 'parking', 'inventory_unit', 'payment_plans', 'customer_communication_logs', 'lead_stage_questions', 'cost_sheet', 'audit_logs', 'cp_widgets', 'test', 'custom_entity_label', 'common_project_documents', 'ilead_notifications']
+[2025-12-01T10:30:03.001+0000] {logging_mixin.py:188} INFO - Users Data: [{'_id': '82e60185b4edf177c3f4a6ae7889f977c51a8241a7d950c013d9aaa0e16242f1', 'firstName': 'tcgre suadmin', 'lastName': 'string', 'email': 'suadmin@suadmin.com', 'phone': '8587058793', 'userRole': 'string', 'userGroup': '7917bb88-5b60-494b-84b0-257889161ce2', 'isActive': True, 'orgId': '4999c9f1-93d3-43c9-9958-53974df7ad31', 'createdAt': '2023-10-13T11:05:26.181000', 'updatedAt': '2023-10-13T11:05:26.181000', '__v': 0}]
+[2025-12-01T10:30:03.004+0000] {logging_mixin.py:188} INFO - 
+Database: sso
+[2025-12-01T10:30:03.004+0000] {logging_mixin.py:188} INFO - Collections: ['permission', 'auth_otp_detail', 'roles', 'auth_access_token', 'auth_pkce', 'user_role', 'auth_audit', 'auth_client', 'audit_logs', 'auth_refresh_token', 'auth_user']
+[2025-12-01T10:30:03.006+0000] {logging_mixin.py:188} INFO - 
+Database: sxp_onboard_db
+[2025-12-01T10:30:03.006+0000] {logging_mixin.py:188} INFO - Collections: ['society', 'parking', 'resident', 'project_building', 'project_unit', 'request_resident', 'project_unit_owner', 'project_floor']
+[2025-12-01T10:30:03.008+0000] {logging_mixin.py:188} INFO - 
+Database: test_db
+[2025-12-01T10:30:03.009+0000] {logging_mixin.py:188} INFO - Collections: ['users']
+[2025-12-01T10:30:03.011+0000] {logging_mixin.py:188} INFO - Users Data: [{'_id': ObjectId('69295a78a893a6a96aedd2e5'), 'name': 'First User', 'source': 'Airflow'}]
+[2025-12-01T10:30:03.014+0000] {logging_mixin.py:188} INFO - 
+Database: ticketing_system
+[2025-12-01T10:30:03.014+0000] {logging_mixin.py:188} INFO - Collections: ['status-reason', 'status_reason_script', 'categories_1', 'status-reason-1', 'counter', 'tickets', 'categories', 'tickets_counter']
+[2025-12-01T10:30:03.016+0000] {logging_mixin.py:188} INFO - 
+Database: url-shortner
+[2025-12-01T10:30:03.017+0000] {logging_mixin.py:188} INFO - Collections: ['urls', 'clicks']
+[2025-12-01T10:30:03.017+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-12-01T10:30:03.018+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-01T10:30:03.031+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mongo_test_connection, task_id=test_mongo_connection, run_id=manual__2025-12-01T10:29:58.791889+00:00, execution_date=20251201T102958, start_date=20251201T103001, end_date=20251201T103003
+[2025-12-01T10:30:03.691+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-12-01T10:30:03.715+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

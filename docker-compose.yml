@@ -1,0 +1,212 @@
+version: "3.8"
+
+services:
+  # ---------------------------
+  # Object store (S3-compatible)
+  # ---------------------------
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"   # S3 API
+      - "9001:9001"   # MinIO console
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:9000/minio/health/ready || exit 1"]
+      interval: 10s
+      retries: 5
+
+  # ---------------------------
+  # Source DB
+  # ---------------------------
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo_data:/data/db
+
+  # ---------------------------
+  # Nessie (Iceberg catalog)
+  # ---------------------------
+  nessie:
+    image: projectnessie/nessie:latest
+    container_name: nessie
+    ports:
+      - "19120:19120"
+    environment:
+      # pass JVM options via env so container entrypoint can pick them up
+      JAVA_TOOL_OPTIONS: "-Dnessie.server.authorization.enabled=false -Xmx512m"
+      # optional: increase logging if you need debug info
+      # NESSIE_LOG_LEVEL: "INFO"
+    depends_on:
+      - minio
+    restart: unless-stopped
+    volumes:
+      - nessie_data:/var/nessie         # persist Nessie storage across restarts
+    healthcheck:
+      # use v2 refs endpoint and allow a little more time for startup
+      test: ["CMD", "curl", "-f", "http://localhost:19120/api/v2/refs || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+
+  # ---------------------------
+  # PostgreSQL (Airflow metadata + reporting)
+  # ---------------------------
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+# Airflow initialization (DB init + create admin user)
+  airflow-init:
+    build: ./airflow
+    depends_on:
+      - postgres
+      - mongo
+    env_file:
+      - .env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/data:/opt/airflow/data
+      - ./jars:/opt/airflow/jars  
+      - ./spark_jobs:/opt/airflow/spark_jobs 
+    command: >
+      bash -c "airflow db init && airflow users create --username airflow --firstname Airflow --lastname Admin --role Admin --email admin@example.com --password airflow"
+ 
+  # Airflow Webserver
+  airflow-webserver:
+    build: ./airflow
+    depends_on:
+      - postgres
+      - airflow-init
+      - mongo
+      
+    env_file:
+      - .env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session
+      AIRFLOW__WEBSERVER__ACCESS_CONTROL_ALLOW_HEADERS: origin, content-type, accept
+      AIRFLOW__WEBSERVER__ACCESS_CONTROL_ALLOW_METHODS: POST,GET,OPTIONS,DELETE
+      AIRFLOW__WEBSERVER__ACCESS_CONTROL_ALLOW_ORIGINS: '*'
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/data:/opt/airflow/data
+      - ./jars:/opt/airflow/jars  
+      - ./spark_jobs:/opt/airflow/spark_jobs 
+    ports:
+      - "8080:8080"
+    command: webserver
+    mem_limit: 4g
+ 
+  # Airflow Scheduler
+  airflow-scheduler:
+    build: ./airflow
+    container_name: airflow-scheduler
+    depends_on:
+      - airflow-webserver
+      - airflow-init
+      - postgres
+      - mongo
+    env_file:
+      - .env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__DEFAULT_TIMEZONE: "UTC"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/data:/opt/airflow/data
+      - ./jars:/opt/airflow/jars  
+      - ./spark_jobs:/opt/airflow/spark_jobs 
+    command: scheduler
+    mem_limit: 8g
+
+ 
+
+
+  # ---------------------------
+  # Spark execution image (for local spark-submit)
+  # - You will either:
+  #   1) mount your job scripts into /opt/spark/jobs and run spark-submit from this container
+  #   2) or use SparkSubmitOperator in Airflow that calls a Spark cluster
+  #
+  # - Important: You MUST supply required jars for MongoDB connector, Iceberg runtime, Nessie module,
+  #   and Hadoop S3A (for MinIO). Put them into ./jars and mount to /opt/jars or bake into a custom image.
+  # ---------------------------
+  spark:
+    image: apache/spark:3.4.1-python3
+    container_name: spark
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "8081:8081"   # spark master UI (if available in image)
+    volumes:
+      - ./spark_jobs:/opt/spark/jobs
+      - ./jars:/opt/jars
+    depends_on:
+      - minio
+      - nessie
+      - mongo
+
+  trino:
+    image: trinodb/trino:latest
+    container_name: trino
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./trino/catalog:/etc/trino/catalog:ro
+      - ./jars:/opt/jars
+
+    depends_on:
+      - minio
+      - nessie
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xmx1G"
+
+  dremio:
+    image: dremio/dremio-oss:latest
+    container_name: dremio
+    ports:
+      - "9047:9047"   # Dremio UI
+      - "31010:31010" # Flight
+    environment:
+      - SERVICES=master,coordinator,executor
+    depends_on:
+      - minio
+
+volumes:
+  minio_data:
+  mongo_data:
+  pg_data:
+  nessie_data:

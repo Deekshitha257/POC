@@ -1,0 +1,272 @@
+[2025-12-01T13:40:30.140+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-01T13:40:30.197+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_to_iceberg_dag.run_mongo_to_iceberg manual__2025-12-01T13:40:28.939981+00:00 [queued]>
+[2025-12-01T13:40:30.209+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_to_iceberg_dag.run_mongo_to_iceberg manual__2025-12-01T13:40:28.939981+00:00 [queued]>
+[2025-12-01T13:40:30.211+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-01T13:40:30.283+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_mongo_to_iceberg> on 2025-12-01 13:40:28.939981+00:00
+[2025-12-01T13:40:30.298+0000] {standard_task_runner.py:63} INFO - Started process 195 to run task
+[2025-12-01T13:40:30.315+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_to_iceberg_dag', 'run_mongo_to_iceberg', 'manual__2025-12-01T13:40:28.939981+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpvyuq1fg_']
+[2025-12-01T13:40:30.324+0000] {standard_task_runner.py:91} INFO - Job 26: Subtask run_mongo_to_iceberg
+[2025-12-01T13:40:30.509+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_to_iceberg_dag.run_mongo_to_iceberg manual__2025-12-01T13:40:28.939981+00:00 [running]> on host e3249692c36d
+[2025-12-01T13:40:30.708+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_to_iceberg_dag' AIRFLOW_CTX_TASK_ID='run_mongo_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:40:28.939981+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:40:28.939981+00:00'
+[2025-12-01T13:40:30.710+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-01T13:40:30.789+0000] {logging_mixin.py:188} INFO - Running: spark-submit --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar /opt/***/spark_jobs/mongo_pyspark.py
+[2025-12-01T13:40:30.790+0000] {logging_mixin.py:188} INFO - Env PATH (start): ['/opt/spark/spark-3.4.1-bin-hadoop3/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/opt/spark/bin']
+[2025-12-01T13:40:51.744+0000] {logging_mixin.py:188} INFO - === spark-submit stdout ===
+[2025-12-01T13:40:51.746+0000] {logging_mixin.py:188} INFO - 📌 Spark session created
+Traceback (most recent call last):
+  File "/opt/***/spark_jobs/mongo_pyspark.py", line 57, in <module>
+    main()
+  File "/opt/***/spark_jobs/mongo_pyspark.py", line 34, in main
+    spark.read
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 307, in load
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 169, in deco
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o49.load.
+: java.lang.NoClassDefFoundError: org/bson/BsonValue
+	at com.mongodb.spark.sql.connector.MongoTableProvider.inferSchema(MongoTableProvider.java:62)
+	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.getTableFromProvider(DataSourceV2Utils.scala:90)
+	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.loadV2Source(DataSourceV2Utils.scala:140)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$1(DataFrameReader.scala:210)
+	at scala.Option.flatMap(Option.scala:271)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.ClassNotFoundException: org.bson.BsonValue
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 19 more
+[2025-12-01T13:40:51.747+0000] {logging_mixin.py:188} INFO - === spark-submit stderr ===
+[2025-12-01T13:40:51.748+0000] {logging_mixin.py:188} INFO - 25/12/01 13:40:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/01 13:40:38 INFO SparkContext: Running Spark version 3.4.1
+25/12/01 13:40:38 INFO ResourceUtils: ==============================================================
+25/12/01 13:40:38 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/12/01 13:40:38 INFO ResourceUtils: ==============================================================
+25/12/01 13:40:38 INFO SparkContext: Submitted application: MongoToIceberg
+25/12/01 13:40:38 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/12/01 13:40:38 INFO ResourceProfile: Limiting resource is cpu
+25/12/01 13:40:38 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/12/01 13:40:38 INFO SecurityManager: Changing view acls to: ***
+25/12/01 13:40:38 INFO SecurityManager: Changing modify acls to: ***
+25/12/01 13:40:38 INFO SecurityManager: Changing view acls groups to: 
+25/12/01 13:40:38 INFO SecurityManager: Changing modify acls groups to: 
+25/12/01 13:40:38 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+25/12/01 13:40:39 INFO Utils: Successfully started service 'sparkDriver' on port 36101.
+25/12/01 13:40:39 INFO SparkEnv: Registering MapOutputTracker
+25/12/01 13:40:39 INFO SparkEnv: Registering BlockManagerMaster
+25/12/01 13:40:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/12/01 13:40:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/12/01 13:40:39 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/12/01 13:40:39 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-55ec2ea5-166f-4eed-8f5a-c8c153ad3eec
+25/12/01 13:40:39 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+25/12/01 13:40:39 INFO SparkEnv: Registering OutputCommitCoordinator
+25/12/01 13:40:39 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+25/12/01 13:40:39 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO Executor: Starting executor ID driver on host e3249692c36d
+25/12/01 13:40:39 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+25/12/01 13:40:39 INFO Executor: Fetching spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO TransportClientFactory: Successfully created connection to e3249692c36d/172.19.0.11:36101 after 29 ms (0 ms spent in bootstraps)
+25/12/01 13:40:39 INFO Utils: Fetching spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp11465167733431790130.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/aws-java-sdk-bundle-1.12.772.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp12603166585395491279.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/hadoop-aws-3.3.4.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp11331204128174578984.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp2130073958937653419.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/mongo-spark-connector_2.12-10.1.1.jar to class loader
+25/12/01 13:40:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43311.
+25/12/01 13:40:43 INFO NettyBlockTransferService: Server created on e3249692c36d:43311
+25/12/01 13:40:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/12/01 13:40:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManagerMasterEndpoint: Registering block manager e3249692c36d:43311 with 434.4 MiB RAM, BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:44 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+25/12/01 13:40:44 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+25/12/01 13:40:45 INFO SparkContext: Invoking stop() from shutdown hook
+25/12/01 13:40:45 INFO SparkContext: SparkContext is stopping with exitCode 0.
+25/12/01 13:40:45 INFO SparkUI: Stopped Spark web UI at http://e3249692c36d:4040
+25/12/01 13:40:45 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+25/12/01 13:40:45 INFO MemoryStore: MemoryStore cleared
+25/12/01 13:40:45 INFO BlockManager: BlockManager stopped
+25/12/01 13:40:45 INFO BlockManagerMaster: BlockManagerMaster stopped
+25/12/01 13:40:45 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+25/12/01 13:40:51 INFO SparkContext: Successfully stopped SparkContext
+25/12/01 13:40:51 INFO ShutdownHookManager: Shutdown hook called
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-02015e97-1556-4cdb-b4d8-291d5415c612
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/pyspark-b43d42a1-358c-4b41-804e-76f280a5e4be
+[2025-12-01T13:40:51.749+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-01T13:40:51.750+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 54, in run_spark_job
+    raise RuntimeError(f"spark-submit failed (exit {process.returncode}). stderr:\n{process.stderr}")
+RuntimeError: spark-submit failed (exit 1). stderr:
+25/12/01 13:40:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/01 13:40:38 INFO SparkContext: Running Spark version 3.4.1
+25/12/01 13:40:38 INFO ResourceUtils: ==============================================================
+25/12/01 13:40:38 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/12/01 13:40:38 INFO ResourceUtils: ==============================================================
+25/12/01 13:40:38 INFO SparkContext: Submitted application: MongoToIceberg
+25/12/01 13:40:38 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/12/01 13:40:38 INFO ResourceProfile: Limiting resource is cpu
+25/12/01 13:40:38 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/12/01 13:40:38 INFO SecurityManager: Changing view acls to: ***
+25/12/01 13:40:38 INFO SecurityManager: Changing modify acls to: ***
+25/12/01 13:40:38 INFO SecurityManager: Changing view acls groups to: 
+25/12/01 13:40:38 INFO SecurityManager: Changing modify acls groups to: 
+25/12/01 13:40:38 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+25/12/01 13:40:39 INFO Utils: Successfully started service 'sparkDriver' on port 36101.
+25/12/01 13:40:39 INFO SparkEnv: Registering MapOutputTracker
+25/12/01 13:40:39 INFO SparkEnv: Registering BlockManagerMaster
+25/12/01 13:40:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/12/01 13:40:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/12/01 13:40:39 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/12/01 13:40:39 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-55ec2ea5-166f-4eed-8f5a-c8c153ad3eec
+25/12/01 13:40:39 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+25/12/01 13:40:39 INFO SparkEnv: Registering OutputCommitCoordinator
+25/12/01 13:40:39 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+25/12/01 13:40:39 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO Executor: Starting executor ID driver on host e3249692c36d
+25/12/01 13:40:39 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+25/12/01 13:40:39 INFO Executor: Fetching spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO TransportClientFactory: Successfully created connection to e3249692c36d/172.19.0.11:36101 after 29 ms (0 ms spent in bootstraps)
+25/12/01 13:40:39 INFO Utils: Fetching spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp11465167733431790130.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/aws-java-sdk-bundle-1.12.772.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp12603166585395491279.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/hadoop-aws-3.3.4.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp11331204128174578984.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp2130073958937653419.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/mongo-spark-connector_2.12-10.1.1.jar to class loader
+25/12/01 13:40:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43311.
+25/12/01 13:40:43 INFO NettyBlockTransferService: Server created on e3249692c36d:43311
+25/12/01 13:40:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/12/01 13:40:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManagerMasterEndpoint: Registering block manager e3249692c36d:43311 with 434.4 MiB RAM, BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:44 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+25/12/01 13:40:44 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+25/12/01 13:40:45 INFO SparkContext: Invoking stop() from shutdown hook
+25/12/01 13:40:45 INFO SparkContext: SparkContext is stopping with exitCode 0.
+25/12/01 13:40:45 INFO SparkUI: Stopped Spark web UI at http://e3249692c36d:4040
+25/12/01 13:40:45 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+25/12/01 13:40:45 INFO MemoryStore: MemoryStore cleared
+25/12/01 13:40:45 INFO BlockManager: BlockManager stopped
+25/12/01 13:40:45 INFO BlockManagerMaster: BlockManagerMaster stopped
+25/12/01 13:40:45 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+25/12/01 13:40:51 INFO SparkContext: Successfully stopped SparkContext
+25/12/01 13:40:51 INFO ShutdownHookManager: Shutdown hook called
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-02015e97-1556-4cdb-b4d8-291d5415c612
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/pyspark-b43d42a1-358c-4b41-804e-76f280a5e4be
+
+[2025-12-01T13:40:51.775+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_to_iceberg_dag, task_id=run_mongo_to_iceberg, run_id=manual__2025-12-01T13:40:28.939981+00:00, execution_date=20251201T134028, start_date=20251201T134030, end_date=20251201T134051
+[2025-12-01T13:40:51.910+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 26 for task run_mongo_to_iceberg (spark-submit failed (exit 1). stderr:
+25/12/01 13:40:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/01 13:40:38 INFO SparkContext: Running Spark version 3.4.1
+25/12/01 13:40:38 INFO ResourceUtils: ==============================================================
+25/12/01 13:40:38 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/12/01 13:40:38 INFO ResourceUtils: ==============================================================
+25/12/01 13:40:38 INFO SparkContext: Submitted application: MongoToIceberg
+25/12/01 13:40:38 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/12/01 13:40:38 INFO ResourceProfile: Limiting resource is cpu
+25/12/01 13:40:38 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/12/01 13:40:38 INFO SecurityManager: Changing view acls to: ***
+25/12/01 13:40:38 INFO SecurityManager: Changing modify acls to: ***
+25/12/01 13:40:38 INFO SecurityManager: Changing view acls groups to: 
+25/12/01 13:40:38 INFO SecurityManager: Changing modify acls groups to: 
+25/12/01 13:40:38 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+25/12/01 13:40:39 INFO Utils: Successfully started service 'sparkDriver' on port 36101.
+25/12/01 13:40:39 INFO SparkEnv: Registering MapOutputTracker
+25/12/01 13:40:39 INFO SparkEnv: Registering BlockManagerMaster
+25/12/01 13:40:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/12/01 13:40:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/12/01 13:40:39 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/12/01 13:40:39 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-55ec2ea5-166f-4eed-8f5a-c8c153ad3eec
+25/12/01 13:40:39 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+25/12/01 13:40:39 INFO SparkEnv: Registering OutputCommitCoordinator
+25/12/01 13:40:39 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+25/12/01 13:40:39 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO Executor: Starting executor ID driver on host e3249692c36d
+25/12/01 13:40:39 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+25/12/01 13:40:39 INFO Executor: Fetching spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764596438615
+25/12/01 13:40:39 INFO TransportClientFactory: Successfully created connection to e3249692c36d/172.19.0.11:36101 after 29 ms (0 ms spent in bootstraps)
+25/12/01 13:40:39 INFO Utils: Fetching spark://e3249692c36d:36101/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp11465167733431790130.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/aws-java-sdk-bundle-1.12.772.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/hadoop-aws-3.3.4.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp12603166585395491279.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/hadoop-aws-3.3.4.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp11331204128174578984.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+25/12/01 13:40:43 INFO Executor: Fetching spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764596438615
+25/12/01 13:40:43 INFO Utils: Fetching spark://e3249692c36d:36101/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/fetchFileTemp2130073958937653419.tmp
+25/12/01 13:40:43 INFO Executor: Adding file:/tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/userFiles-d29a7d72-7711-463f-aedc-0b52277c89bd/mongo-spark-connector_2.12-10.1.1.jar to class loader
+25/12/01 13:40:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43311.
+25/12/01 13:40:43 INFO NettyBlockTransferService: Server created on e3249692c36d:43311
+25/12/01 13:40:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/12/01 13:40:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManagerMasterEndpoint: Registering block manager e3249692c36d:43311 with 434.4 MiB RAM, BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, e3249692c36d, 43311, None)
+25/12/01 13:40:44 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+25/12/01 13:40:44 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+25/12/01 13:40:45 INFO SparkContext: Invoking stop() from shutdown hook
+25/12/01 13:40:45 INFO SparkContext: SparkContext is stopping with exitCode 0.
+25/12/01 13:40:45 INFO SparkUI: Stopped Spark web UI at http://e3249692c36d:4040
+25/12/01 13:40:45 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+25/12/01 13:40:45 INFO MemoryStore: MemoryStore cleared
+25/12/01 13:40:45 INFO BlockManager: BlockManager stopped
+25/12/01 13:40:45 INFO BlockManagerMaster: BlockManagerMaster stopped
+25/12/01 13:40:45 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+25/12/01 13:40:51 INFO SparkContext: Successfully stopped SparkContext
+25/12/01 13:40:51 INFO ShutdownHookManager: Shutdown hook called
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-02015e97-1556-4cdb-b4d8-291d5415c612
+25/12/01 13:40:51 INFO ShutdownHookManager: Deleting directory /tmp/spark-be9ffdba-5492-404b-a308-0259c73d55a9/pyspark-b43d42a1-358c-4b41-804e-76f280a5e4be
+; 195)
+[2025-12-01T13:40:51.937+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-01T13:40:51.966+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-01T13:40:52.034+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

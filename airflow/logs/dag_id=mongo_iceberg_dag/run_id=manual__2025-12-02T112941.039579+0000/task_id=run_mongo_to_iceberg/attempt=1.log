@@ -1,0 +1,172 @@
+[2025-12-02T11:29:42.444+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-02T11:29:42.500+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T11:29:41.039579+00:00 [queued]>
+[2025-12-02T11:29:42.507+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T11:29:41.039579+00:00 [queued]>
+[2025-12-02T11:29:42.509+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-02T11:29:42.557+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_mongo_to_iceberg> on 2025-12-02 11:29:41.039579+00:00
+[2025-12-02T11:29:42.563+0000] {standard_task_runner.py:63} INFO - Started process 1427 to run task
+[2025-12-02T11:29:42.567+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dag', 'run_mongo_to_iceberg', 'manual__2025-12-02T11:29:41.039579+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpyidoj_i4']
+[2025-12-02T11:29:42.571+0000] {standard_task_runner.py:91} INFO - Job 20: Subtask run_mongo_to_iceberg
+[2025-12-02T11:29:42.694+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T11:29:41.039579+00:00 [running]> on host f8453ad61174
+[2025-12-02T11:29:42.843+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dag' AIRFLOW_CTX_TASK_ID='run_mongo_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-12-02T11:29:41.039579+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-02T11:29:41.039579+00:00'
+[2025-12-02T11:29:42.844+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-02T11:29:42.857+0000] {spark_read_mongo_dag.py:28} INFO - START run_spark_job
+[2025-12-02T11:29:42.858+0000] {spark_read_mongo_dag.py:30} INFO - Checking path: /opt/***/spark_jobs/mongo_pyspark.py exists=True
+[2025-12-02T11:29:42.859+0000] {spark_read_mongo_dag.py:30} INFO - Checking path: /opt/***/jars exists=True
+[2025-12-02T11:29:42.861+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-02T11:29:42.863+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-02T11:29:42.864+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-02T11:29:42.866+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-02T11:29:42.867+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-02T11:29:42.869+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-02T11:29:42.871+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-02T11:29:42.871+0000] {spark_read_mongo_dag.py:36} INFO - which spark-submit -> /home/***/.local/bin/spark-submit
+[2025-12-02T11:29:42.872+0000] {spark_read_mongo_dag.py:45} INFO - ENV SPARK_HOME=/opt/spark/spark-3.4.1-bin-hadoop3 JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+[2025-12-02T11:29:42.872+0000] {spark_read_mongo_dag.py:46} INFO - Env PATH head: ['/opt/spark/spark-3.4.1-bin-hadoop3/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/opt/spark/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/root/bin']
+[2025-12-02T11:29:42.873+0000] {spark_read_mongo_dag.py:49} INFO - Running command: spark-submit --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar /opt/***/spark_jobs/mongo_pyspark.py
+[2025-12-02T11:29:55.634+0000] {spark_read_mongo_dag.py:51} INFO - Process finished. returncode=1
+[2025-12-02T11:29:55.635+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,323 INFO mongo_to_iceberg - START main at 2025-12-02 11:29:46
+[2025-12-02T11:29:55.636+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,323 INFO mongo_to_iceberg - Checking required JARs under /opt/***/jars
+[2025-12-02T11:29:55.636+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,324 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-02T11:29:55.637+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,326 INFO mongo_to_iceberg - JAR: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-02T11:29:55.637+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,327 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-02T11:29:55.638+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,329 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-02T11:29:55.638+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,330 INFO mongo_to_iceberg - JAR: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-02T11:29:55.639+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,332 INFO mongo_to_iceberg - JAR: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-02T11:29:55.639+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,333 INFO mongo_to_iceberg - JAR: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-02T11:29:55.640+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,333 INFO mongo_to_iceberg - Mongo URI (masked): mongodb://172.168.168.206:27017/event-mesh
+[2025-12-02T11:29:55.640+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,333 INFO mongo_to_iceberg - Using Iceberg warehouse (must be s3a://): s3a://iceberg/
+[2025-12-02T11:29:55.640+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,334 INFO mongo_to_iceberg - S3 endpoint=http://minio:9000 path_style=true ssl_enabled=false
+[2025-12-02T11:29:55.641+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:46,334 INFO mongo_to_iceberg - Creating SparkSession...
+[2025-12-02T11:29:55.641+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:52,946 INFO mongo_to_iceberg - SparkSession created. Spark version=3.4.1
+[2025-12-02T11:29:55.641+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,619 INFO mongo_to_iceberg - spark.jars config=/opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar
+[2025-12-02T11:29:55.642+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,620 INFO mongo_to_iceberg - spark.mongodb.read.connection.uri=mongodb://172.168.168.206:27017/event-mesh
+[2025-12-02T11:29:55.642+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,621 INFO mongo_to_iceberg - spark.sql.catalog.iceberg_catalog.warehouse=s3a://iceberg/
+[2025-12-02T11:29:55.642+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,621 ERROR mongo_to_iceberg - Failed to list collections from MongoDB: name 'MongoClient' is not defined
+[2025-12-02T11:29:55.643+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,621 ERROR mongo_to_iceberg - Exception during job: name 'MongoClient' is not defined
+[2025-12-02T11:29:55.643+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,622 ERROR mongo_to_iceberg - Traceback:
+[2025-12-02T11:29:55.643+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Traceback (most recent call last):
+[2025-12-02T11:29:55.644+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 439, in main
+[2025-12-02T11:29:55.644+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     collections = list_collections_from_mongo()
+[2025-12-02T11:29:55.644+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 309, in list_collections_from_mongo
+[2025-12-02T11:29:55.645+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     if MongoClient is None:
+[2025-12-02T11:29:55.645+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | NameError: name 'MongoClient' is not defined
+[2025-12-02T11:29:55.645+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 
+[2025-12-02T11:29:55.645+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,622 ERROR mongo_to_iceberg - HINTS: - Ensure Mongo credentials are correct and authSource is right.
+[2025-12-02T11:29:55.646+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,622 ERROR mongo_to_iceberg -        - Verify mongo container user/password (MONGO_INITDB_ROOT_USERNAME/PASSWORD).
+[2025-12-02T11:29:55.646+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,622 ERROR mongo_to_iceberg -        - If using networked services, ensure 'mongo' and 'minio' hostnames resolve from Spark executors.
+[2025-12-02T11:29:55.646+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,622 ERROR mongo_to_iceberg -        - Ensure ICEBERG_WAREHOUSE uses s3a:// and that hadoop-aws + aws-java-sdk jars are present.
+[2025-12-02T11:29:55.647+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Traceback (most recent call last):
+[2025-12-02T11:29:55.647+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 471, in <module>
+[2025-12-02T11:29:55.647+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     main()
+[2025-12-02T11:29:55.648+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 439, in main
+[2025-12-02T11:29:55.648+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     collections = list_collections_from_mongo()
+[2025-12-02T11:29:55.648+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 309, in list_collections_from_mongo
+[2025-12-02T11:29:55.649+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     if MongoClient is None:
+[2025-12-02T11:29:55.649+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | NameError: name 'MongoClient' is not defined
+[2025-12-02T11:29:55.649+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:29:53,629 INFO py4j.clientserver - Closing down clientserver connection
+[2025-12-02T11:29:55.650+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:44 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-02T11:29:55.650+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:46 INFO SparkContext: Running Spark version 3.4.1
+[2025-12-02T11:29:55.651+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO ResourceUtils: ==============================================================
+[2025-12-02T11:29:55.651+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-12-02T11:29:55.651+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO ResourceUtils: ==============================================================
+[2025-12-02T11:29:55.652+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SparkContext: Submitted application: MongoToParquetToMinIO
+[2025-12-02T11:29:55.652+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-12-02T11:29:55.652+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO ResourceProfile: Limiting resource is cpu
+[2025-12-02T11:29:55.653+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-12-02T11:29:55.653+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SecurityManager: Changing view acls to: ***
+[2025-12-02T11:29:55.653+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SecurityManager: Changing modify acls to: ***
+[2025-12-02T11:29:55.654+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SecurityManager: Changing view acls groups to: 
+[2025-12-02T11:29:55.654+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SecurityManager: Changing modify acls groups to: 
+[2025-12-02T11:29:55.654+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+[2025-12-02T11:29:55.655+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO Utils: Successfully started service 'sparkDriver' on port 43863.
+[2025-12-02T11:29:55.655+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SparkEnv: Registering MapOutputTracker
+[2025-12-02T11:29:55.655+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SparkEnv: Registering BlockManagerMaster
+[2025-12-02T11:29:55.655+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-12-02T11:29:55.656+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-12-02T11:29:55.656+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-12-02T11:29:55.656+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-886fd861-6806-4888-95a4-13a779037f39
+[2025-12-02T11:29:55.656+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-12-02T11:29:55.657+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:47 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-12-02T11:29:55.657+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-12-02T11:29:55.657+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2025-12-02T11:29:55.657+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://f8453ad61174:43863/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.658+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO SparkContext: Added JAR /opt/***/jars/bson-4.11.2.jar at spark://f8453ad61174:43863/jars/bson-4.11.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.658+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO SparkContext: Added JAR /opt/***/jars/mongodb-driver-core-4.11.2.jar at spark://f8453ad61174:43863/jars/mongodb-driver-core-4.11.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.658+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO SparkContext: Added JAR /opt/***/jars/mongodb-driver-sync-4.11.2.jar at spark://f8453ad61174:43863/jars/mongodb-driver-sync-4.11.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.659+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://f8453ad61174:43863/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.659+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://f8453ad61174:43863/jars/hadoop-aws-3.3.4.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.659+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://f8453ad61174:43863/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.659+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Executor: Starting executor ID driver on host f8453ad61174
+[2025-12-02T11:29:55.660+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-12-02T11:29:55.660+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Executor: Fetching spark://f8453ad61174:43863/jars/bson-4.11.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.660+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO TransportClientFactory: Successfully created connection to f8453ad61174/172.19.0.8:43863 after 22 ms (0 ms spent in bootstraps)
+[2025-12-02T11:29:55.661+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Utils: Fetching spark://f8453ad61174:43863/jars/bson-4.11.2.jar to /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/fetchFileTemp12471235262659064781.tmp
+[2025-12-02T11:29:55.661+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Executor: Adding file:/tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/bson-4.11.2.jar to class loader
+[2025-12-02T11:29:55.661+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Executor: Fetching spark://f8453ad61174:43863/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.661+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:48 INFO Utils: Fetching spark://f8453ad61174:43863/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/fetchFileTemp9788488304506856157.tmp
+[2025-12-02T11:29:55.662+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:51 INFO Executor: Adding file:/tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/aws-java-sdk-bundle-1.12.772.jar to class loader
+[2025-12-02T11:29:55.662+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:51 INFO Executor: Fetching spark://f8453ad61174:43863/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.662+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:51 INFO Utils: Fetching spark://f8453ad61174:43863/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/fetchFileTemp13303649468115065038.tmp
+[2025-12-02T11:29:55.662+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Adding file:/tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+[2025-12-02T11:29:55.663+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Fetching spark://f8453ad61174:43863/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.663+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Utils: Fetching spark://f8453ad61174:43863/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/fetchFileTemp224502499393014820.tmp
+[2025-12-02T11:29:55.663+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Adding file:/tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/mongo-spark-connector_2.12-10.1.1.jar to class loader
+[2025-12-02T11:29:55.663+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Fetching spark://f8453ad61174:43863/jars/mongodb-driver-sync-4.11.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.664+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Utils: Fetching spark://f8453ad61174:43863/jars/mongodb-driver-sync-4.11.2.jar to /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/fetchFileTemp12071174980728685213.tmp
+[2025-12-02T11:29:55.664+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Adding file:/tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/mongodb-driver-sync-4.11.2.jar to class loader
+[2025-12-02T11:29:55.664+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Fetching spark://f8453ad61174:43863/jars/mongodb-driver-core-4.11.2.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.665+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Utils: Fetching spark://f8453ad61174:43863/jars/mongodb-driver-core-4.11.2.jar to /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/fetchFileTemp6598952859933572019.tmp
+[2025-12-02T11:29:55.665+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Adding file:/tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/mongodb-driver-core-4.11.2.jar to class loader
+[2025-12-02T11:29:55.665+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Fetching spark://f8453ad61174:43863/jars/hadoop-aws-3.3.4.jar with timestamp 1764674986980
+[2025-12-02T11:29:55.665+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Utils: Fetching spark://f8453ad61174:43863/jars/hadoop-aws-3.3.4.jar to /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/fetchFileTemp954071929103629841.tmp
+[2025-12-02T11:29:55.666+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Executor: Adding file:/tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/userFiles-2e642d34-5ba5-4921-96e1-bf5f70b4450d/hadoop-aws-3.3.4.jar to class loader
+[2025-12-02T11:29:55.666+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41553.
+[2025-12-02T11:29:55.666+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO NettyBlockTransferService: Server created on f8453ad61174:41553
+[2025-12-02T11:29:55.667+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-12-02T11:29:55.667+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, f8453ad61174, 41553, None)
+[2025-12-02T11:29:55.667+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO BlockManagerMasterEndpoint: Registering block manager f8453ad61174:41553 with 434.4 MiB RAM, BlockManagerId(driver, f8453ad61174, 41553, None)
+[2025-12-02T11:29:55.668+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, f8453ad61174, 41553, None)
+[2025-12-02T11:29:55.668+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, f8453ad61174, 41553, None)
+[2025-12-02T11:29:55.668+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2025-12-02T11:29:55.668+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:52 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+[2025-12-02T11:29:55.669+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO SparkContext: Invoking stop() from shutdown hook
+[2025-12-02T11:29:55.669+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2025-12-02T11:29:55.669+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO SparkUI: Stopped Spark web UI at http://f8453ad61174:4040
+[2025-12-02T11:29:55.669+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2025-12-02T11:29:55.670+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO MemoryStore: MemoryStore cleared
+[2025-12-02T11:29:55.670+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO BlockManager: BlockManager stopped
+[2025-12-02T11:29:55.670+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2025-12-02T11:29:55.671+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:53 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2025-12-02T11:29:55.671+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:55 INFO SparkContext: Successfully stopped SparkContext
+[2025-12-02T11:29:55.671+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:55 INFO ShutdownHookManager: Shutdown hook called
+[2025-12-02T11:29:55.671+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:55 INFO ShutdownHookManager: Deleting directory /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871/pyspark-db3c5d93-341b-401b-bc80-1e2a6266ce94
+[2025-12-02T11:29:55.672+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:55 INFO ShutdownHookManager: Deleting directory /tmp/spark-24466c8e-0fec-4ab8-90c9-ede82ba44871
+[2025-12-02T11:29:55.672+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:29:55 INFO ShutdownHookManager: Deleting directory /tmp/spark-8c4fe2ba-c402-416e-9233-e2f1947fce7f
+[2025-12-02T11:29:55.674+0000] {spark_read_mongo_dag.py:63} ERROR - Exception in run_spark_job: spark-submit failed with exit 1
+[2025-12-02T11:29:55.675+0000] {spark_read_mongo_dag.py:64} ERROR - Traceback:
+Traceback (most recent call last):
+  File "/opt/***/dags/spark_read_mongo_dag.py", line 59, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+
+[2025-12-02T11:29:55.675+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-02T11:29:55.676+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 59, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+[2025-12-02T11:29:55.690+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dag, task_id=run_mongo_to_iceberg, run_id=manual__2025-12-02T11:29:41.039579+00:00, execution_date=20251202T112941, start_date=20251202T112942, end_date=20251202T112955
+[2025-12-02T11:29:55.795+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 20 for task run_mongo_to_iceberg (spark-submit failed with exit 1; 1427)
+[2025-12-02T11:29:55.812+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-02T11:29:55.836+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-02T11:29:55.865+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

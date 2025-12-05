@@ -1,0 +1,530 @@
+[2025-12-01T13:32:33.464+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-01T13:32:33.781+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_to_iceberg_dag.run_mongo_to_iceberg manual__2025-12-01T13:32:29.760331+00:00 [queued]>
+[2025-12-01T13:32:33.796+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_to_iceberg_dag.run_mongo_to_iceberg manual__2025-12-01T13:32:29.760331+00:00 [queued]>
+[2025-12-01T13:32:33.797+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-01T13:32:33.954+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_mongo_to_iceberg> on 2025-12-01 13:32:29.760331+00:00
+[2025-12-01T13:32:33.959+0000] {standard_task_runner.py:63} INFO - Started process 315 to run task
+[2025-12-01T13:32:33.966+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_to_iceberg_dag', 'run_mongo_to_iceberg', 'manual__2025-12-01T13:32:29.760331+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpc2jnkjlq']
+[2025-12-01T13:32:33.970+0000] {standard_task_runner.py:91} INFO - Job 24: Subtask run_mongo_to_iceberg
+[2025-12-01T13:32:34.188+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_to_iceberg_dag.run_mongo_to_iceberg manual__2025-12-01T13:32:29.760331+00:00 [running]> on host 442565cfac6a
+[2025-12-01T13:32:34.442+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_to_iceberg_dag' AIRFLOW_CTX_TASK_ID='run_mongo_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:32:29.760331+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:32:29.760331+00:00'
+[2025-12-01T13:32:34.443+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-01T13:32:34.561+0000] {logging_mixin.py:188} INFO - Running: spark-submit --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar /opt/***/spark_jobs/mongo_pyspark.py
+[2025-12-01T13:32:34.562+0000] {logging_mixin.py:188} INFO - Env PATH (start): ['/opt/spark/spark-3.4.1-bin-hadoop3/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/opt/spark/bin']
+[2025-12-01T13:33:43.854+0000] {logging_mixin.py:188} INFO - === spark-submit stdout ===
+[2025-12-01T13:33:43.855+0000] {logging_mixin.py:188} INFO - 📌 Spark session created
+Traceback (most recent call last):
+  File "/opt/***/spark_jobs/mongo_pyspark.py", line 57, in <module>
+    main()
+  File "/opt/***/spark_jobs/mongo_pyspark.py", line 34, in main
+    spark.read
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 307, in load
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 169, in deco
+  File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o49.load.
+: java.lang.NoClassDefFoundError: org/bson/BsonValue
+	at com.mongodb.spark.sql.connector.MongoTableProvider.inferSchema(MongoTableProvider.java:62)
+	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.getTableFromProvider(DataSourceV2Utils.scala:90)
+	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.loadV2Source(DataSourceV2Utils.scala:140)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$1(DataFrameReader.scala:210)
+	at scala.Option.flatMap(Option.scala:271)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.ClassNotFoundException: org.bson.BsonValue
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 19 more
+[2025-12-01T13:33:43.856+0000] {logging_mixin.py:188} INFO - === spark-submit stderr ===
+[2025-12-01T13:33:43.857+0000] {logging_mixin.py:188} INFO - 25/12/01 13:32:43 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/01 13:32:53 INFO SparkContext: Running Spark version 3.4.1
+25/12/01 13:32:54 INFO ResourceUtils: ==============================================================
+25/12/01 13:32:54 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/12/01 13:32:54 INFO ResourceUtils: ==============================================================
+25/12/01 13:32:54 INFO SparkContext: Submitted application: MongoToIceberg
+25/12/01 13:32:54 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/12/01 13:32:54 INFO ResourceProfile: Limiting resource is cpu
+25/12/01 13:32:54 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/12/01 13:32:54 INFO SecurityManager: Changing view acls to: ***
+25/12/01 13:32:54 INFO SecurityManager: Changing modify acls to: ***
+25/12/01 13:32:54 INFO SecurityManager: Changing view acls groups to: 
+25/12/01 13:32:54 INFO SecurityManager: Changing modify acls groups to: 
+25/12/01 13:32:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+25/12/01 13:32:57 INFO Utils: Successfully started service 'sparkDriver' on port 36399.
+25/12/01 13:32:57 INFO SparkEnv: Registering MapOutputTracker
+25/12/01 13:32:57 INFO SparkEnv: Registering BlockManagerMaster
+25/12/01 13:32:57 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/12/01 13:32:57 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/12/01 13:32:57 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/12/01 13:32:58 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-13692ae5-90e9-4e0c-a633-11e73512f517
+25/12/01 13:32:58 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+25/12/01 13:32:58 INFO SparkEnv: Registering OutputCommitCoordinator
+25/12/01 13:32:59 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+25/12/01 13:32:59 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO Executor: Starting executor ID driver on host 442565cfac6a
+25/12/01 13:32:59 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+25/12/01 13:32:59 INFO Executor: Fetching spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO TransportClientFactory: Successfully created connection to 442565cfac6a/172.19.0.11:36399 after 38 ms (0 ms spent in bootstraps)
+25/12/01 13:32:59 INFO Utils: Fetching spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp15814695314173109715.tmp
+25/12/01 13:33:17 INFO Executor: Told to re-register on heartbeat
+25/12/01 13:33:17 INFO BlockManager: BlockManager null re-registering with master
+25/12/01 13:33:17 INFO BlockManagerMaster: Registering BlockManager null
+25/12/01 13:33:17 ERROR Inbox: Ignoring error
+java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+25/12/01 13:33:17 WARN Executor: Issue communicating with driver in heartbeater
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	... 3 more
+25/12/01 13:33:25 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/aws-java-sdk-bundle-1.12.772.jar to class loader
+25/12/01 13:33:25 INFO Executor: Fetching spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar with timestamp 1764595973973
+25/12/01 13:33:25 INFO Utils: Fetching spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp12791380309043443129.tmp
+25/12/01 13:33:27 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/hadoop-aws-3.3.4.jar to class loader
+25/12/01 13:33:27 INFO Executor: Fetching spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764595973973
+25/12/01 13:33:27 INFO Utils: Fetching spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp17184793155280268742.tmp
+25/12/01 13:33:27 INFO Executor: Told to re-register on heartbeat
+25/12/01 13:33:27 INFO BlockManager: BlockManager null re-registering with master
+25/12/01 13:33:27 INFO BlockManagerMaster: Registering BlockManager null
+25/12/01 13:33:27 ERROR Inbox: Ignoring error
+java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+25/12/01 13:33:27 WARN Executor: Issue communicating with driver in heartbeater
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	... 3 more
+25/12/01 13:33:34 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+25/12/01 13:33:34 INFO Executor: Fetching spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764595973973
+25/12/01 13:33:34 INFO Utils: Fetching spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp9910175466008891552.tmp
+25/12/01 13:33:34 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/mongo-spark-connector_2.12-10.1.1.jar to class loader
+25/12/01 13:33:34 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43933.
+25/12/01 13:33:34 INFO NettyBlockTransferService: Server created on 442565cfac6a:43933
+25/12/01 13:33:34 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/12/01 13:33:34 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManagerMasterEndpoint: Registering block manager 442565cfac6a:43933 with 434.4 MiB RAM, BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:38 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+25/12/01 13:33:38 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+25/12/01 13:33:43 INFO SparkContext: Invoking stop() from shutdown hook
+25/12/01 13:33:43 INFO SparkContext: SparkContext is stopping with exitCode 0.
+25/12/01 13:33:43 INFO SparkUI: Stopped Spark web UI at http://442565cfac6a:4040
+25/12/01 13:33:43 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+25/12/01 13:33:43 INFO MemoryStore: MemoryStore cleared
+25/12/01 13:33:43 INFO BlockManager: BlockManager stopped
+25/12/01 13:33:43 INFO BlockManagerMaster: BlockManagerMaster stopped
+25/12/01 13:33:43 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+25/12/01 13:33:43 INFO SparkContext: Successfully stopped SparkContext
+25/12/01 13:33:43 INFO ShutdownHookManager: Shutdown hook called
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-028a608b-d050-4cbb-b1a5-be6437c2fd71
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/pyspark-9ac04d79-9438-4840-9dbf-d94b3bd0a134
+[2025-12-01T13:33:43.857+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-01T13:33:43.858+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 54, in run_spark_job
+    raise RuntimeError(f"spark-submit failed (exit {process.returncode}). stderr:\n{process.stderr}")
+RuntimeError: spark-submit failed (exit 1). stderr:
+25/12/01 13:32:43 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/01 13:32:53 INFO SparkContext: Running Spark version 3.4.1
+25/12/01 13:32:54 INFO ResourceUtils: ==============================================================
+25/12/01 13:32:54 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/12/01 13:32:54 INFO ResourceUtils: ==============================================================
+25/12/01 13:32:54 INFO SparkContext: Submitted application: MongoToIceberg
+25/12/01 13:32:54 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/12/01 13:32:54 INFO ResourceProfile: Limiting resource is cpu
+25/12/01 13:32:54 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/12/01 13:32:54 INFO SecurityManager: Changing view acls to: ***
+25/12/01 13:32:54 INFO SecurityManager: Changing modify acls to: ***
+25/12/01 13:32:54 INFO SecurityManager: Changing view acls groups to: 
+25/12/01 13:32:54 INFO SecurityManager: Changing modify acls groups to: 
+25/12/01 13:32:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+25/12/01 13:32:57 INFO Utils: Successfully started service 'sparkDriver' on port 36399.
+25/12/01 13:32:57 INFO SparkEnv: Registering MapOutputTracker
+25/12/01 13:32:57 INFO SparkEnv: Registering BlockManagerMaster
+25/12/01 13:32:57 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/12/01 13:32:57 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/12/01 13:32:57 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/12/01 13:32:58 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-13692ae5-90e9-4e0c-a633-11e73512f517
+25/12/01 13:32:58 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+25/12/01 13:32:58 INFO SparkEnv: Registering OutputCommitCoordinator
+25/12/01 13:32:59 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+25/12/01 13:32:59 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO Executor: Starting executor ID driver on host 442565cfac6a
+25/12/01 13:32:59 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+25/12/01 13:32:59 INFO Executor: Fetching spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO TransportClientFactory: Successfully created connection to 442565cfac6a/172.19.0.11:36399 after 38 ms (0 ms spent in bootstraps)
+25/12/01 13:32:59 INFO Utils: Fetching spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp15814695314173109715.tmp
+25/12/01 13:33:17 INFO Executor: Told to re-register on heartbeat
+25/12/01 13:33:17 INFO BlockManager: BlockManager null re-registering with master
+25/12/01 13:33:17 INFO BlockManagerMaster: Registering BlockManager null
+25/12/01 13:33:17 ERROR Inbox: Ignoring error
+java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+25/12/01 13:33:17 WARN Executor: Issue communicating with driver in heartbeater
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	... 3 more
+25/12/01 13:33:25 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/aws-java-sdk-bundle-1.12.772.jar to class loader
+25/12/01 13:33:25 INFO Executor: Fetching spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar with timestamp 1764595973973
+25/12/01 13:33:25 INFO Utils: Fetching spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp12791380309043443129.tmp
+25/12/01 13:33:27 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/hadoop-aws-3.3.4.jar to class loader
+25/12/01 13:33:27 INFO Executor: Fetching spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764595973973
+25/12/01 13:33:27 INFO Utils: Fetching spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp17184793155280268742.tmp
+25/12/01 13:33:27 INFO Executor: Told to re-register on heartbeat
+25/12/01 13:33:27 INFO BlockManager: BlockManager null re-registering with master
+25/12/01 13:33:27 INFO BlockManagerMaster: Registering BlockManager null
+25/12/01 13:33:27 ERROR Inbox: Ignoring error
+java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+25/12/01 13:33:27 WARN Executor: Issue communicating with driver in heartbeater
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	... 3 more
+25/12/01 13:33:34 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+25/12/01 13:33:34 INFO Executor: Fetching spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764595973973
+25/12/01 13:33:34 INFO Utils: Fetching spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp9910175466008891552.tmp
+25/12/01 13:33:34 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/mongo-spark-connector_2.12-10.1.1.jar to class loader
+25/12/01 13:33:34 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43933.
+25/12/01 13:33:34 INFO NettyBlockTransferService: Server created on 442565cfac6a:43933
+25/12/01 13:33:34 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/12/01 13:33:34 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManagerMasterEndpoint: Registering block manager 442565cfac6a:43933 with 434.4 MiB RAM, BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:38 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+25/12/01 13:33:38 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+25/12/01 13:33:43 INFO SparkContext: Invoking stop() from shutdown hook
+25/12/01 13:33:43 INFO SparkContext: SparkContext is stopping with exitCode 0.
+25/12/01 13:33:43 INFO SparkUI: Stopped Spark web UI at http://442565cfac6a:4040
+25/12/01 13:33:43 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+25/12/01 13:33:43 INFO MemoryStore: MemoryStore cleared
+25/12/01 13:33:43 INFO BlockManager: BlockManager stopped
+25/12/01 13:33:43 INFO BlockManagerMaster: BlockManagerMaster stopped
+25/12/01 13:33:43 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+25/12/01 13:33:43 INFO SparkContext: Successfully stopped SparkContext
+25/12/01 13:33:43 INFO ShutdownHookManager: Shutdown hook called
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-028a608b-d050-4cbb-b1a5-be6437c2fd71
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/pyspark-9ac04d79-9438-4840-9dbf-d94b3bd0a134
+
+[2025-12-01T13:33:44.225+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_to_iceberg_dag, task_id=run_mongo_to_iceberg, run_id=manual__2025-12-01T13:32:29.760331+00:00, execution_date=20251201T133229, start_date=20251201T133233, end_date=20251201T133344
+[2025-12-01T13:33:44.716+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 24 for task run_mongo_to_iceberg (spark-submit failed (exit 1). stderr:
+25/12/01 13:32:43 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/01 13:32:53 INFO SparkContext: Running Spark version 3.4.1
+25/12/01 13:32:54 INFO ResourceUtils: ==============================================================
+25/12/01 13:32:54 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/12/01 13:32:54 INFO ResourceUtils: ==============================================================
+25/12/01 13:32:54 INFO SparkContext: Submitted application: MongoToIceberg
+25/12/01 13:32:54 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/12/01 13:32:54 INFO ResourceProfile: Limiting resource is cpu
+25/12/01 13:32:54 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/12/01 13:32:54 INFO SecurityManager: Changing view acls to: ***
+25/12/01 13:32:54 INFO SecurityManager: Changing modify acls to: ***
+25/12/01 13:32:54 INFO SecurityManager: Changing view acls groups to: 
+25/12/01 13:32:54 INFO SecurityManager: Changing modify acls groups to: 
+25/12/01 13:32:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+25/12/01 13:32:57 INFO Utils: Successfully started service 'sparkDriver' on port 36399.
+25/12/01 13:32:57 INFO SparkEnv: Registering MapOutputTracker
+25/12/01 13:32:57 INFO SparkEnv: Registering BlockManagerMaster
+25/12/01 13:32:57 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/12/01 13:32:57 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/12/01 13:32:57 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/12/01 13:32:58 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-13692ae5-90e9-4e0c-a633-11e73512f517
+25/12/01 13:32:58 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+25/12/01 13:32:58 INFO SparkEnv: Registering OutputCommitCoordinator
+25/12/01 13:32:59 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+25/12/01 13:32:59 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO Executor: Starting executor ID driver on host 442565cfac6a
+25/12/01 13:32:59 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+25/12/01 13:32:59 INFO Executor: Fetching spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764595973973
+25/12/01 13:32:59 INFO TransportClientFactory: Successfully created connection to 442565cfac6a/172.19.0.11:36399 after 38 ms (0 ms spent in bootstraps)
+25/12/01 13:32:59 INFO Utils: Fetching spark://442565cfac6a:36399/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp15814695314173109715.tmp
+25/12/01 13:33:17 INFO Executor: Told to re-register on heartbeat
+25/12/01 13:33:17 INFO BlockManager: BlockManager null re-registering with master
+25/12/01 13:33:17 INFO BlockManagerMaster: Registering BlockManager null
+25/12/01 13:33:17 ERROR Inbox: Ignoring error
+java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+25/12/01 13:33:17 WARN Executor: Issue communicating with driver in heartbeater
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	... 3 more
+25/12/01 13:33:25 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/aws-java-sdk-bundle-1.12.772.jar to class loader
+25/12/01 13:33:25 INFO Executor: Fetching spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar with timestamp 1764595973973
+25/12/01 13:33:25 INFO Utils: Fetching spark://442565cfac6a:36399/jars/hadoop-aws-3.3.4.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp12791380309043443129.tmp
+25/12/01 13:33:27 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/hadoop-aws-3.3.4.jar to class loader
+25/12/01 13:33:27 INFO Executor: Fetching spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764595973973
+25/12/01 13:33:27 INFO Utils: Fetching spark://442565cfac6a:36399/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp17184793155280268742.tmp
+25/12/01 13:33:27 INFO Executor: Told to re-register on heartbeat
+25/12/01 13:33:27 INFO BlockManager: BlockManager null re-registering with master
+25/12/01 13:33:27 INFO BlockManagerMaster: Registering BlockManager null
+25/12/01 13:33:27 ERROR Inbox: Ignoring error
+java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+25/12/01 13:33:27 WARN Executor: Issue communicating with driver in heartbeater
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	... 3 more
+25/12/01 13:33:34 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+25/12/01 13:33:34 INFO Executor: Fetching spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764595973973
+25/12/01 13:33:34 INFO Utils: Fetching spark://442565cfac6a:36399/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/fetchFileTemp9910175466008891552.tmp
+25/12/01 13:33:34 INFO Executor: Adding file:/tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/userFiles-6ec35c68-f527-4ef0-b502-612e8c3d712e/mongo-spark-connector_2.12-10.1.1.jar to class loader
+25/12/01 13:33:34 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43933.
+25/12/01 13:33:34 INFO NettyBlockTransferService: Server created on 442565cfac6a:43933
+25/12/01 13:33:34 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/12/01 13:33:34 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManagerMasterEndpoint: Registering block manager 442565cfac6a:43933 with 434.4 MiB RAM, BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:34 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 442565cfac6a, 43933, None)
+25/12/01 13:33:38 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+25/12/01 13:33:38 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+25/12/01 13:33:43 INFO SparkContext: Invoking stop() from shutdown hook
+25/12/01 13:33:43 INFO SparkContext: SparkContext is stopping with exitCode 0.
+25/12/01 13:33:43 INFO SparkUI: Stopped Spark web UI at http://442565cfac6a:4040
+25/12/01 13:33:43 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+25/12/01 13:33:43 INFO MemoryStore: MemoryStore cleared
+25/12/01 13:33:43 INFO BlockManager: BlockManager stopped
+25/12/01 13:33:43 INFO BlockManagerMaster: BlockManagerMaster stopped
+25/12/01 13:33:43 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+25/12/01 13:33:43 INFO SparkContext: Successfully stopped SparkContext
+25/12/01 13:33:43 INFO ShutdownHookManager: Shutdown hook called
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-028a608b-d050-4cbb-b1a5-be6437c2fd71
+25/12/01 13:33:43 INFO ShutdownHookManager: Deleting directory /tmp/spark-ef28cebd-c2d3-4911-af32-6f25a26c378d/pyspark-9ac04d79-9438-4840-9dbf-d94b3bd0a134
+; 315)
+[2025-12-01T13:33:44.757+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-01T13:33:44.899+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-01T13:33:44.949+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

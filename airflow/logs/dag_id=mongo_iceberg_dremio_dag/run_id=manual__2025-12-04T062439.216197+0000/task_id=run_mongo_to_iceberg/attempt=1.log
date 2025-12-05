@@ -1,0 +1,58 @@
+[2025-12-04T06:24:40.582+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-04T06:24:40.631+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.run_mongo_to_iceberg manual__2025-12-04T06:24:39.216197+00:00 [queued]>
+[2025-12-04T06:24:40.643+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.run_mongo_to_iceberg manual__2025-12-04T06:24:39.216197+00:00 [queued]>
+[2025-12-04T06:24:40.645+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-04T06:24:40.695+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_mongo_to_iceberg> on 2025-12-04 06:24:39.216197+00:00
+[2025-12-04T06:24:40.701+0000] {standard_task_runner.py:63} INFO - Started process 285 to run task
+[2025-12-04T06:24:40.708+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'run_mongo_to_iceberg', 'manual__2025-12-04T06:24:39.216197+00:00', '--job-id', '63', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmptvs3sdsy']
+[2025-12-04T06:24:40.713+0000] {standard_task_runner.py:91} INFO - Job 63: Subtask run_mongo_to_iceberg
+[2025-12-04T06:24:40.854+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.run_mongo_to_iceberg manual__2025-12-04T06:24:39.216197+00:00 [running]> on host a7fe25cb8c47
+[2025-12-04T06:24:41.008+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='run_mongo_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-12-04T06:24:39.216197+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-04T06:24:39.216197+00:00'
+[2025-12-04T06:24:41.009+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-04T06:24:41.068+0000] {spark_read_mongo_dag.py:250} INFO - START run_spark_job
+[2025-12-04T06:24:41.071+0000] {spark_read_mongo_dag.py:252} INFO - Checking path: /opt/***/spark_jobs/mongo_pyspark.py exists=True
+[2025-12-04T06:24:41.072+0000] {spark_read_mongo_dag.py:252} INFO - Checking path: /opt/***/jars exists=True
+[2025-12-04T06:24:41.086+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-04T06:24:41.106+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-04T06:24:41.108+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-04T06:24:41.111+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-04T06:24:41.113+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-04T06:24:41.115+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/iceberg-nessie-1.5.2.jar exists=True size=44895
+[2025-12-04T06:24:41.118+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/nessie-client-0.99.0.jar exists=True size=585165
+[2025-12-04T06:24:41.120+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/nessie-spark-extensions-3.4_2.12-0.105.7.jar exists=True size=2294495
+[2025-12-04T06:24:41.173+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-04T06:24:41.222+0000] {spark_read_mongo_dag.py:257} INFO - Jar check: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-04T06:24:41.223+0000] {spark_read_mongo_dag.py:260} INFO - which spark-submit -> /home/***/.local/bin/spark-submit
+[2025-12-04T06:24:41.224+0000] {spark_read_mongo_dag.py:270} INFO - ENV SPARK_HOME=/opt/spark JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+[2025-12-04T06:24:41.224+0000] {spark_read_mongo_dag.py:271} INFO - Env PATH head: ['/opt/spark/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/opt/spark/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/root/bin']
+[2025-12-04T06:24:41.225+0000] {spark_read_mongo_dag.py:274} INFO - Running command: spark-submit --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/iceberg-nessie-1.5.2.jar,/opt/***/jars/nessie-client-0.99.0.jar,/opt/***/jars/nessie-spark-extensions-3.4_2.12-0.105.7.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar /opt/***/spark_jobs/mongo_pyspark.py
+[2025-12-04T06:24:41.317+0000] {spark_read_mongo_dag.py:276} INFO - Process finished. returncode=127
+[2025-12-04T06:24:41.318+0000] {spark_read_mongo_dag.py:284} ERROR - spark-submit stderr | /home/***/.local/bin/spark-submit: line 27: /opt/spark/bin/spark-class: No such file or directory
+[2025-12-04T06:24:41.323+0000] {spark_read_mongo_dag.py:292} ERROR - Exception in run_spark_job: spark-submit failed with exit 127
+[2025-12-04T06:24:41.324+0000] {spark_read_mongo_dag.py:293} ERROR - Traceback:
+Traceback (most recent call last):
+  File "/opt/***/dags/spark_read_mongo_dag.py", line 287, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 127
+
+[2025-12-04T06:24:41.324+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-04T06:24:41.325+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 287, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 127
+[2025-12-04T06:24:41.340+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=run_mongo_to_iceberg, run_id=manual__2025-12-04T06:24:39.216197+00:00, execution_date=20251204T062439, start_date=20251204T062440, end_date=20251204T062441
+[2025-12-04T06:24:41.671+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 63 for task run_mongo_to_iceberg (spark-submit failed with exit 127; 285)
+[2025-12-04T06:24:41.682+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-04T06:24:41.713+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-04T06:24:41.821+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

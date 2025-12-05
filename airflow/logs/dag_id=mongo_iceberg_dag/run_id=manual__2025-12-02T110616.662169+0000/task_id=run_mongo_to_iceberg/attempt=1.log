@@ -1,0 +1,565 @@
+[2025-12-02T11:06:18.483+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-02T11:06:18.534+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T11:06:16.662169+00:00 [queued]>
+[2025-12-02T11:06:18.542+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T11:06:16.662169+00:00 [queued]>
+[2025-12-02T11:06:18.554+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-02T11:06:18.620+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_mongo_to_iceberg> on 2025-12-02 11:06:16.662169+00:00
+[2025-12-02T11:06:18.627+0000] {standard_task_runner.py:63} INFO - Started process 210 to run task
+[2025-12-02T11:06:18.633+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dag', 'run_mongo_to_iceberg', 'manual__2025-12-02T11:06:16.662169+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmptzbvbe8y']
+[2025-12-02T11:06:18.636+0000] {standard_task_runner.py:91} INFO - Job 17: Subtask run_mongo_to_iceberg
+[2025-12-02T11:06:19.611+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dag.run_mongo_to_iceberg manual__2025-12-02T11:06:16.662169+00:00 [running]> on host f8453ad61174
+[2025-12-02T11:06:19.891+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dag' AIRFLOW_CTX_TASK_ID='run_mongo_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-12-02T11:06:16.662169+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-02T11:06:16.662169+00:00'
+[2025-12-02T11:06:19.894+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-02T11:06:19.932+0000] {spark_read_mongo_dag.py:28} INFO - START run_spark_job
+[2025-12-02T11:06:19.934+0000] {spark_read_mongo_dag.py:30} INFO - Checking path: /opt/***/spark_jobs/mongo_pyspark.py exists=True
+[2025-12-02T11:06:19.935+0000] {spark_read_mongo_dag.py:30} INFO - Checking path: /opt/***/jars exists=True
+[2025-12-02T11:06:19.937+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-02T11:06:19.939+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-02T11:06:19.941+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-02T11:06:19.943+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-02T11:06:19.945+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-02T11:06:19.947+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-02T11:06:19.949+0000] {spark_read_mongo_dag.py:34} INFO - Jar check: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-02T11:06:19.950+0000] {spark_read_mongo_dag.py:36} INFO - which spark-submit -> /home/***/.local/bin/spark-submit
+[2025-12-02T11:06:19.950+0000] {spark_read_mongo_dag.py:45} INFO - ENV SPARK_HOME=/opt/spark/spark-3.4.1-bin-hadoop3 JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+[2025-12-02T11:06:19.951+0000] {spark_read_mongo_dag.py:46} INFO - Env PATH head: ['/opt/spark/spark-3.4.1-bin-hadoop3/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/opt/spark/bin', '/usr/lib/jvm/java-17-openjdk-amd64/bin', '/root/bin']
+[2025-12-02T11:06:19.951+0000] {spark_read_mongo_dag.py:49} INFO - Running command: spark-submit --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar /opt/***/spark_jobs/mongo_pyspark.py
+[2025-12-02T11:08:42.134+0000] {spark_read_mongo_dag.py:51} INFO - Process finished. returncode=1
+[2025-12-02T11:08:42.136+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,377 INFO mongo_to_iceberg - START main at 2025-12-02 11:06:24
+[2025-12-02T11:08:42.136+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,377 INFO mongo_to_iceberg - Checking required JARs under /opt/***/jars
+[2025-12-02T11:08:42.137+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,384 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-02T11:08:42.138+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,386 INFO mongo_to_iceberg - JAR: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-02T11:08:42.138+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,388 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-02T11:08:42.139+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,390 INFO mongo_to_iceberg - JAR: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-02T11:08:42.139+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,392 INFO mongo_to_iceberg - JAR: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-02T11:08:42.139+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,393 INFO mongo_to_iceberg - JAR: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-02T11:08:42.140+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,395 INFO mongo_to_iceberg - JAR: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-02T11:08:42.140+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,395 INFO mongo_to_iceberg - Mongo URI (masked): mongodb://172.168.168.206:27017/event-mesh
+[2025-12-02T11:08:42.141+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,395 INFO mongo_to_iceberg - Using Iceberg warehouse (must be s3a://): s3a://iceberg/
+[2025-12-02T11:08:42.141+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,395 INFO mongo_to_iceberg - S3 endpoint=http://minio:9000 path_style=true ssl_enabled=false
+[2025-12-02T11:08:42.141+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:06:24,396 INFO mongo_to_iceberg - Creating SparkSession...
+[2025-12-02T11:08:42.142+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:10,717 INFO mongo_to_iceberg - SparkSession created. Spark version=3.4.1
+[2025-12-02T11:08:42.142+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:37,054 INFO mongo_to_iceberg - spark.jars config=/opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar
+[2025-12-02T11:08:42.143+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:37,055 INFO mongo_to_iceberg - spark.mongodb.read.connection.uri=mongodb://172.168.168.206:27017/event-mesh
+[2025-12-02T11:08:42.143+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:37,055 INFO mongo_to_iceberg - spark.sql.catalog.iceberg_catalog.warehouse=s3a://iceberg/
+[2025-12-02T11:08:42.144+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:37,055 INFO mongo_to_iceberg - Starting read from MongoDB collection event-mesh.
+[2025-12-02T11:08:42.144+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:38,663 ERROR mongo_to_iceberg - Exception during job: state should be: collectionName is not empty
+[2025-12-02T11:08:42.144+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:38,805 ERROR mongo_to_iceberg - Traceback:
+[2025-12-02T11:08:42.145+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Traceback (most recent call last):
+[2025-12-02T11:08:42.145+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 309, in main
+[2025-12-02T11:08:42.145+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     spark.read
+[2025-12-02T11:08:42.146+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 307, in load
+[2025-12-02T11:08:42.146+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     return self._df(self._jreader.load())
+[2025-12-02T11:08:42.146+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-12-02T11:08:42.147+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     return_value = get_return_value(
+[2025-12-02T11:08:42.147+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 175, in deco
+[2025-12-02T11:08:42.148+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     raise converted from None
+[2025-12-02T11:08:42.148+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | pyspark.errors.exceptions.captured.IllegalArgumentException: state should be: collectionName is not empty
+[2025-12-02T11:08:42.149+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 
+[2025-12-02T11:08:42.149+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:38,805 ERROR mongo_to_iceberg - HINTS: - Ensure Mongo credentials are correct and authSource is right.
+[2025-12-02T11:08:42.150+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:38,806 ERROR mongo_to_iceberg -        - Verify mongo container user/password (MONGO_INITDB_ROOT_USERNAME/PASSWORD).
+[2025-12-02T11:08:42.150+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:38,806 ERROR mongo_to_iceberg -        - If using networked services, ensure 'mongo' and 'minio' hostnames resolve from Spark executors.
+[2025-12-02T11:08:42.151+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:38,806 ERROR mongo_to_iceberg -        - Ensure ICEBERG_WAREHOUSE uses s3a:// and that hadoop-aws + aws-java-sdk jars are present.
+[2025-12-02T11:08:42.151+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | Traceback (most recent call last):
+[2025-12-02T11:08:42.151+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 426, in <module>
+[2025-12-02T11:08:42.152+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     main()
+[2025-12-02T11:08:42.152+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/***/spark_jobs/mongo_pyspark.py", line 309, in main
+[2025-12-02T11:08:42.153+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |     spark.read
+[2025-12-02T11:08:42.153+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 307, in load
+[2025-12-02T11:08:42.153+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-12-02T11:08:42.154+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout |   File "/opt/spark/spark-3.4.1-bin-hadoop3/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 175, in deco
+[2025-12-02T11:08:42.154+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | pyspark.errors.exceptions.captured.IllegalArgumentException: state should be: collectionName is not empty
+[2025-12-02T11:08:42.154+0000] {spark_read_mongo_dag.py:54} INFO - spark-submit stdout | 2025-12-02 11:08:38,845 INFO py4j.clientserver - Closing down clientserver connection
+[2025-12-02T11:08:42.155+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:22 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-02T11:08:42.155+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO SparkContext: Running Spark version 3.4.1
+[2025-12-02T11:08:42.156+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO ResourceUtils: ==============================================================
+[2025-12-02T11:08:42.156+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-12-02T11:08:42.157+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO ResourceUtils: ==============================================================
+[2025-12-02T11:08:42.157+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO SparkContext: Submitted application: MongoToParquetToMinIO
+[2025-12-02T11:08:42.158+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-12-02T11:08:42.158+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO ResourceProfile: Limiting resource is cpu
+[2025-12-02T11:08:42.159+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-12-02T11:08:42.159+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO SecurityManager: Changing view acls to: ***
+[2025-12-02T11:08:42.159+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO SecurityManager: Changing modify acls to: ***
+[2025-12-02T11:08:42.160+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO SecurityManager: Changing view acls groups to: 
+[2025-12-02T11:08:42.160+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO SecurityManager: Changing modify acls groups to: 
+[2025-12-02T11:08:42.160+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:27 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+[2025-12-02T11:08:42.161+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:28 INFO Utils: Successfully started service 'sparkDriver' on port 38761.
+[2025-12-02T11:08:42.161+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:28 INFO SparkEnv: Registering MapOutputTracker
+[2025-12-02T11:08:42.162+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:28 INFO SparkEnv: Registering BlockManagerMaster
+[2025-12-02T11:08:42.162+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:28 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-12-02T11:08:42.162+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:28 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-12-02T11:08:42.163+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:28 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-12-02T11:08:42.163+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:28 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-ff7c3076-cfb0-47b8-99be-9c15133ddfd4
+[2025-12-02T11:08:42.164+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:29 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-12-02T11:08:42.164+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:29 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-12-02T11:08:42.165+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:29 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-12-02T11:08:42.165+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2025-12-02T11:08:42.165+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO SparkContext: Added JAR /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar at spark://f8453ad61174:38761/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.166+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO SparkContext: Added JAR /opt/***/jars/bson-4.11.2.jar at spark://f8453ad61174:38761/jars/bson-4.11.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.166+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO SparkContext: Added JAR /opt/***/jars/mongodb-driver-core-4.11.2.jar at spark://f8453ad61174:38761/jars/mongodb-driver-core-4.11.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.167+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO SparkContext: Added JAR /opt/***/jars/mongodb-driver-sync-4.11.2.jar at spark://f8453ad61174:38761/jars/mongodb-driver-sync-4.11.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.167+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO SparkContext: Added JAR /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar at spark://f8453ad61174:38761/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.168+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO SparkContext: Added JAR /opt/***/jars/hadoop-aws-3.3.4.jar at spark://f8453ad61174:38761/jars/hadoop-aws-3.3.4.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.168+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO SparkContext: Added JAR /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar at spark://f8453ad61174:38761/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.169+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO Executor: Starting executor ID driver on host f8453ad61174
+[2025-12-02T11:08:42.169+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-12-02T11:08:42.169+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO Executor: Fetching spark://f8453ad61174:38761/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.170+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO TransportClientFactory: Successfully created connection to f8453ad61174/172.19.0.8:38761 after 84 ms (0 ms spent in bootstraps)
+[2025-12-02T11:08:42.170+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:30 INFO Utils: Fetching spark://f8453ad61174:38761/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/fetchFileTemp11441670017383122802.tmp
+[2025-12-02T11:08:42.171+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Adding file:/tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/iceberg-spark-runtime-3.5_2.12-1.5.2.jar to class loader
+[2025-12-02T11:08:42.171+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Fetching spark://f8453ad61174:38761/jars/bson-4.11.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.172+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Utils: Fetching spark://f8453ad61174:38761/jars/bson-4.11.2.jar to /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/fetchFileTemp863827250094186248.tmp
+[2025-12-02T11:08:42.172+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Adding file:/tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/bson-4.11.2.jar to class loader
+[2025-12-02T11:08:42.173+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Fetching spark://f8453ad61174:38761/jars/mongodb-driver-sync-4.11.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.173+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Utils: Fetching spark://f8453ad61174:38761/jars/mongodb-driver-sync-4.11.2.jar to /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/fetchFileTemp6185251258038298266.tmp
+[2025-12-02T11:08:42.173+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Adding file:/tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/mongodb-driver-sync-4.11.2.jar to class loader
+[2025-12-02T11:08:42.174+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Fetching spark://f8453ad61174:38761/jars/hadoop-aws-3.3.4.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.174+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Utils: Fetching spark://f8453ad61174:38761/jars/hadoop-aws-3.3.4.jar to /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/fetchFileTemp6659983227603232406.tmp
+[2025-12-02T11:08:42.174+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Adding file:/tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/hadoop-aws-3.3.4.jar to class loader
+[2025-12-02T11:08:42.175+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Executor: Fetching spark://f8453ad61174:38761/jars/aws-java-sdk-bundle-1.12.772.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.175+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:33 INFO Utils: Fetching spark://f8453ad61174:38761/jars/aws-java-sdk-bundle-1.12.772.jar to /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/fetchFileTemp3534116750888603284.tmp
+[2025-12-02T11:08:42.175+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:41 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.176+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:41 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.176+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:41 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.176+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:41 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.177+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.177+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.177+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.178+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.178+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.179+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.179+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.179+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.179+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.180+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.180+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.180+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:41 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.181+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.181+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.181+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.182+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.182+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.182+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.183+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.183+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.184+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.184+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.184+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.185+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.185+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.185+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.186+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.186+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.186+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.187+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.187+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.187+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.188+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.188+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.189+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.189+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.190+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.190+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.190+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.191+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:51 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.191+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:51 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.191+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:51 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.192+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:51 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.192+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.193+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.193+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.193+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.194+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.194+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.195+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.195+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.195+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.196+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.196+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.197+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:06:51 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.197+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.197+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.198+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.198+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.198+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.199+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.199+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.199+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.200+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.200+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.200+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.201+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.201+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.202+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.202+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.202+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.203+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.203+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.203+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.204+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.204+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.205+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.205+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.206+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.206+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.207+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.207+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.207+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:01 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.208+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:01 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.208+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:01 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.209+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:01 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.209+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.210+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.210+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.210+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.211+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.211+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.212+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.212+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.212+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.213+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.213+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.213+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.214+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.214+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.214+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.215+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.215+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.215+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.216+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.216+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.216+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.216+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.217+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.217+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.217+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.218+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.218+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.218+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:01 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.219+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.219+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.219+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.220+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.220+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.220+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.221+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.221+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.221+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.221+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.222+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.222+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:11 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.222+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:11 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.223+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:11 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.223+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:11 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.223+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.223+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.224+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.224+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.224+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.224+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.225+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.225+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.225+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.226+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.226+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.226+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:11 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.226+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.227+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.227+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.227+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.227+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.228+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.228+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.228+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.229+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.229+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.229+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.229+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.230+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.230+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.230+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.231+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.231+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.231+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.231+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.232+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.232+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.232+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.233+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.233+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.233+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.233+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.234+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.234+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:21 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.234+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:21 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.234+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:21 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.235+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:21 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.235+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.235+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.235+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.236+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.236+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.236+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.237+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.237+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.237+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.237+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.238+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.238+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:21 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.238+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.239+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.239+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.239+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.239+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.240+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.240+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.240+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.241+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.241+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.241+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.241+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.242+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.242+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.242+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.242+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.243+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.243+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.243+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.244+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.244+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.245+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.245+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.245+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.246+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.246+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.246+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.247+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:31 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.247+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:31 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.247+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:31 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.247+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:31 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.248+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.248+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.248+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.249+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.249+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.249+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.249+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.250+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.250+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.250+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.250+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.251+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:31 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.251+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.251+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.252+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.252+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.252+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.252+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.253+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.253+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.253+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.253+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.256+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.256+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.256+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.257+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.257+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.257+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.257+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.258+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.258+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.258+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.259+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.259+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.259+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.259+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.260+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.260+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.260+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.260+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:41 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.261+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:41 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.261+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:41 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.261+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:41 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.262+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.262+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.262+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.262+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.263+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.263+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.263+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.263+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.264+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.264+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.264+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.265+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:41 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.265+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.265+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.265+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.266+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.266+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.266+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.266+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.267+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.267+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.268+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.268+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.268+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.269+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.269+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.269+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.269+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.270+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.270+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.270+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.271+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.271+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.271+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.271+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.272+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.272+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.272+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.272+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.273+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:51 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.273+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:51 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.273+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:51 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.274+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:51 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.274+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.274+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.274+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.275+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.275+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.275+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.275+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.276+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.276+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.276+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.276+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.277+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:07:51 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.277+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.277+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.278+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.278+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.278+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.278+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.279+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.279+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.279+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.280+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.280+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.280+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.280+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.281+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.281+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.281+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.282+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.282+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.282+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.282+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.283+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.283+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.283+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.284+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.284+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.284+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.284+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.285+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:01 INFO Executor: Told to re-register on heartbeat
+[2025-12-02T11:08:42.285+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:01 INFO BlockManager: BlockManager null re-registering with master
+[2025-12-02T11:08:42.285+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:01 INFO BlockManagerMaster: Registering BlockManager null
+[2025-12-02T11:08:42.285+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:01 ERROR Inbox: Ignoring error
+[2025-12-02T11:08:42.286+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.286+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.286+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.287+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.287+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.287+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.287+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.288+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.288+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.288+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.288+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.289+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:01 WARN Executor: Issue communicating with driver in heartbeater
+[2025-12-02T11:08:42.289+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | org.apache.spark.SparkException: Exception thrown in awaitResult: 
+[2025-12-02T11:08:42.289+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:322)
+[2025-12-02T11:08:42.290+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+[2025-12-02T11:08:42.290+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:101)
+[2025-12-02T11:08:42.290+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.RpcEndpointRef.askSync(RpcEndpointRef.scala:85)
+[2025-12-02T11:08:42.290+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMaster.registerBlockManager(BlockManagerMaster.scala:80)
+[2025-12-02T11:08:42.291+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManager.reregister(BlockManager.scala:641)
+[2025-12-02T11:08:42.291+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.reportHeartBeat(Executor.scala:1111)
+[2025-12-02T11:08:42.291+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.executor.Executor.$anonfun$heartbeater$1(Executor.scala:244)
+[2025-12-02T11:08:42.291+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2025-12-02T11:08:42.292+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+[2025-12-02T11:08:42.292+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.Heartbeater$$anon$1.run(Heartbeater.scala:46)
+[2025-12-02T11:08:42.292+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[2025-12-02T11:08:42.293+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+[2025-12-02T11:08:42.293+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+[2025-12-02T11:08:42.293+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2025-12-02T11:08:42.293+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2025-12-02T11:08:42.294+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-02T11:08:42.294+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.storage.BlockManagerId.executorId()" because "idWithoutTopologyInfo" is null
+[2025-12-02T11:08:42.294+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint.org$apache$spark$storage$BlockManagerMasterEndpoint$$register(BlockManagerMasterEndpoint.scala:600)
+[2025-12-02T11:08:42.295+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.storage.BlockManagerMasterEndpoint$$anonfun$receiveAndReply$1.applyOrElse(BlockManagerMasterEndpoint.scala:123)
+[2025-12-02T11:08:42.295+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:103)
+[2025-12-02T11:08:42.295+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+[2025-12-02T11:08:42.295+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+[2025-12-02T11:08:42.296+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+[2025-12-02T11:08:42.296+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+[2025-12-02T11:08:42.296+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 	... 3 more
+[2025-12-02T11:08:42.297+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:04 INFO Executor: Adding file:/tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/aws-java-sdk-bundle-1.12.772.jar to class loader
+[2025-12-02T11:08:42.297+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:04 INFO Executor: Fetching spark://f8453ad61174:38761/jars/mongodb-driver-core-4.11.2.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.297+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:04 INFO Utils: Fetching spark://f8453ad61174:38761/jars/mongodb-driver-core-4.11.2.jar to /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/fetchFileTemp1367366789437658467.tmp
+[2025-12-02T11:08:42.297+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO Executor: Adding file:/tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/mongodb-driver-core-4.11.2.jar to class loader
+[2025-12-02T11:08:42.298+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO Executor: Fetching spark://f8453ad61174:38761/jars/mongo-spark-connector_2.12-10.1.1.jar with timestamp 1764673587013
+[2025-12-02T11:08:42.298+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO Utils: Fetching spark://f8453ad61174:38761/jars/mongo-spark-connector_2.12-10.1.1.jar to /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/fetchFileTemp10285502973870406352.tmp
+[2025-12-02T11:08:42.298+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO Executor: Adding file:/tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/userFiles-02c2d22c-5225-4375-88a3-abcd246f0ba5/mongo-spark-connector_2.12-10.1.1.jar to class loader
+[2025-12-02T11:08:42.299+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46001.
+[2025-12-02T11:08:42.299+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO NettyBlockTransferService: Server created on f8453ad61174:46001
+[2025-12-02T11:08:42.299+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-12-02T11:08:42.299+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, f8453ad61174, 46001, None)
+[2025-12-02T11:08:42.300+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO BlockManagerMasterEndpoint: Registering block manager f8453ad61174:46001 with 434.4 MiB RAM, BlockManagerId(driver, f8453ad61174, 46001, None)
+[2025-12-02T11:08:42.300+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, f8453ad61174, 46001, None)
+[2025-12-02T11:08:42.300+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:05 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, f8453ad61174, 46001, None)
+[2025-12-02T11:08:42.301+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:10 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2025-12-02T11:08:42.301+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:10 INFO SharedState: Warehouse path is 'file:/opt/***/spark-warehouse'.
+[2025-12-02T11:08:42.301+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:38 INFO client: MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|mongo-spark-connector|source", "version": "4.11.2|10.1.1"}, "os": {"type": "Linux", "name": "Linux", "architecture": "amd64", "version": "6.6.87.2-microsoft-standard-WSL2"}, "platform": "Java/Debian/17.0.17+10-Debian-1deb12u1|Scala/2.12.17/Spark/3.4.1"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@5242f309, com.mongodb.Jep395RecordCodecProvider@5040a8f5, com.mongodb.KotlinCodecProvider@56326d79]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[172.168.168.206:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+[2025-12-02T11:08:42.301+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:38 INFO cluster: Monitor thread successfully connected to server with description ServerDescription{address=172.168.168.206:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=76304225}
+[2025-12-02T11:08:42.302+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:39 INFO SparkContext: Invoking stop() from shutdown hook
+[2025-12-02T11:08:42.302+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:39 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2025-12-02T11:08:42.302+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:39 INFO SparkUI: Stopped Spark web UI at http://f8453ad61174:4040
+[2025-12-02T11:08:42.302+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:39 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2025-12-02T11:08:42.303+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:40 INFO MemoryStore: MemoryStore cleared
+[2025-12-02T11:08:42.303+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:40 INFO BlockManager: BlockManager stopped
+[2025-12-02T11:08:42.303+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:40 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2025-12-02T11:08:42.304+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:41 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2025-12-02T11:08:42.304+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:41 INFO SparkContext: Successfully stopped SparkContext
+[2025-12-02T11:08:42.304+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:41 INFO ShutdownHookManager: Shutdown hook called
+[2025-12-02T11:08:42.304+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:41 INFO ShutdownHookManager: Deleting directory /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f/pyspark-738ed924-eaba-4213-a4d6-6d2e638dd009
+[2025-12-02T11:08:42.305+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:41 INFO ShutdownHookManager: Deleting directory /tmp/spark-be3e063e-ac78-49bb-8f6e-dcab80a69b9f
+[2025-12-02T11:08:42.305+0000] {spark_read_mongo_dag.py:57} ERROR - spark-submit stderr | 25/12/02 11:08:41 INFO ShutdownHookManager: Deleting directory /tmp/spark-f3a1ba91-01be-480d-85e4-52a574c3785d
+[2025-12-02T11:08:42.308+0000] {spark_read_mongo_dag.py:63} ERROR - Exception in run_spark_job: spark-submit failed with exit 1
+[2025-12-02T11:08:42.308+0000] {spark_read_mongo_dag.py:64} ERROR - Traceback:
+Traceback (most recent call last):
+  File "/opt/***/dags/spark_read_mongo_dag.py", line 59, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+
+[2025-12-02T11:08:42.308+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-02T11:08:42.309+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 59, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+[2025-12-02T11:08:42.406+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dag, task_id=run_mongo_to_iceberg, run_id=manual__2025-12-02T11:06:16.662169+00:00, execution_date=20251202T110616, start_date=20251202T110618, end_date=20251202T110842
+[2025-12-02T11:08:44.591+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 17 for task run_mongo_to_iceberg (spark-submit failed with exit 1; 210)
+[2025-12-02T11:08:44.638+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-02T11:08:44.651+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
