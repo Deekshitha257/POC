@@ -607,3 +607,115 @@
 [2025-12-05T06:39:06.735+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:39:06.734+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2025-12-05T06:39:06.749+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:39:06.749+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
 [2025-12-05T06:39:07.601+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.965 seconds
+[2025-12-05T06:39:37.904+0000] {processor.py:161} INFO - Started process (PID=1221) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:39:37.905+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:39:37.907+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:39:37.907+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:39:37.930+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:39:37.963+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:39:37.963+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:39:37.976+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:39:37.976+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:39:38.029+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.132 seconds
+[2025-12-05T06:40:08.399+0000] {processor.py:161} INFO - Started process (PID=1231) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:40:08.400+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:40:08.407+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:40:08.406+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:40:08.436+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:40:08.473+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:40:08.473+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:40:08.487+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:40:08.486+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:40:08.531+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.141 seconds
+[2025-12-05T06:40:38.938+0000] {processor.py:161} INFO - Started process (PID=1241) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:40:38.943+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:40:38.951+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:40:38.950+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:40:38.995+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:40:39.064+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:40:39.064+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:40:39.080+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:40:39.079+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:40:39.128+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.209 seconds
+[2025-12-05T06:41:09.461+0000] {processor.py:161} INFO - Started process (PID=1251) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:41:09.462+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:41:09.465+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:41:09.464+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:41:09.488+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:41:09.522+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:41:09.522+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:41:09.535+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:41:09.535+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:41:09.575+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.122 seconds
+[2025-12-05T06:41:39.913+0000] {processor.py:161} INFO - Started process (PID=1261) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:41:39.914+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:41:39.916+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:41:39.916+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:41:39.941+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:41:39.977+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:41:39.977+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:41:39.996+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:41:39.995+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:41:40.043+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.137 seconds
+[2025-12-05T06:42:10.379+0000] {processor.py:161} INFO - Started process (PID=1271) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:42:10.380+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:42:10.382+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:42:10.381+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:42:10.403+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:42:10.439+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:42:10.439+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:42:10.453+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:42:10.453+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:42:10.498+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.127 seconds
+[2025-12-05T06:42:40.900+0000] {processor.py:161} INFO - Started process (PID=1281) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:42:40.902+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:42:40.904+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:42:40.904+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:42:40.928+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:42:40.973+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:42:40.972+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:42:40.990+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:42:40.990+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:42:41.063+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.173 seconds
+[2025-12-05T06:43:11.488+0000] {processor.py:161} INFO - Started process (PID=1291) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:43:11.489+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:43:11.491+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:43:11.491+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:43:11.514+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:43:11.553+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:43:11.553+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:43:11.571+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:43:11.571+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:43:11.621+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.144 seconds
+[2025-12-05T06:43:42.035+0000] {processor.py:161} INFO - Started process (PID=1301) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:43:42.036+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:43:42.038+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:43:42.038+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:43:42.059+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:43:42.093+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:43:42.093+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:43:42.106+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:43:42.106+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:43:42.152+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.126 seconds
+[2025-12-05T06:44:12.540+0000] {processor.py:161} INFO - Started process (PID=1311) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:44:12.542+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:44:12.545+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:44:12.544+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:44:12.574+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:44:12.616+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:44:12.615+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:44:12.633+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:44:12.633+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:44:12.674+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.147 seconds
+[2025-12-05T06:44:43.031+0000] {processor.py:161} INFO - Started process (PID=1321) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:44:43.032+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:44:43.034+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:44:43.034+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:44:43.060+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:44:43.095+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:44:43.095+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:44:43.109+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:44:43.109+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:44:43.165+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.142 seconds
+[2025-12-05T06:45:13.607+0000] {processor.py:161} INFO - Started process (PID=1331) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:45:13.608+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:45:13.610+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:45:13.609+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:45:13.630+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:45:13.665+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:45:13.665+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:45:13.677+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:45:13.677+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:45:13.742+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.145 seconds
+[2025-12-05T06:45:44.174+0000] {processor.py:161} INFO - Started process (PID=1341) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:45:44.176+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:45:44.179+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:45:44.178+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:45:44.211+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:45:44.255+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:45:44.255+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:45:44.278+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:45:44.278+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:45:44.328+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.166 seconds
+[2025-12-05T06:46:14.596+0000] {processor.py:161} INFO - Started process (PID=1351) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:46:14.597+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:46:14.600+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:46:14.599+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:46:14.624+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:46:14.660+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:46:14.660+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:46:14.677+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:46:14.677+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:46:14.716+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.128 seconds
+[2025-12-05T06:46:45.057+0000] {processor.py:161} INFO - Started process (PID=1361) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:46:45.058+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:46:45.060+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:46:45.060+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:46:45.083+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:46:45.117+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:46:45.117+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:46:45.130+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:46:45.130+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:46:45.190+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.142 seconds
+[2025-12-05T06:47:15.484+0000] {processor.py:161} INFO - Started process (PID=1371) to work on /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:47:15.487+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/spark_read_mongo_dag.py for tasks to queue
+[2025-12-05T06:47:15.490+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:47:15.490+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:47:15.525+0000] {processor.py:840} INFO - DAG(s) 'mongo_iceberg_dag1' retrieved from /opt/airflow/dags/spark_read_mongo_dag.py
+[2025-12-05T06:47:15.578+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:47:15.577+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-12-05T06:47:15.596+0000] {logging_mixin.py:188} INFO - [2025-12-05T06:47:15.595+0000] {dag.py:3954} INFO - Setting next_dagrun for mongo_iceberg_dag1 to None, run_after=None
+[2025-12-05T06:47:15.676+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/spark_read_mongo_dag.py took 0.206 seconds
