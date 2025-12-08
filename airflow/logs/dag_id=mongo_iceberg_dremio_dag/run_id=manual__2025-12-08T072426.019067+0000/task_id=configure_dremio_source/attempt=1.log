@@ -1,0 +1,58 @@
+[2025-12-08T07:26:00.171+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-08T07:26:00.652+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:24:26.019067+00:00 [queued]>
+[2025-12-08T07:26:00.728+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:24:26.019067+00:00 [queued]>
+[2025-12-08T07:26:00.729+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-12-08T07:26:00.874+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-08 07:24:26.019067+00:00
+[2025-12-08T07:26:00.879+0000] {standard_task_runner.py:63} INFO - Started process 547 to run task
+[2025-12-08T07:26:00.882+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-08T07:24:26.019067+00:00', '--job-id', '69', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpx2g3rq_g']
+[2025-12-08T07:26:00.886+0000] {standard_task_runner.py:91} INFO - Job 69: Subtask configure_dremio_source
+[2025-12-08T07:26:01.052+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:24:26.019067+00:00 [running]> on host dcc1a34ec7bc
+[2025-12-08T07:26:01.328+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-08T07:24:26.019067+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-08T07:24:26.019067+00:00'
+[2025-12-08T07:26:01.330+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-08T07:26:01.362+0000] {spark_read_mongo_dag.py:255} INFO - create_dremio_iceberg_source: start
+[2025-12-08T07:26:01.362+0000] {spark_read_mongo_dag.py:270} INFO - Configuring Dremio source with:
+[2025-12-08T07:26:01.363+0000] {spark_read_mongo_dag.py:271} INFO -   Warehouse: s3a://iceberg
+[2025-12-08T07:26:01.363+0000] {spark_read_mongo_dag.py:272} INFO -   Nessie URI: http://nessie:19120/api/v1
+[2025-12-08T07:26:01.363+0000] {spark_read_mongo_dag.py:273} INFO -   MinIO Endpoint: http://minio:9000
+[2025-12-08T07:26:02.449+0000] {spark_read_mongo_dag.py:311} INFO - Dremio source exists=False id=None
+[2025-12-08T07:26:02.542+0000] {spark_read_mongo_dag.py:332} INFO - Creating new source
+[2025-12-08T07:26:02.565+0000] {spark_read_mongo_dag.py:335} INFO - Response: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T07:26:02.566+0000] {spark_read_mongo_dag.py:351} ERROR - Dremio API error: 400
+[2025-12-08T07:26:02.568+0000] {spark_read_mongo_dag.py:355} ERROR - Error details: {
+  "errorMessage": "Invalid value found at: nessieUri",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T07:26:02.569+0000] {spark_read_mongo_dag.py:362} ERROR - HTTP exception: Dremio API error: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+Traceback (most recent call last):
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 359, in create_dremio_iceberg_source
+    raise RuntimeError(f"Dremio API error: {resp.status_code} - {resp.text}")
+RuntimeError: Dremio API error: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T07:26:02.574+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-08T07:26:02.575+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 359, in create_dremio_iceberg_source
+    raise RuntimeError(f"Dremio API error: {resp.status_code} - {resp.text}")
+RuntimeError: Dremio API error: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 363, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed to create/update Dremio source: {ex}")
+RuntimeError: Failed to create/update Dremio source: Dremio API error: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T07:26:02.616+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-08T07:24:26.019067+00:00, execution_date=20251208T072426, start_date=20251208T072600, end_date=20251208T072602
+[2025-12-08T07:26:02.721+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 69 for task configure_dremio_source (Failed to create/update Dremio source: Dremio API error: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}; 547)
+[2025-12-08T07:26:02.786+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-08T07:26:02.858+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-08T07:26:02.900+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,10 @@
+{
+  "name": "iceberg",
+  "type": "ICEBERG_RESTCATALOG",
+  "config": {
+    "nessieEndpoint": "http://nessie:19120/api/v2",
+    "nessieAuthType": "NONE",
+    "warehouse": "s3a://iceberg/warehouse",
+    "nessieDefaultBranch": "main"
+  }
+}

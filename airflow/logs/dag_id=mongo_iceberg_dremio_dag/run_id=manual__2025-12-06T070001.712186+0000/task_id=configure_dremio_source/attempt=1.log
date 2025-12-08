@@ -1,0 +1,43 @@
+[2025-12-06T07:00:55.778+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-06T07:00:56.951+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-06T07:00:01.712186+00:00 [queued]>
+[2025-12-06T07:00:56.981+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-06T07:00:01.712186+00:00 [queued]>
+[2025-12-06T07:00:56.982+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-06T07:00:57.367+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-06 07:00:01.712186+00:00
+[2025-12-06T07:00:57.374+0000] {standard_task_runner.py:63} INFO - Started process 505 to run task
+[2025-12-06T07:00:57.378+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-06T07:00:01.712186+00:00', '--job-id', '44', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmp4l918c0d']
+[2025-12-06T07:00:57.382+0000] {standard_task_runner.py:91} INFO - Job 44: Subtask configure_dremio_source
+[2025-12-06T07:00:57.547+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-06T07:00:01.712186+00:00 [running]> on host 895e81bfa4e0
+[2025-12-06T07:00:57.758+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-06T07:00:01.712186+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-06T07:00:01.712186+00:00'
+[2025-12-06T07:00:57.759+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-06T07:00:57.952+0000] {spark_read_mongo_dag.py:250} INFO - Dremio source 'iceberg' does not exist and will be created.
+[2025-12-06T07:00:57.952+0000] {spark_read_mongo_dag.py:267} INFO - Probing Nessie endpoint: http://nessie:19120/api/v2
+[2025-12-06T07:00:57.958+0000] {spark_read_mongo_dag.py:269} INFO - Probe status for http://nessie:19120/api/v2 -> 404
+[2025-12-06T07:00:57.959+0000] {spark_read_mongo_dag.py:267} INFO - Probing Nessie endpoint: http://nessie:19120/api/v2/refs
+[2025-12-06T07:00:57.964+0000] {spark_read_mongo_dag.py:269} INFO - Probe status for http://nessie:19120/api/v2/refs -> 404
+[2025-12-06T07:00:57.965+0000] {spark_read_mongo_dag.py:267} INFO - Probing Nessie endpoint: http://nessie:19120/api/v2/trees
+[2025-12-06T07:00:57.972+0000] {spark_read_mongo_dag.py:269} INFO - Probe status for http://nessie:19120/api/v2/trees -> 200
+[2025-12-06T07:00:57.972+0000] {spark_read_mongo_dag.py:272} INFO - Probe success: http://nessie:19120/api/v2/trees
+[2025-12-06T07:00:57.973+0000] {spark_read_mongo_dag.py:280} INFO - Probe found http://nessie:19120/api/v2/trees; we'll still send base host-only to Dremio.
+[2025-12-06T07:00:58.148+0000] {spark_read_mongo_dag.py:337} INFO - Creating new Dremio source via POST http://dremio:9047/api/v3/source
+[2025-12-06T07:00:58.169+0000] {spark_read_mongo_dag.py:343} INFO - Dremio response: status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:00:58.169+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-06T07:00:58.170+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 363, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed to create/update Dremio source: status={r.status_code}, body={r.text}")
+RuntimeError: Failed to create/update Dremio source: status=400, body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:00:58.216+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-06T07:00:01.712186+00:00, execution_date=20251206T070001, start_date=20251206T070056, end_date=20251206T070058
+[2025-12-06T07:00:58.275+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 44 for task configure_dremio_source (Failed to create/update Dremio source: status=400, body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}; 505)
+[2025-12-06T07:00:58.315+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-06T07:00:58.341+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-06T07:00:58.391+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

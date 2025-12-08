@@ -1,0 +1,598 @@
+[2025-12-08T10:45:05.848+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-08T10:45:05.897+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag1.configure_dremio_source manual__2025-12-08T10:32:58.534024+00:00 [queued]>
+[2025-12-08T10:45:05.905+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag1.configure_dremio_source manual__2025-12-08T10:32:58.534024+00:00 [queued]>
+[2025-12-08T10:45:05.906+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2025-12-08T10:45:05.958+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-08 10:32:58.534024+00:00
+[2025-12-08T10:45:05.971+0000] {standard_task_runner.py:63} INFO - Started process 594 to run task
+[2025-12-08T10:45:05.979+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag1', 'configure_dremio_source', 'manual__2025-12-08T10:32:58.534024+00:00', '--job-id', '118', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpl3b5ol04']
+[2025-12-08T10:45:05.983+0000] {standard_task_runner.py:91} INFO - Job 118: Subtask configure_dremio_source
+[2025-12-08T10:45:06.115+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag1.configure_dremio_source manual__2025-12-08T10:32:58.534024+00:00 [running]> on host b98eec3b5437
+[2025-12-08T10:45:06.289+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag1' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-08T10:32:58.534024+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-08T10:32:58.534024+00:00'
+[2025-12-08T10:45:06.290+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-08T10:45:06.304+0000] {spark_read_mongo_dag.py:262} INFO - create_dremio_iceberg_source: start
+[2025-12-08T10:45:06.391+0000] {spark_read_mongo_dag.py:293} INFO - Dremio source exists=False id=None
+[2025-12-08T10:45:06.503+0000] {spark_read_mongo_dag.py:302} INFO - Checking available source types...
+[2025-12-08T10:45:06.556+0000] {spark_read_mongo_dag.py:308} INFO - Available source types: {
+  "data": [
+    {
+      "sourceType": "ORACLE",
+      "label": "Oracle",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "POSTGRES",
+      "label": "PostgreSQL",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "NESSIE",
+      "label": "Nessie (Preview)",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "REDSHIFT",
+      "label": "Amazon Redshift",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "AZURE_STORAGE",
+      "label": "Azure Storage",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "GCS",
+      "label": "Google Cloud Storage",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "ADL",
+      "label": "Azure Data Lake Storage Gen1",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "MONGO",
+      "label": "MongoDB",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "MYSQL",
+      "label": "MySQL",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "HIVE",
+      "label": "Hive 2.x",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "AWSGLUE",
+      "label": "AWS Glue Data Catalog",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "SNOWFLAKE",
+      "label": "Snowflake",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "HIVE3",
+      "label": "Hive 3.x",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "ELASTIC",
+      "label": "Elasticsearch",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "DRUID",
+      "label": "Druid",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "NAS",
+      "label": "",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "S3",
+      "label": "Amazon S3",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "DREMIOTODREMIO",
+      "label": "Dremio",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "HDFS",
+      "label": "",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "DB2",
+      "label": "IBM Db2",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "MSSQL",
+      "label": "Microsoft SQL Server",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "AMAZONELASTIC",
+      "label": "Amazon OpenSearch Service",
+      "previewEngineRequired": false,
+      "externalQueryAllowed": false
+    },
+    {
+      "sourceType": "ADX",
+      "label": "Microsoft Azure Data Explorer",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    },
+    {
+      "sourceType": "SYNAPSE",
+      "label": "Microsoft Azure Synapse Analytics",
+      "previewEngineRequired": true,
+      "externalQueryAllowed": true
+    }
+  ]
+}
+[2025-12-08T10:45:06.557+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 1/10: type=NESSIE ===
+[2025-12-08T10:45:06.558+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "nessieUri": "http://nessie:19120/api/v2",
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3a.endpoint.region",
+      "value": "us-east-1"
+    }
+  ]
+}
+[2025-12-08T10:45:06.558+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.637+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.638+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.639+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value found at: nessieUri",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.640+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 2/10: type=NESSIE ===
+[2025-12-08T10:45:06.641+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "nessieUri": "http://nessie:19120/api/v1",
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3a.endpoint.region",
+      "value": "us-east-1"
+    }
+  ]
+}
+[2025-12-08T10:45:06.641+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.659+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.660+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.661+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value found at: nessieUri",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.662+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 3/10: type=NESSIE ===
+[2025-12-08T10:45:06.663+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "nessieUri": "http://nessie:19120",
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3a.endpoint.region",
+      "value": "us-east-1"
+    }
+  ]
+}
+[2025-12-08T10:45:06.663+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.676+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.677+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.678+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value found at: nessieUri",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.679+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 4/10: type=NESSIE ===
+[2025-12-08T10:45:06.680+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "nessieUri": "nessie://nessie:19120/api/v2",
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3a.endpoint.region",
+      "value": "us-east-1"
+    }
+  ]
+}
+[2025-12-08T10:45:06.680+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.693+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.694+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.694+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value found at: nessieUri",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.695+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 5/10: type=NESSIE ===
+[2025-12-08T10:45:06.696+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "nessieUri": "nessie://nessie:19120/api/v1",
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3a.endpoint.region",
+      "value": "us-east-1"
+    }
+  ]
+}
+[2025-12-08T10:45:06.697+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.711+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.712+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.713+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value found at: nessieUri",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.714+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 6/10: type=NESSIE ===
+[2025-12-08T10:45:06.715+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "nessieUri": "nessie://nessie:19120",
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3a.endpoint.region",
+      "value": "us-east-1"
+    }
+  ]
+}
+[2025-12-08T10:45:06.715+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.728+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.729+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.730+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value found at: nessieUri",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.731+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 7/10: type=NESSIE ===
+[2025-12-08T10:45:06.732+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "nessie.uri",
+      "value": "http://nessie:19120/api/v2"
+    },
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    }
+  ]
+}
+[2025-12-08T10:45:06.734+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.749+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.751+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value found at: defaultBranch","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.752+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value found at: defaultBranch",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.752+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 8/10: type=ARCTIC ===
+[2025-12-08T10:45:06.753+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "nessieUri": "http://nessie:19120/api/v2",
+  "defaultBranch": "main",
+  "warehouse": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    }
+  ]
+}
+[2025-12-08T10:45:06.754+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.767+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.768+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.769+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.769+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 9/10: type=DATA_LAKE ===
+[2025-12-08T10:45:06.770+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "rootPath": "s3a://iceberg",
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "iceberg.catalog.type",
+      "value": "nessie"
+    },
+    {
+      "name": "iceberg.catalog.uri",
+      "value": "http://nessie:19120/api/v2"
+    },
+    {
+      "name": "iceberg.catalog.ref",
+      "value": "main"
+    }
+  ]
+}
+[2025-12-08T10:45:06.770+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:06.777+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:06.778+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Invalid value","moreInfo":"","stackTrace":[]}
+[2025-12-08T10:45:06.778+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Invalid value",
+  "moreInfo": "",
+  "stackTrace": []
+}
+[2025-12-08T10:45:06.779+0000] {spark_read_mongo_dag.py:421} INFO - === Trying approach 10/10: type=HIVE ===
+[2025-12-08T10:45:06.779+0000] {spark_read_mongo_dag.py:437} INFO - Attempt config (masked): {
+  "propertyList": [
+    {
+      "name": "fs.s3a.endpoint",
+      "value": "minio:9000"
+    },
+    {
+      "name": "fs.s3a.access.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.secret.key",
+      "value": "***MASKED***"
+    },
+    {
+      "name": "fs.s3a.path.style.access",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "iceberg.enabled",
+      "value": "true"
+    },
+    {
+      "name": "iceberg.catalog.type",
+      "value": "nessie"
+    },
+    {
+      "name": "iceberg.catalog.uri",
+      "value": "http://nessie:19120/api/v2"
+    },
+    {
+      "name": "iceberg.catalog.warehouse",
+      "value": "s3a://iceberg"
+    },
+    {
+      "name": "iceberg.catalog.ref",
+      "value": "main"
+    }
+  ]
+}
+[2025-12-08T10:45:06.779+0000] {spark_read_mongo_dag.py:447} INFO - Creating new source
+[2025-12-08T10:45:10.621+0000] {spark_read_mongo_dag.py:451} INFO - Response status: 400
+[2025-12-08T10:45:10.622+0000] {spark_read_mongo_dag.py:475} INFO - Response error: {"errorMessage":"Failed to create source with name iceberg.","context":[],"moreInfo":""}
+[2025-12-08T10:45:10.623+0000] {spark_read_mongo_dag.py:481} INFO - Validation error details: {
+  "errorMessage": "Failed to create source with name iceberg.",
+  "context": [],
+  "moreInfo": ""
+}
+[2025-12-08T10:45:10.624+0000] {spark_read_mongo_dag.py:491} ERROR - All 10 approaches failed
+[2025-12-08T10:45:10.633+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-08T10:45:10.634+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 503, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed to create Dremio source after {len(attempts)} attempts. " +
+RuntimeError: Failed to create Dremio source after 10 attempts. Check Dremio documentation for correct source configuration.
+[2025-12-08T10:45:10.652+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag1, task_id=configure_dremio_source, run_id=manual__2025-12-08T10:32:58.534024+00:00, execution_date=20251208T103258, start_date=20251208T104505, end_date=20251208T104510
+[2025-12-08T10:45:10.691+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 118 for task configure_dremio_source (Failed to create Dremio source after 10 attempts. Check Dremio documentation for correct source configuration.; 594)
+[2025-12-08T10:45:10.732+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-08T10:45:10.791+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-08T10:45:10.899+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

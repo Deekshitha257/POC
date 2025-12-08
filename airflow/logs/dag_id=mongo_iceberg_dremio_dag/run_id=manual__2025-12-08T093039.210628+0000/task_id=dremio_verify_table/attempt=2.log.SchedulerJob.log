@@ -1,0 +1,1 @@
+[2025-12-08T09:40:28.951+0000] {scheduler_job_runner.py:843} ERROR - Executor reports task instance <TaskInstance: mongo_iceberg_dremio_dag.dremio_verify_table manual__2025-12-08T09:30:39.210628+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

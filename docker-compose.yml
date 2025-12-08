@@ -38,28 +38,50 @@ services:
   # ---------------------------
   # Nessie (Iceberg catalog)
   # ---------------------------
+  # nessie:
+  #   image: projectnessie/nessie:latest
+  #   container_name: nessie
+  #   ports:
+  #     - "19120:19120"
+  #   environment:
+  #     # pass JVM options via env so container entrypoint can pick them up
+  #     JAVA_TOOL_OPTIONS: "-Dnessie.server.authorization.enabled=false -Xmx512m"
+  #     # optional: increase logging if you need debug info
+  #     # NESSIE_LOG_LEVEL: "INFO"
+  #   depends_on:
+  #     - minio
+  #   restart: unless-stopped
+  #   volumes:
+  #     - nessie_data:/var/nessie         # persist Nessie storage across restarts
+  #   healthcheck:
+  #     # use v2 refs endpoint and allow a little more time for startup
+  #     test: ["CMD", "curl", "-f", "http://localhost:19120/api/v2/refs || exit 1"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 12
+  #     start_period: 10s
+
   nessie:
     image: projectnessie/nessie:latest
     container_name: nessie
     ports:
       - "19120:19120"
     environment:
-      # pass JVM options via env so container entrypoint can pick them up
-      JAVA_TOOL_OPTIONS: "-Dnessie.server.authorization.enabled=false -Xmx512m"
-      # optional: increase logging if you need debug info
-      # NESSIE_LOG_LEVEL: "INFO"
+      JAVA_TOOL_OPTIONS: "-Dnessie.server.authorization.enabled=false -Xmx1G"
+      QUARKUS_OPENTELEMETRY_ENABLED: "false"
     depends_on:
       - minio
     restart: unless-stopped
     volumes:
-      - nessie_data:/var/nessie         # persist Nessie storage across restarts
+      - nessie_data:/var/nessie
     healthcheck:
-      # use v2 refs endpoint and allow a little more time for startup
-      test: ["CMD", "curl", "-f", "http://localhost:19120/api/v2/refs || exit 1"]
+      test: ["CMD", "curl", "-f", "http://localhost:19120/api/v2/trees/- || exit 1"]
       interval: 10s
       timeout: 5s
-      retries: 12
-      start_period: 10s
+      retries: 8
+      start_period: 60s
+
+
 
 
   # ---------------------------
@@ -194,16 +216,28 @@ services:
     environment:
       JAVA_TOOL_OPTIONS: "-Xmx1G"
 
+  # dremio:
+  #   image: dremio/dremio-oss:latest
+  #   container_name: dremio
+  #   ports:
+  #     - "9047:9047"   # Dremio UI
+  #     - "31010:31010" # Flight
+  #   environment:
+  #     - SERVICES=master,coordinator,executor
+  #   depends_on:
+  #     - minio
   dremio:
-    image: dremio/dremio-oss:latest
+    image: dremio/dremio-oss:24.3
     container_name: dremio
     ports:
-      - "9047:9047"   # Dremio UI
-      - "31010:31010" # Flight
+      - "9047:9047"
+      - "31010:31010"
     environment:
-      - SERVICES=master,coordinator,executor
+      - DREMIO_JAVA_SERVER_EXTRA_OPTS=-Dnessie.enabled=true
     depends_on:
-      - minio
+      - nessie
+    restart: unless-stopped
+
 
 volumes:
   minio_data:

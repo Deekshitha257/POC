@@ -1,0 +1,55 @@
+[2025-12-08T10:07:28.448+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-08T10:07:28.488+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.query_dremio_tables manual__2025-12-08T10:06:48.880764+00:00 [queued]>
+[2025-12-08T10:07:28.497+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.query_dremio_tables manual__2025-12-08T10:06:48.880764+00:00 [queued]>
+[2025-12-08T10:07:28.498+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-12-08T10:07:28.606+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): query_dremio_tables> on 2025-12-08 10:06:48.880764+00:00
+[2025-12-08T10:07:28.612+0000] {standard_task_runner.py:63} INFO - Started process 4837 to run task
+[2025-12-08T10:07:28.617+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'query_dremio_tables', 'manual__2025-12-08T10:06:48.880764+00:00', '--job-id', '102', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpfqaom1mr']
+[2025-12-08T10:07:28.620+0000] {standard_task_runner.py:91} INFO - Job 102: Subtask query_dremio_tables
+[2025-12-08T10:07:28.789+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.query_dremio_tables manual__2025-12-08T10:06:48.880764+00:00 [running]> on host ef1c6bdacaab
+[2025-12-08T10:07:28.964+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='query_dremio_tables' AIRFLOW_CTX_EXECUTION_DATE='2025-12-08T10:06:48.880764+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-08T10:06:48.880764+00:00'
+[2025-12-08T10:07:28.965+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-08T10:07:28.977+0000] {spark_read_mongo_dag.py:496} INFO - === Querying Dremio Tables ===
+[2025-12-08T10:07:28.977+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SHOW SCHEMAS IN "iceberg"
+[2025-12-08T10:07:28.978+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SHOW SCHEMAS IN "iceberg" - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.978+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SHOW TABLES IN "iceberg"
+[2025-12-08T10:07:28.979+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SHOW TABLES IN "iceberg" - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.979+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SHOW TABLES IN "iceberg"."ai_segmentation"
+[2025-12-08T10:07:28.980+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SHOW TABLES IN "iceberg"."ai_segmentation" - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.980+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"
+[2025-12-08T10:07:28.981+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations" - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.981+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5
+[2025-12-08T10:07:28.982+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5 - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.982+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SHOW SCHEMAS IN `iceberg`
+[2025-12-08T10:07:28.983+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SHOW SCHEMAS IN `iceberg` - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.983+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SELECT * FROM `iceberg`.`ai_segmentation`.`conversations` LIMIT 3
+[2025-12-08T10:07:28.984+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SELECT * FROM `iceberg`.`ai_segmentation`.`conversations` LIMIT 3 - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.984+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SHOW SCHEMAS IN iceberg
+[2025-12-08T10:07:28.985+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SHOW SCHEMAS IN iceberg - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.985+0000] {spark_read_mongo_dag.py:527} INFO - Executing query: SELECT * FROM iceberg.ai_segmentation.conversations LIMIT 2
+[2025-12-08T10:07:28.985+0000] {spark_read_mongo_dag.py:564} WARNING - Query failed: SELECT * FROM iceberg.ai_segmentation.conversations LIMIT 2 - Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.986+0000] {spark_read_mongo_dag.py:572} INFO - === All Query Attempts Summary ===
+[2025-12-08T10:07:28.986+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 1. SHOW SCHEMAS IN "iceberg"
+[2025-12-08T10:07:28.987+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.987+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 2. SHOW TABLES IN "iceberg"
+[2025-12-08T10:07:28.988+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.988+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 3. SHOW TABLES IN "iceberg"."ai_segmentation"
+[2025-12-08T10:07:28.988+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.989+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 4. SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"
+[2025-12-08T10:07:28.989+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.990+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 5. SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5
+[2025-12-08T10:07:28.990+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.991+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 6. SHOW SCHEMAS IN `iceberg`
+[2025-12-08T10:07:28.991+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.991+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 7. SELECT * FROM `iceberg`.`ai_segmentation`.`conversations` LIMIT 3
+[2025-12-08T10:07:28.992+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.992+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 8. SHOW SCHEMAS IN iceberg
+[2025-12-08T10:07:28.993+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:28.993+0000] {spark_read_mongo_dag.py:575} INFO - [✗] 9. SELECT * FROM iceberg.ai_segmentation.conversations LIMIT 2
+[2025-12-08T10:07:28.993+0000] {spark_read_mongo_dag.py:577} INFO -    Error: name 'run_dremio_sql' is not defined
+[2025-12-08T10:07:29.037+0000] {python.py:237} INFO - Done. Returned value was: {'status': 'partial_success', 'total_queries': 9, 'successful': 0, 'failed': 9, 'results': [{'query': 'SHOW SCHEMAS IN "iceberg"', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SHOW TABLES IN "iceberg"', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SHOW TABLES IN "iceberg"."ai_segmentation"', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SHOW SCHEMAS IN `iceberg`', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SELECT * FROM `iceberg`.`ai_segmentation`.`conversations` LIMIT 3', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SHOW SCHEMAS IN iceberg', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}, {'query': 'SELECT * FROM iceberg.ai_segmentation.conversations LIMIT 2', 'success': False, 'error': "name 'run_dremio_sql' is not defined"}]}
+[2025-12-08T10:07:29.038+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-08T10:07:29.093+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mongo_iceberg_dremio_dag, task_id=query_dremio_tables, run_id=manual__2025-12-08T10:06:48.880764+00:00, execution_date=20251208T100648, start_date=20251208T100728, end_date=20251208T100729
+[2025-12-08T10:07:29.152+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-12-08T10:07:29.175+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-08T10:07:29.223+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,68 @@
+[2025-12-06T07:09:33.077+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-06T07:09:33.113+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-06T07:08:49.594810+00:00 [queued]>
+[2025-12-06T07:09:33.121+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-06T07:08:49.594810+00:00 [queued]>
+[2025-12-06T07:09:33.145+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-06T07:09:33.255+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-06 07:08:49.594810+00:00
+[2025-12-06T07:09:33.263+0000] {standard_task_runner.py:63} INFO - Started process 1241 to run task
+[2025-12-06T07:09:33.266+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-06T07:08:49.594810+00:00', '--job-id', '48', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpfu0e76is']
+[2025-12-06T07:09:33.269+0000] {standard_task_runner.py:91} INFO - Job 48: Subtask configure_dremio_source
+[2025-12-06T07:09:33.412+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-06T07:08:49.594810+00:00 [running]> on host 895e81bfa4e0
+[2025-12-06T07:09:33.568+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-06T07:08:49.594810+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-06T07:08:49.594810+00:00'
+[2025-12-06T07:09:33.569+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-06T07:09:33.585+0000] {spark_read_mongo_dag.py:245} INFO - create_dremio_iceberg_source: start
+[2025-12-06T07:09:33.586+0000] {spark_read_mongo_dag.py:286} INFO - Nessie probe & host only base: host_only=http://nessie:19120, candidates=['http://nessie:19120/api/v2', 'http://nessie:19120/api/v2/', 'http://nessie:19120/api/v2/trees', 'http://nessie:19120/api/v2/trees/', 'http://nessie:19120/api/v2/refs', 'http://nessie:19120/api/v2/refs/', 'http://nessie:19120', 'http://nessie:19120/']
+[2025-12-06T07:09:33.595+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120/api/v2 -> status=404
+[2025-12-06T07:09:33.601+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120/api/v2/ -> status=404
+[2025-12-06T07:09:33.608+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120/api/v2/trees -> status=200
+[2025-12-06T07:09:33.614+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120/api/v2/trees/ -> status=200
+[2025-12-06T07:09:33.619+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120/api/v2/refs -> status=404
+[2025-12-06T07:09:33.624+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120/api/v2/refs/ -> status=404
+[2025-12-06T07:09:33.630+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120 -> status=200
+[2025-12-06T07:09:33.634+0000] {spark_read_mongo_dag.py:292} INFO - Probe http://nessie:19120/ -> status=200
+[2025-12-06T07:09:33.722+0000] {spark_read_mongo_dag.py:331} INFO - Dremio source exists? False
+[2025-12-06T07:09:33.797+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120/api/v2
+[2025-12-06T07:09:33.805+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120/api/v2: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.806+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120/api/v2: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.806+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120/api/v2/
+[2025-12-06T07:09:33.814+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120/api/v2/: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.815+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120/api/v2/: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.815+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120/api/v2/trees
+[2025-12-06T07:09:33.822+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120/api/v2/trees: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.823+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120/api/v2/trees: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.823+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120/api/v2/trees/
+[2025-12-06T07:09:33.829+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120/api/v2/trees/: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.830+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120/api/v2/trees/: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.830+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120/api/v2/refs
+[2025-12-06T07:09:33.836+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120/api/v2/refs: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.837+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120/api/v2/refs: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.837+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120/api/v2/refs/
+[2025-12-06T07:09:33.843+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120/api/v2/refs/: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.844+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120/api/v2/refs/: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.845+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120
+[2025-12-06T07:09:33.881+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.881+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.882+0000] {spark_read_mongo_dag.py:357} INFO - Attempt POST create nessieUri=http://nessie:19120/
+[2025-12-06T07:09:33.887+0000] {spark_read_mongo_dag.py:364} INFO - Dremio response for candidate http://nessie:19120/: status=400 body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.888+0000] {spark_read_mongo_dag.py:392} WARNING - Unexpected response for candidate http://nessie:19120/: {"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.888+0000] {spark_read_mongo_dag.py:396} ERROR - Exhausted nessieUri candidates. Last error: status=400, body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.889+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-06T07:09:33.890+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 397, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed to create/update Dremio source (exhausted candidates). Last error: {last_error}")
+RuntimeError: Failed to create/update Dremio source (exhausted candidates). Last error: status=400, body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}
+[2025-12-06T07:09:33.911+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-06T07:08:49.594810+00:00, execution_date=20251206T070849, start_date=20251206T070933, end_date=20251206T070933
+[2025-12-06T07:09:33.945+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 48 for task configure_dremio_source (Failed to create/update Dremio source (exhausted candidates). Last error: status=400, body={"errorMessage":"Invalid value found at: authType","moreInfo":"","stackTrace":[]}; 1241)
+[2025-12-06T07:09:33.962+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-06T07:09:33.991+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-06T07:09:34.017+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

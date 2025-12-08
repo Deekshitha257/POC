@@ -1,0 +1,79 @@
+[2025-12-05T11:15:35.017+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-05T11:15:35.320+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-05T11:15:01.661474+00:00 [queued]>
+[2025-12-05T11:15:35.333+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-05T11:15:01.661474+00:00 [queued]>
+[2025-12-05T11:15:35.334+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-05T11:15:35.422+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-05 11:15:01.661474+00:00
+[2025-12-05T11:15:35.427+0000] {standard_task_runner.py:63} INFO - Started process 3418 to run task
+[2025-12-05T11:15:35.432+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-05T11:15:01.661474+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpivy5jhoe']
+[2025-12-05T11:15:35.435+0000] {standard_task_runner.py:91} INFO - Job 11: Subtask configure_dremio_source
+[2025-12-05T11:15:35.640+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-05T11:15:01.661474+00:00 [running]> on host a40f6ae0e3c1
+[2025-12-05T11:15:36.119+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-05T11:15:01.661474+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-05T11:15:01.661474+00:00'
+[2025-12-05T11:15:36.121+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-05T11:15:36.506+0000] {spark_read_mongo_dag.py:247} INFO - Configured NESSIE_URI base: http://nessie:19120/api/v2
+[2025-12-05T11:15:36.507+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://nessie:19120
+[2025-12-05T11:15:36.734+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://nessie:19120 -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:36.735+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://nessie:19120/api/v2
+[2025-12-05T11:15:36.836+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://nessie:19120/api/v2 -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:36.837+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://nessie:19120/api/v1
+[2025-12-05T11:15:36.922+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://nessie:19120/api/v1 -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:36.923+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://nessie:19120/tree/main
+[2025-12-05T11:15:37.008+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://nessie:19120/tree/main -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.009+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://nessie:19120/trees/-
+[2025-12-05T11:15:37.106+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://nessie:19120/trees/- -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.106+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://nessie:19120/config
+[2025-12-05T11:15:37.223+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://nessie:19120/config -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.224+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://nessie:19120/
+[2025-12-05T11:15:37.332+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://nessie:19120/ -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.333+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://172.19.0.5:19120
+[2025-12-05T11:15:37.428+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://172.19.0.5:19120 -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.429+0000] {spark_read_mongo_dag.py:314} INFO - Attempting to create Dremio source 'iceberg' with nessieUri=http://172.19.0.5:19120/api/v2
+[2025-12-05T11:15:37.509+0000] {spark_read_mongo_dag.py:322} INFO - Dremio responded for candidate http://172.19.0.5:19120/api/v2 -> status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.510+0000] {spark_read_mongo_dag.py:344} ERROR - All nessieUri candidates failed. Diagnostics:
+candidate=http://nessie:19120 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/api/v2 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/api/v1 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/tree/main status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/trees/- status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/config status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/ status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://172.19.0.5:19120 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://172.19.0.5:19120/api/v2 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.510+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-05T11:15:37.511+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 345, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed to create Dremio Nessie source; checked candidates:\n{diag_text}")
+RuntimeError: Failed to create Dremio Nessie source; checked candidates:
+candidate=http://nessie:19120 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/api/v2 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/api/v1 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/tree/main status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/trees/- status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/config status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/ status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://172.19.0.5:19120 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://172.19.0.5:19120/api/v2 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T11:15:37.528+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-05T11:15:01.661474+00:00, execution_date=20251205T111501, start_date=20251205T111535, end_date=20251205T111537
+[2025-12-05T11:15:37.792+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 11 for task configure_dremio_source (Failed to create Dremio Nessie source; checked candidates:
+candidate=http://nessie:19120 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/api/v2 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/api/v1 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/tree/main status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/trees/- status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/config status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://nessie:19120/ status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://172.19.0.5:19120 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+candidate=http://172.19.0.5:19120/api/v2 status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}; 3418)
+[2025-12-05T11:15:37.815+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-05T11:15:37.855+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-05T11:15:37.914+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

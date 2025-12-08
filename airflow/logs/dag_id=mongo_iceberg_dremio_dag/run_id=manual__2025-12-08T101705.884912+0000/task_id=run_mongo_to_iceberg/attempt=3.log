@@ -1,0 +1,97 @@
+[2025-12-08T10:24:33.806+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-08T10:24:33.869+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.run_mongo_to_iceberg manual__2025-12-08T10:17:05.884912+00:00 [queued]>
+[2025-12-08T10:24:33.880+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.run_mongo_to_iceberg manual__2025-12-08T10:17:05.884912+00:00 [queued]>
+[2025-12-08T10:24:33.916+0000] {taskinstance.py:2306} INFO - Starting attempt 3 of 3
+[2025-12-08T10:24:34.284+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_mongo_to_iceberg> on 2025-12-08 10:17:05.884912+00:00
+[2025-12-08T10:24:34.291+0000] {standard_task_runner.py:63} INFO - Started process 6615 to run task
+[2025-12-08T10:24:34.300+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'run_mongo_to_iceberg', 'manual__2025-12-08T10:17:05.884912+00:00', '--job-id', '108', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpgcxaj84a']
+[2025-12-08T10:24:34.305+0000] {standard_task_runner.py:91} INFO - Job 108: Subtask run_mongo_to_iceberg
+[2025-12-08T10:24:34.627+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.run_mongo_to_iceberg manual__2025-12-08T10:17:05.884912+00:00 [running]> on host ef1c6bdacaab
+[2025-12-08T10:24:34.977+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='run_mongo_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-12-08T10:17:05.884912+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-08T10:17:05.884912+00:00'
+[2025-12-08T10:24:34.978+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-08T10:24:35.002+0000] {spark_read_mongo_dag.py:151} INFO - START run_spark_job
+[2025-12-08T10:24:35.005+0000] {spark_read_mongo_dag.py:155} INFO - Checking path: /opt/***/spark_jobs/mongo_pyspark.py exists=True
+[2025-12-08T10:24:35.006+0000] {spark_read_mongo_dag.py:155} INFO - Checking path: /opt/***/jars exists=True
+[2025-12-08T10:24:35.008+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar exists=True size=156368
+[2025-12-08T10:24:35.009+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/bson-4.11.2.jar exists=True size=511356
+[2025-12-08T10:24:35.010+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/mongodb-driver-core-4.11.2.jar exists=True size=1670650
+[2025-12-08T10:24:35.011+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/mongodb-driver-sync-4.11.2.jar exists=True size=151808
+[2025-12-08T10:24:35.012+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar exists=True size=41604737
+[2025-12-08T10:24:35.013+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/iceberg-nessie-1.5.2.jar exists=True size=44895
+[2025-12-08T10:24:35.014+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/nessie-client-0.99.0.jar exists=True size=585165
+[2025-12-08T10:24:35.015+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/nessie-spark-extensions-3.4_2.12-0.105.7.jar exists=True size=2294495
+[2025-12-08T10:24:35.016+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/hadoop-aws-3.3.4.jar exists=True size=962685
+[2025-12-08T10:24:35.017+0000] {spark_read_mongo_dag.py:161} INFO - Jar check: /opt/***/jars/aws-java-sdk-bundle-1.12.772.jar exists=True size=388405806
+[2025-12-08T10:24:35.017+0000] {spark_read_mongo_dag.py:182} INFO - Running command: spark-submit --jars /opt/***/jars/mongo-spark-connector_2.12-10.1.1.jar,/opt/***/jars/bson-4.11.2.jar,/opt/***/jars/mongodb-driver-core-4.11.2.jar,/opt/***/jars/mongodb-driver-sync-4.11.2.jar,/opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar,/opt/***/jars/iceberg-nessie-1.5.2.jar,/opt/***/jars/nessie-client-0.99.0.jar,/opt/***/jars/nessie-spark-extensions-3.4_2.12-0.105.7.jar,/opt/***/jars/hadoop-aws-3.3.4.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.772.jar /opt/***/spark_jobs/mongo_pyspark.py
+[2025-12-08T10:24:35.018+0000] {spark_read_mongo_dag.py:183} INFO - ICEBERG_WAREHOUSE=s3a://iceberg
+[2025-12-08T10:24:35.018+0000] {spark_read_mongo_dag.py:184} INFO - NESSIE_URI=http://nessie:19120/api/v1
+[2025-12-08T10:24:35.018+0000] {spark_read_mongo_dag.py:185} INFO - S3_ENDPOINT=http://minio:9000
+[2025-12-08T10:24:59.074+0000] {spark_read_mongo_dag.py:189} INFO - Process finished. returncode=1
+[2025-12-08T10:24:59.075+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+[2025-12-08T10:24:59.075+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-12-08T10:24:59.076+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-12-08T10:24:59.076+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at py4j.Gateway.invoke(Gateway.java:282)
+[2025-12-08T10:24:59.076+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-12-08T10:24:59.077+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-12-08T10:24:59.077+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-12-08T10:24:59.077+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-12-08T10:24:59.077+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-08T10:24:59.078+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | Caused by: java.io.FileNotFoundException: No such file or directory: s3a://iceberg/ai_segmentation/conversations_ed63c2ac-3687-482c-811c-508987982d7c/metadata/00006-d79586d3-3cdb-4e37-9844-4e13e88ce79a.metadata.json
+[2025-12-08T10:24:59.078+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at org.apache.hadoop.fs.s3a.S3AFileSystem.s3GetFileStatus(S3AFileSystem.java:3866)
+[2025-12-08T10:24:59.078+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at org.apache.hadoop.fs.s3a.S3AFileSystem.innerGetFileStatus(S3AFileSystem.java:3688)
+[2025-12-08T10:24:59.079+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at org.apache.hadoop.fs.s3a.S3AFileSystem.extractOrFetchSimpleFileStatus(S3AFileSystem.java:5401)
+[2025-12-08T10:24:59.079+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at org.apache.hadoop.fs.s3a.S3AFileSystem.open(S3AFileSystem.java:1465)
+[2025-12-08T10:24:59.079+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at org.apache.hadoop.fs.s3a.S3AFileSystem.open(S3AFileSystem.java:1441)
+[2025-12-08T10:24:59.079+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at org.apache.hadoop.fs.FileSystem.open(FileSystem.java:976)
+[2025-12-08T10:24:59.080+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	at org.apache.iceberg.hadoop.HadoopInputFile.newStream(HadoopInputFile.java:183)
+[2025-12-08T10:24:59.080+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 	... 63 more
+[2025-12-08T10:24:59.080+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 
+[2025-12-08T10:24:59.081+0000] {spark_read_mongo_dag.py:195} INFO - spark-submit stdout | 2025-12-08 10:24:58,428 INFO py4j.clientserver - Closing down clientserver connection
+[2025-12-08T10:24:59.081+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO DAGScheduler: Job 6 finished: count at NativeMethodAccessorImpl.java:0, took 0.063489 s
+[2025-12-08T10:24:59.082+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO FileSourceStrategy: Pushed Filters: 
+[2025-12-08T10:24:59.082+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO FileSourceStrategy: Post-Scan Filters: 
+[2025-12-08T10:24:59.083+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO BaseMetastoreTableOperations: Refreshing table metadata from new version: s3a://iceberg/ai_segmentation/conversations_ed63c2ac-3687-482c-811c-508987982d7c/metadata/00006-d79586d3-3cdb-4e37-9844-4e13e88ce79a.metadata.json
+[2025-12-08T10:24:59.083+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO SparkContext: Invoking stop() from shutdown hook
+[2025-12-08T10:24:59.083+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2025-12-08T10:24:59.084+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO SparkUI: Stopped Spark web UI at http://ef1c6bdacaab:4040
+[2025-12-08T10:24:59.084+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2025-12-08T10:24:59.084+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO MemoryStore: MemoryStore cleared
+[2025-12-08T10:24:59.084+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO BlockManager: BlockManager stopped
+[2025-12-08T10:24:59.085+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2025-12-08T10:24:59.085+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2025-12-08T10:24:59.085+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO SparkContext: Successfully stopped SparkContext
+[2025-12-08T10:24:59.086+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO ShutdownHookManager: Shutdown hook called
+[2025-12-08T10:24:59.086+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO ShutdownHookManager: Deleting directory /tmp/spark-f6783a6b-f971-483c-bcb6-0ae7469b58bf
+[2025-12-08T10:24:59.086+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO ShutdownHookManager: Deleting directory /tmp/spark-358a1d7b-fe84-48ff-aa7a-9ae45b58010f
+[2025-12-08T10:24:59.086+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO ShutdownHookManager: Deleting directory /tmp/spark-358a1d7b-fe84-48ff-aa7a-9ae45b58010f/pyspark-8cf614a4-4bd5-4f8a-9593-45d56a18abde
+[2025-12-08T10:24:59.087+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO MetricsSystemImpl: Stopping s3a-file-system metrics system...
+[2025-12-08T10:24:59.087+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO MetricsSystemImpl: s3a-file-system metrics system stopped.
+[2025-12-08T10:24:59.087+0000] {spark_read_mongo_dag.py:201} ERROR - spark-submit stderr | 25/12/08 10:24:58 INFO MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+[2025-12-08T10:24:59.090+0000] {spark_read_mongo_dag.py:210} ERROR - Exception in run_spark_job: spark-submit failed with exit 1
+[2025-12-08T10:24:59.091+0000] {spark_read_mongo_dag.py:211} ERROR - Traceback:
+Traceback (most recent call last):
+  File "/opt/***/dags/spark_read_mongo_dag.py", line 204, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+
+[2025-12-08T10:24:59.091+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-08T10:24:59.092+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 204, in run_spark_job
+    raise RuntimeError(f"spark-submit failed with exit {proc.returncode}")
+RuntimeError: spark-submit failed with exit 1
+[2025-12-08T10:24:59.107+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=run_mongo_to_iceberg, run_id=manual__2025-12-08T10:17:05.884912+00:00, execution_date=20251208T101705, start_date=20251208T102433, end_date=20251208T102459
+[2025-12-08T10:24:59.155+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 108 for task run_mongo_to_iceberg (spark-submit failed with exit 1; 6615)
+[2025-12-08T10:24:59.226+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-08T10:24:59.251+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-08T10:24:59.304+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

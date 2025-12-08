@@ -1,0 +1,42 @@
+[2025-12-05T09:25:28.239+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-05T09:25:28.299+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-05T09:24:51.817272+00:00 [queued]>
+[2025-12-05T09:25:28.310+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-05T09:24:51.817272+00:00 [queued]>
+[2025-12-05T09:25:28.312+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-05T09:25:28.356+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-05 09:24:51.817272+00:00
+[2025-12-05T09:25:28.361+0000] {standard_task_runner.py:63} INFO - Started process 5577 to run task
+[2025-12-05T09:25:28.365+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-05T09:24:51.817272+00:00', '--job-id', '99', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmplg1taky3']
+[2025-12-05T09:25:28.368+0000] {standard_task_runner.py:91} INFO - Job 99: Subtask configure_dremio_source
+[2025-12-05T09:25:28.614+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-05T09:24:51.817272+00:00 [running]> on host 6cf8c91d6608
+[2025-12-05T09:25:29.111+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-05T09:24:51.817272+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-05T09:24:51.817272+00:00'
+[2025-12-05T09:25:29.112+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-05T09:25:29.431+0000] {spark_read_mongo_dag.py:257} INFO - Waiting for Nessie REST endpoint (trying ['http://nessie:19120/api/v2/trees/-', 'http://nessie:19120/api/v2/config']) ...
+[2025-12-05T09:25:29.440+0000] {spark_read_mongo_dag.py:263} INFO - Probed Nessie http://nessie:19120/api/v2/trees/- -> HTTP 200
+[2025-12-05T09:25:29.440+0000] {spark_read_mongo_dag.py:315} INFO - Creating Dremio source 'iceberg' with payload: {"entityType": "source", "name": "iceberg", "type": "NESSIE", "config": {"nessieUri": "http://nessie:19120/api/v2", "defaultBranch": "main", "authType": "NO_AUTH", "propertyList": [{"name": "warehouse", "value": "s3a://iceberg/"}], "secretPropertyList": [{"name": "fs.s3a.access.key", "value": "minioadmin"}, {"name": "fs.s3a.secret.key", "value": "minioadmin123"}], "isCachingEnabled": true, "isRecursiveAllowedNamespaces": true}}
+[2025-12-05T09:25:29.545+0000] {spark_read_mongo_dag.py:319} INFO - Dremio responded status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T09:25:29.546+0000] {spark_read_mongo_dag.py:336} ERROR - Failed to create Dremio source. status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T09:25:29.546+0000] {spark_read_mongo_dag.py:340} ERROR - Exception while creating Dremio source: Dremio source creation failed status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+Traceback (most recent call last):
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 337, in create_dremio_iceberg_source
+    raise RuntimeError(f"Dremio source creation failed status={r.status_code} body={r.text}")
+RuntimeError: Dremio source creation failed status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T09:25:29.552+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-05T09:25:29.552+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 337, in create_dremio_iceberg_source
+    raise RuntimeError(f"Dremio source creation failed status={r.status_code} body={r.text}")
+RuntimeError: Dremio source creation failed status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-05T09:25:29.567+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-05T09:24:51.817272+00:00, execution_date=20251205T092451, start_date=20251205T092528, end_date=20251205T092529
+[2025-12-05T09:25:30.001+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 99 for task configure_dremio_source (Dremio source creation failed status=400 body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}; 5577)
+[2025-12-05T09:25:30.025+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-05T09:25:30.055+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-05T09:25:30.568+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

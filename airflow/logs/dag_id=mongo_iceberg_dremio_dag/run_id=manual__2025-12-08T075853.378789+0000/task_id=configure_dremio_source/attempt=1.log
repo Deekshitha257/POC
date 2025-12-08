@@ -1,0 +1,254 @@
+[2025-12-08T08:00:04.043+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-08T08:00:04.619+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:58:53.378789+00:00 [queued]>
+[2025-12-08T08:00:04.645+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:58:53.378789+00:00 [queued]>
+[2025-12-08T08:00:04.646+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-12-08T08:00:05.097+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-08 07:58:53.378789+00:00
+[2025-12-08T08:00:05.103+0000] {standard_task_runner.py:63} INFO - Started process 524 to run task
+[2025-12-08T08:00:05.108+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-08T07:58:53.378789+00:00', '--job-id', '80', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmpijt10d5m']
+[2025-12-08T08:00:05.112+0000] {standard_task_runner.py:91} INFO - Job 80: Subtask configure_dremio_source
+[2025-12-08T08:00:05.355+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:58:53.378789+00:00 [running]> on host ef1c6bdacaab
+[2025-12-08T08:00:05.614+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-08T07:58:53.378789+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-08T07:58:53.378789+00:00'
+[2025-12-08T08:00:05.617+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-08T08:00:05.642+0000] {spark_read_mongo_dag.py:256} INFO - create_dremio_iceberg_source: start
+[2025-12-08T08:00:05.644+0000] {spark_read_mongo_dag.py:327} INFO - Will try 17 Nessie URI candidates
+[2025-12-08T08:00:05.736+0000] {spark_read_mongo_dag.py:345} INFO - Dremio source exists=False id=None
+[2025-12-08T08:00:05.812+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v1/
+[2025-12-08T08:00:05.813+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/
+[2025-12-08T08:00:05.875+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.876+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v1/' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.877+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v2/
+[2025-12-08T08:00:05.877+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/
+[2025-12-08T08:00:05.886+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.887+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v2/' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.888+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/
+[2025-12-08T08:00:05.888+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/
+[2025-12-08T08:00:05.898+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.898+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.899+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v1
+[2025-12-08T08:00:05.900+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1
+[2025-12-08T08:00:05.909+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.910+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.910+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v2
+[2025-12-08T08:00:05.911+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2
+[2025-12-08T08:00:05.919+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.921+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.921+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120
+[2025-12-08T08:00:05.922+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120
+[2025-12-08T08:00:05.933+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.935+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.936+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v2/trees
+[2025-12-08T08:00:05.936+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/trees
+[2025-12-08T08:00:05.947+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/trees: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.948+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v2/trees' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.949+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v1/trees
+[2025-12-08T08:00:05.949+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/trees
+[2025-12-08T08:00:05.958+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/trees: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.959+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v1/trees' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.959+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v2/refs
+[2025-12-08T08:00:05.959+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/refs
+[2025-12-08T08:00:05.967+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/refs: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.968+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v2/refs' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.968+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120/api/v1/refs
+[2025-12-08T08:00:05.969+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/refs
+[2025-12-08T08:00:05.977+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/refs: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.978+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120/api/v1/refs' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.979+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://nessie:19120:19120
+[2025-12-08T08:00:05.979+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120:19120
+[2025-12-08T08:00:05.990+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.991+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://nessie:19120:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:05.992+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://localhost:19120/api/v1
+[2025-12-08T08:00:05.992+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120/api/v1
+[2025-12-08T08:00:06.001+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120/api/v1: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.002+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://localhost:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.006+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://localhost:19120/api/v2
+[2025-12-08T08:00:06.007+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120/api/v2
+[2025-12-08T08:00:06.019+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120/api/v2: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.020+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://localhost:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.020+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://localhost:19120
+[2025-12-08T08:00:06.021+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120
+[2025-12-08T08:00:06.033+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.034+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://localhost:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.034+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://172.19.0.5:19120/api/v1
+[2025-12-08T08:00:06.035+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120/api/v1
+[2025-12-08T08:00:06.045+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120/api/v1: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.046+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://172.19.0.5:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.046+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://172.19.0.5:19120/api/v2
+[2025-12-08T08:00:06.047+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120/api/v2
+[2025-12-08T08:00:06.057+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120/api/v2: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.058+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://172.19.0.5:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.058+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 1 with Nessie URI: http://172.19.0.5:19120
+[2025-12-08T08:00:06.059+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120
+[2025-12-08T08:00:06.068+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.069+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 1, Nessie URI 'http://172.19.0.5:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.069+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v1/
+[2025-12-08T08:00:06.070+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/
+[2025-12-08T08:00:06.078+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.078+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v1/' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.079+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v2/
+[2025-12-08T08:00:06.080+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/
+[2025-12-08T08:00:06.087+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.088+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v2/' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.089+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/
+[2025-12-08T08:00:06.090+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/
+[2025-12-08T08:00:06.099+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.099+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.100+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v1
+[2025-12-08T08:00:06.100+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1
+[2025-12-08T08:00:06.110+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.111+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.112+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v2
+[2025-12-08T08:00:06.112+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2
+[2025-12-08T08:00:06.119+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.120+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.122+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120
+[2025-12-08T08:00:06.122+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120
+[2025-12-08T08:00:06.131+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.131+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.132+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v2/trees
+[2025-12-08T08:00:06.132+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/trees
+[2025-12-08T08:00:06.139+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/trees: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.140+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v2/trees' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.141+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v1/trees
+[2025-12-08T08:00:06.141+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/trees
+[2025-12-08T08:00:06.148+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/trees: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.149+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v1/trees' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.149+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v2/refs
+[2025-12-08T08:00:06.150+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/refs
+[2025-12-08T08:00:06.156+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/refs: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.157+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v2/refs' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.157+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120/api/v1/refs
+[2025-12-08T08:00:06.158+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/refs
+[2025-12-08T08:00:06.164+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/refs: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.165+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120/api/v1/refs' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.165+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://nessie:19120:19120
+[2025-12-08T08:00:06.166+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120:19120
+[2025-12-08T08:00:06.172+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120:19120: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.173+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://nessie:19120:19120' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.173+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://localhost:19120/api/v1
+[2025-12-08T08:00:06.174+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120/api/v1
+[2025-12-08T08:00:06.181+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120/api/v1: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.181+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://localhost:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.182+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://localhost:19120/api/v2
+[2025-12-08T08:00:06.182+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120/api/v2
+[2025-12-08T08:00:06.190+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120/api/v2: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.191+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://localhost:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.192+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://localhost:19120
+[2025-12-08T08:00:06.192+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120
+[2025-12-08T08:00:06.200+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.201+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://localhost:19120' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.201+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://172.19.0.5:19120/api/v1
+[2025-12-08T08:00:06.201+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120/api/v1
+[2025-12-08T08:00:06.209+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120/api/v1: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.210+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://172.19.0.5:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.212+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://172.19.0.5:19120/api/v2
+[2025-12-08T08:00:06.212+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120/api/v2
+[2025-12-08T08:00:06.219+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120/api/v2: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.222+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://172.19.0.5:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.223+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 2 with Nessie URI: http://172.19.0.5:19120
+[2025-12-08T08:00:06.224+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120
+[2025-12-08T08:00:06.234+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120: 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.235+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 2, Nessie URI 'http://172.19.0.5:19120' failed: 400 - {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.235+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v1/
+[2025-12-08T08:00:06.236+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/
+[2025-12-08T08:00:06.244+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.245+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v1/' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.245+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v2/
+[2025-12-08T08:00:06.246+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/
+[2025-12-08T08:00:06.252+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.253+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v2/' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.253+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/
+[2025-12-08T08:00:06.254+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/
+[2025-12-08T08:00:06.260+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.261+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.261+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v1
+[2025-12-08T08:00:06.262+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1
+[2025-12-08T08:00:06.268+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.269+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.270+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v2
+[2025-12-08T08:00:06.270+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2
+[2025-12-08T08:00:06.276+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.277+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.277+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120
+[2025-12-08T08:00:06.278+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120
+[2025-12-08T08:00:06.284+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.285+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.285+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v2/trees
+[2025-12-08T08:00:06.285+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/trees
+[2025-12-08T08:00:06.293+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/trees: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.294+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v2/trees' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.294+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v1/trees
+[2025-12-08T08:00:06.295+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/trees
+[2025-12-08T08:00:06.303+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/trees: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.303+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v1/trees' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.304+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v2/refs
+[2025-12-08T08:00:06.304+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v2/refs
+[2025-12-08T08:00:06.311+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v2/refs: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.311+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v2/refs' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.312+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120/api/v1/refs
+[2025-12-08T08:00:06.312+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120/api/v1/refs
+[2025-12-08T08:00:06.318+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120/api/v1/refs: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.318+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120/api/v1/refs' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.319+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://nessie:19120:19120
+[2025-12-08T08:00:06.319+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://nessie:19120:19120
+[2025-12-08T08:00:06.326+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://nessie:19120:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.326+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://nessie:19120:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.327+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://localhost:19120/api/v1
+[2025-12-08T08:00:06.327+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120/api/v1
+[2025-12-08T08:00:06.333+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120/api/v1: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.334+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://localhost:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.334+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://localhost:19120/api/v2
+[2025-12-08T08:00:06.334+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120/api/v2
+[2025-12-08T08:00:06.340+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120/api/v2: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.341+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://localhost:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.341+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://localhost:19120
+[2025-12-08T08:00:06.342+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://localhost:19120
+[2025-12-08T08:00:06.348+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://localhost:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.349+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://localhost:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.349+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://172.19.0.5:19120/api/v1
+[2025-12-08T08:00:06.350+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120/api/v1
+[2025-12-08T08:00:06.356+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120/api/v1: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.356+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://172.19.0.5:19120/api/v1' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.357+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://172.19.0.5:19120/api/v2
+[2025-12-08T08:00:06.357+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120/api/v2
+[2025-12-08T08:00:06.364+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120/api/v2: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.365+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://172.19.0.5:19120/api/v2' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.365+0000] {spark_read_mongo_dag.py:400} INFO - Trying config format 3 with Nessie URI: http://172.19.0.5:19120
+[2025-12-08T08:00:06.366+0000] {spark_read_mongo_dag.py:425} INFO - Trying POST with Nessie URI: http://172.19.0.5:19120
+[2025-12-08T08:00:06.372+0000] {spark_read_mongo_dag.py:428} INFO - Response for http://172.19.0.5:19120: 400 {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.372+0000] {spark_read_mongo_dag.py:446} WARNING - Config format 3, Nessie URI 'http://172.19.0.5:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.373+0000] {spark_read_mongo_dag.py:454} ERROR - All configuration attempts failed. Last error: Config format 3, Nessie URI 'http://172.19.0.5:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.374+0000] {spark_read_mongo_dag.py:457} INFO - Testing Nessie connectivity...
+[2025-12-08T08:00:06.475+0000] {spark_read_mongo_dag.py:466} INFO - Nessie connectivity test results:
+[2025-12-08T08:00:06.476+0000] {spark_read_mongo_dag.py:468} INFO -   http://nessie:19120/api/v1/: 404 - 
+[2025-12-08T08:00:06.476+0000] {spark_read_mongo_dag.py:468} INFO -   http://nessie:19120/api/v2/: 404 - 
+[2025-12-08T08:00:06.477+0000] {spark_read_mongo_dag.py:468} INFO -   http://nessie:19120/: 404 - 
+[2025-12-08T08:00:06.478+0000] {spark_read_mongo_dag.py:468} INFO -   http://nessie:19120/api/v1: 200 - {
+  "defaultBranch" : "main",
+  "maxSupportedApiVersion" : 2
+}
+[2025-12-08T08:00:06.478+0000] {spark_read_mongo_dag.py:468} INFO -   http://nessie:19120/api/v2: 200 - {
+  "defaultBranch" : "main",
+  "minSupportedApiVersion" : 1,
+  "maxSupportedApiVersion" : 2,
+  "act
+[2025-12-08T08:00:06.479+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-08T08:00:06.480+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 470, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed to create/update Dremio source. All attempts failed. Last error: {last_error}")
+RuntimeError: Failed to create/update Dremio source. All attempts failed. Last error: Config format 3, Nessie URI 'http://172.19.0.5:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}
+[2025-12-08T08:00:06.630+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-08T07:58:53.378789+00:00, execution_date=20251208T075853, start_date=20251208T080004, end_date=20251208T080006
+[2025-12-08T08:00:06.767+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 80 for task configure_dremio_source (Failed to create/update Dremio source. All attempts failed. Last error: Config format 3, Nessie URI 'http://172.19.0.5:19120' failed: 400 - {"errorMessage":"Invalid value found at: secretPropertyList","moreInfo":"","stackTrace":[]}; 524)
+[2025-12-08T08:00:06.798+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-08T08:00:06.861+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-08T08:00:06.899+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

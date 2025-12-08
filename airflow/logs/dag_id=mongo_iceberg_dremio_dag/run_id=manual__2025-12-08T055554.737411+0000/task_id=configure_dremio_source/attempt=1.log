@@ -1,0 +1,995 @@
+[2025-12-08T05:57:51.837+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-08T05:57:52.183+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T05:55:54.737411+00:00 [queued]>
+[2025-12-08T05:57:52.209+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T05:55:54.737411+00:00 [queued]>
+[2025-12-08T05:57:52.224+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-08T05:57:52.494+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-08 05:55:54.737411+00:00
+[2025-12-08T05:57:52.513+0000] {standard_task_runner.py:63} INFO - Started process 889 to run task
+[2025-12-08T05:57:52.523+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-08T05:55:54.737411+00:00', '--job-id', '59', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmp5om4aftz']
+[2025-12-08T05:57:52.528+0000] {standard_task_runner.py:91} INFO - Job 59: Subtask configure_dremio_source
+[2025-12-08T05:57:52.688+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T05:55:54.737411+00:00 [running]> on host 949327377d85
+[2025-12-08T05:57:53.032+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-08T05:55:54.737411+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-08T05:55:54.737411+00:00'
+[2025-12-08T05:57:53.033+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-08T05:57:53.120+0000] {spark_read_mongo_dag.py:244} INFO - create_dremio_iceberg_source: start (minimal-first probing)
+[2025-12-08T05:57:54.566+0000] {spark_read_mongo_dag.py:348} INFO - Dremio source exists=False id=None
+[2025-12-08T05:57:54.659+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=none flags=None
+[2025-12-08T05:57:54.667+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.672+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:54.679+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.680+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:54.689+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.690+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:54.696+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.696+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:54.703+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.704+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:54.710+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.711+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:54.718+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.719+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:54.725+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.726+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:54.732+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.733+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:54.740+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.741+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:54.747+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.748+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:54.755+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.756+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:54.762+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.763+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:54.769+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.769+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:54.776+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.777+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:54.783+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.784+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:54.791+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.791+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:54.798+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.798+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:54.805+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.806+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:54.813+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.814+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:57:54.821+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.822+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:57:54.829+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.830+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:57:54.842+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.843+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:57:54.850+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.851+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:57:54.858+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.859+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:54.870+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.872+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:54.880+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.881+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:54.891+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.896+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:54.906+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.908+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:54.918+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.919+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:57:54.929+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.930+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:54.942+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.944+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:54.954+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.956+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:54.966+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.968+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:54.977+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.978+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:54.989+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:54.990+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:54.999+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.000+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:55.010+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.011+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:55.021+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.022+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:55.029+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.030+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=none flags=None
+[2025-12-08T05:57:55.038+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.039+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:57:55.047+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.048+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:57:55.057+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.058+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:57:55.065+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.066+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:57:55.074+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.075+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:55.087+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.088+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:55.096+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.097+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:55.105+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.106+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:55.112+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.113+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:55.120+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.121+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:57:55.127+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.128+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:55.135+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.136+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:55.143+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.144+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:55.154+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.155+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:55.161+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.162+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:55.169+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.170+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:55.177+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.178+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:55.185+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.186+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:55.194+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.194+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2 auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:55.203+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.203+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=none flags=None
+[2025-12-08T05:57:55.210+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.211+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:55.217+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.219+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:55.225+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.226+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:55.232+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.232+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:55.239+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.240+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:55.246+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.247+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:55.259+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.259+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:55.266+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.267+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:55.276+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.277+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:55.284+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.285+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:55.293+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.294+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:55.303+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.304+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:55.312+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.313+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:55.322+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.323+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:55.331+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.332+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:55.341+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.342+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:55.351+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.353+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:55.361+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.362+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:55.371+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.372+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:55.381+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.382+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:57:55.391+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.392+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:57:55.400+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.401+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:57:55.409+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.410+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:57:55.421+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.422+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:57:55.432+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.438+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:55.444+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.445+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:55.451+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.452+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:55.458+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.459+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:55.465+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.466+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:55.473+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.473+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:57:55.480+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.481+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:55.488+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.489+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:55.495+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.496+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:55.504+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.505+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:55.512+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.513+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:55.521+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.522+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:55.529+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.530+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:55.540+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.541+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:55.550+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.551+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:55.562+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.563+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=none flags=None
+[2025-12-08T05:57:55.573+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.574+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:57:55.581+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.583+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:57:55.592+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.593+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:57:55.602+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.603+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:57:55.611+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.612+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:55.620+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.621+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:55.631+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.632+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:55.640+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.641+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:55.648+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.650+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:55.656+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.657+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:57:55.663+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.663+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:55.670+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.671+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:55.677+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.679+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:55.686+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.687+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:55.695+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.696+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:55.704+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.705+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:55.714+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.716+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:55.725+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.726+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:55.738+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.739+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/ auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:55.750+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.751+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=none flags=None
+[2025-12-08T05:57:55.760+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.762+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:55.772+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.773+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:55.785+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.787+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:55.798+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.800+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:55.811+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.813+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:55.824+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.825+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:55.840+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.841+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:55.854+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.855+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:55.866+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.868+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:55.877+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.878+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:55.886+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.887+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:55.894+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.895+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:55.905+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.907+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:55.920+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.921+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:55.928+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.929+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:55.939+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.940+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:55.951+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.954+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:55.967+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.971+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:55.989+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:55.990+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:56.010+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.012+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:57:56.032+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.034+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:57:56.049+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.051+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:57:56.065+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.067+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:57:56.081+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.083+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:57:56.094+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.096+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:56.108+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.112+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:56.128+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.129+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:56.142+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.143+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:56.159+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.160+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:56.172+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.174+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:57:56.190+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.192+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:56.212+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.213+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:56.229+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.233+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:56.273+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.276+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:56.303+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.304+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:56.316+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.317+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:56.330+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.333+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:56.348+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.350+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:56.365+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.367+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:56.390+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.391+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=none flags=None
+[2025-12-08T05:57:56.404+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.405+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:57:56.421+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.423+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:57:56.434+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.436+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:57:56.447+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.449+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:57:56.461+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.462+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:56.473+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.474+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:56.490+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.491+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:56.506+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.508+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:56.526+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.528+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:56.539+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.540+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:57:56.547+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.549+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:56.557+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.558+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:56.568+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.569+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:56.577+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.578+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:56.587+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.588+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:56.596+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.597+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:56.605+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.606+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:56.614+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.616+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:56.624+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.624+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:56.631+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.633+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=none flags=None
+[2025-12-08T05:57:56.640+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.640+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:56.647+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.648+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:56.657+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.658+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:56.664+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.665+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:56.673+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.674+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:56.680+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.680+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:56.689+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.690+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:56.697+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.698+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:56.706+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.707+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:56.713+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.714+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:56.721+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.722+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:56.729+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.730+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:56.737+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.738+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:56.746+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.747+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:56.755+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.756+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:56.763+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.763+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:56.772+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.773+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:56.780+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.780+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:56.788+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.789+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:56.796+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.797+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:57:56.807+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.808+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:57:56.816+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.817+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:57:56.827+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.829+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:57:56.841+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.842+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:57:56.853+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.854+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:56.863+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.863+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:56.874+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.875+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:56.886+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.887+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:56.901+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.903+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:56.915+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.918+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:57:56.926+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.928+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:56.939+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.941+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:56.954+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.955+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:56.964+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.966+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:56.974+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.975+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:56.983+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.984+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:56.992+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:56.994+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:57.001+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.001+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:57.007+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.008+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:57.014+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.014+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=none flags=None
+[2025-12-08T05:57:57.021+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.022+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:57:57.028+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.029+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:57:57.035+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.036+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:57:57.041+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.042+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:57:57.049+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.050+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:57.056+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.057+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:57.063+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.064+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:57.073+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.074+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:57.080+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.081+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:57.090+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.091+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:57:57.100+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.102+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:57.112+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.113+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:57.123+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.124+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:57.133+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.134+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:57.143+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.144+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:57.151+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.152+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:57.161+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.163+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:57.173+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.174+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:57.183+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.184+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/trees/ auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:57.193+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/trees/,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.194+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=none flags=None
+[2025-12-08T05:57:57.205+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.206+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:57.214+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.216+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:57.224+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.225+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:57.232+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.233+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:57.240+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.241+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:57.248+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.249+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:57.256+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.258+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:57.266+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.267+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:57.275+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.275+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:57.283+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.284+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:57.290+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.291+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:57.298+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.299+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:57.306+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.310+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:57.318+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.319+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:57.327+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.328+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:57.336+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.338+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:57.350+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.351+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:57.362+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.363+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:57.372+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.373+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:57.385+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.386+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:57:57.402+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.407+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:57:57.419+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.421+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:57:57.436+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.437+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:57:57.447+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.448+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:57:57.457+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.457+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:57.466+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.467+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:57.475+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.476+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:57.484+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.485+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:57.491+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.492+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:57.500+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.501+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:57:57.508+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.509+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:57.516+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.516+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:57.522+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.523+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:57.528+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.529+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:57.535+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.536+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:57.542+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.542+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:57.549+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.551+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:57.557+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.558+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:57.564+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.566+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:57.574+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.575+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=none flags=None
+[2025-12-08T05:57:57.583+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.584+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:57:57.591+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.592+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:57:57.598+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.600+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:57:57.607+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.608+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:57:57.616+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.617+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:57.625+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.626+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:57.637+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.638+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:57.647+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.647+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:57.656+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.657+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:57.665+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.667+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:57:57.675+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.675+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:57.683+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.685+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:57.692+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.695+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:57.702+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.703+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:57.710+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.711+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:57.718+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.720+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:57.728+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.729+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:57.735+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.736+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:57.742+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.744+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:57.750+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.751+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=none flags=None
+[2025-12-08T05:57:57.757+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.758+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:57.763+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.764+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:57.771+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.771+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:57.777+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.777+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:57.783+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.783+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:57.789+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.790+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:57.795+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.796+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:57.801+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.802+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:57.807+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.808+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:57.813+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.814+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:57.821+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.822+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:57.828+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.829+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:57.837+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.838+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:57.844+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.845+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:57.853+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.854+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:57.864+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.865+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:57.874+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.875+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:57.887+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.888+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:57.896+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.897+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:57.908+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.909+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:57:57.918+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.921+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:57:57.940+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.941+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:57:57.958+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.959+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:57:57.969+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.971+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:57:57.982+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.984+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:57.993+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:57.995+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:58.004+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.010+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:58.018+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.021+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:58.036+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.037+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:58.043+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.044+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:57:58.051+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.052+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:58.061+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.061+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:58.069+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.070+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:58.079+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.080+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:58.089+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.090+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:58.099+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.100+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:58.108+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.109+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:58.120+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.121+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:58.130+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.131+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:58.140+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.141+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=none flags=None
+[2025-12-08T05:57:58.148+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.150+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:57:58.158+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.159+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:57:58.170+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.171+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:57:58.180+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.181+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:57:58.190+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.191+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:58.200+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.201+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:58.212+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.212+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:58.221+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.222+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:58.233+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.234+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:58.243+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.245+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:57:58.252+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.253+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:58.260+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.261+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:58.267+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.268+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:58.274+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.274+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:58.280+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.280+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:58.287+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.287+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:58.292+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.294+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:58.300+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.301+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:58.307+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.308+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/api/v2/refs/ auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:58.314+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/api/v2/refs/,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.315+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=none flags=None
+[2025-12-08T05:57:58.321+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.322+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:58.328+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.328+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:58.334+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.335+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:58.340+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.341+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:58.346+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.347+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:58.354+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.355+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:58.361+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.362+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:58.368+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.370+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:58.376+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.377+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:58.386+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.387+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:58.393+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.394+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:58.402+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.403+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:58.411+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.413+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:58.433+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.441+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:58.465+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.469+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:58.477+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.478+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:58.487+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.488+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:58.497+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.499+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:58.508+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.509+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:58.519+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.520+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:57:58.528+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.528+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:57:58.537+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.537+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:57:58.689+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.690+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:57:58.701+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.703+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:57:58.714+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.716+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:58.729+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.730+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:58.741+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.742+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:58.752+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.754+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:58.763+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.764+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:58.772+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.773+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:57:58.780+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.781+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:58.791+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.792+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:58.803+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.805+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:58.815+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.816+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:58.827+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.828+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:58.837+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.838+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:58.846+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.847+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:58.858+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.861+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:58.872+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.874+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:58.889+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.890+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=none flags=None
+[2025-12-08T05:57:58.909+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.913+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:57:58.939+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:58.941+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:57:59.106+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.107+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:57:59.124+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.125+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:57:59.142+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.146+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:59.163+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.164+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:59.173+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.174+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:59.183+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.184+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:59.192+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.194+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:59.204+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.206+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:57:59.637+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.639+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:59.674+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.679+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:59.704+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.705+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:59.714+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.716+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:59.730+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.731+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:59.740+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.741+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:59.750+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.751+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:59.759+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.760+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:59.771+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.772+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120 auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:59.782+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.783+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=none flags=None
+[2025-12-08T05:57:59.789+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.790+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=none flags=(False, False)
+[2025-12-08T05:57:59.796+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.797+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=none flags=(True, False)
+[2025-12-08T05:57:59.804+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.804+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=none flags=(False, True)
+[2025-12-08T05:57:59.811+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.811+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=none flags=(True, True)
+[2025-12-08T05:57:59.817+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.818+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:57:59.824+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.824+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:57:59.829+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.830+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:57:59.835+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.836+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:57:59.841+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.846+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:57:59.852+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.853+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=secretPropertyList flags=None
+[2025-12-08T05:57:59.860+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.861+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:57:59.869+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.870+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:57:59.877+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.878+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:57:59.894+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.895+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:57:59.911+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.912+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_access_secret flags=None
+[2025-12-08T05:57:59.921+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.922+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:57:59.939+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.940+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:57:59.952+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.953+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:57:59.979+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.980+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=None secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:57:59.989+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,None,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:57:59.991+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=none flags=None
+[2025-12-08T05:58:00.001+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.002+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=none flags=(False, False)
+[2025-12-08T05:58:00.010+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.011+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=none flags=(True, False)
+[2025-12-08T05:58:00.019+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.021+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=none flags=(False, True)
+[2025-12-08T05:58:00.028+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.029+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=none flags=(True, True)
+[2025-12-08T05:58:00.035+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.036+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:58:00.043+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.044+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:58:00.051+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.051+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:58:00.057+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.058+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:58:00.064+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.065+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:58:00.071+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.072+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=secretPropertyList flags=None
+[2025-12-08T05:58:00.078+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.078+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:58:00.084+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.085+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:58:00.089+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.090+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:58:00.095+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.096+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:58:00.102+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.103+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_access_secret flags=None
+[2025-12-08T05:58:00.108+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.109+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:58:00.115+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.116+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:58:00.122+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.123+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:58:00.129+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.130+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NO_AUTH secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:58:00.137+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NO_AUTH,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.138+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=none flags=None
+[2025-12-08T05:58:00.144+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,none,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.145+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=none flags=(False, False)
+[2025-12-08T05:58:00.153+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,none,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.154+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=none flags=(True, False)
+[2025-12-08T05:58:00.161+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,none,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.162+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=none flags=(False, True)
+[2025-12-08T05:58:00.170+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,none,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.170+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=none flags=(True, True)
+[2025-12-08T05:58:00.178+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,none,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.182+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_s3a_keys flags=None
+[2025-12-08T05:58:00.189+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_s3a_keys,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.190+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_s3a_keys flags=(False, False)
+[2025-12-08T05:58:00.198+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_s3a_keys,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.199+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_s3a_keys flags=(True, False)
+[2025-12-08T05:58:00.210+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_s3a_keys,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.211+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_s3a_keys flags=(False, True)
+[2025-12-08T05:58:00.220+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_s3a_keys,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.222+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_s3a_keys flags=(True, True)
+[2025-12-08T05:58:00.231+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_s3a_keys,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.234+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=secretPropertyList flags=None
+[2025-12-08T05:58:00.249+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,secretPropertyList,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.250+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=secretPropertyList flags=(False, False)
+[2025-12-08T05:58:00.258+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,secretPropertyList,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.259+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=secretPropertyList flags=(True, False)
+[2025-12-08T05:58:00.268+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,secretPropertyList,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.270+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=secretPropertyList flags=(False, True)
+[2025-12-08T05:58:00.277+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,secretPropertyList,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.278+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=secretPropertyList flags=(True, True)
+[2025-12-08T05:58:00.285+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,secretPropertyList,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.286+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_access_secret flags=None
+[2025-12-08T05:58:00.295+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_access_secret,None): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.296+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_access_secret flags=(False, False)
+[2025-12-08T05:58:00.307+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_access_secret,(False, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.308+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_access_secret flags=(True, False)
+[2025-12-08T05:58:00.317+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_access_secret,(True, False)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.318+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_access_secret flags=(False, True)
+[2025-12-08T05:58:00.326+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_access_secret,(False, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.327+0000] {spark_read_mongo_dag.py:371} INFO - Trying POST nessie=http://nessie:19120/ auth=NONE secret=propertyList_access_secret flags=(True, True)
+[2025-12-08T05:58:00.334+0000] {spark_read_mongo_dag.py:378} INFO - Response (http://nessie:19120/,NONE,propertyList_access_secret,(True, True)): 400 {"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.335+0000] {spark_read_mongo_dag.py:395} ERROR - All attempts exhausted. Last error: status=400, body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.335+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-08T05:58:00.336+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 396, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed creating/updating Dremio source (exhausted). Last error: {last_err}")
+RuntimeError: Failed creating/updating Dremio source (exhausted). Last error: status=400, body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}
+[2025-12-08T05:58:00.353+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-08T05:55:54.737411+00:00, execution_date=20251208T055554, start_date=20251208T055752, end_date=20251208T055800
+[2025-12-08T05:58:00.693+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 59 for task configure_dremio_source (Failed creating/updating Dremio source (exhausted). Last error: status=400, body={"errorMessage":"Invalid value found at: nessieUri","moreInfo":"","stackTrace":[]}; 889)
+[2025-12-08T05:58:00.711+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-08T05:58:00.761+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-08T05:58:00.927+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

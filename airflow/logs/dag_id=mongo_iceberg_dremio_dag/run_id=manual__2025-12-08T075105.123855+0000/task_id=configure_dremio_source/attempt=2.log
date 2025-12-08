@@ -1,0 +1,169 @@
+[2025-12-08T07:57:33.897+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-08T07:57:33.931+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:51:05.123855+00:00 [queued]>
+[2025-12-08T07:57:33.938+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:51:05.123855+00:00 [queued]>
+[2025-12-08T07:57:33.949+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2025-12-08T07:57:34.074+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): configure_dremio_source> on 2025-12-08 07:51:05.123855+00:00
+[2025-12-08T07:57:34.081+0000] {standard_task_runner.py:63} INFO - Started process 185 to run task
+[2025-12-08T07:57:34.087+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_iceberg_dremio_dag', 'configure_dremio_source', 'manual__2025-12-08T07:51:05.123855+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/spark_read_mongo_dag.py', '--cfg-path', '/tmp/tmp1cqfzuf7']
+[2025-12-08T07:57:34.093+0000] {standard_task_runner.py:91} INFO - Job 78: Subtask configure_dremio_source
+[2025-12-08T07:57:34.416+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_iceberg_dremio_dag.configure_dremio_source manual__2025-12-08T07:51:05.123855+00:00 [running]> on host ef1c6bdacaab
+[2025-12-08T07:57:34.883+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deeku' AIRFLOW_CTX_DAG_ID='mongo_iceberg_dremio_dag' AIRFLOW_CTX_TASK_ID='configure_dremio_source' AIRFLOW_CTX_EXECUTION_DATE='2025-12-08T07:51:05.123855+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-08T07:51:05.123855+00:00'
+[2025-12-08T07:57:34.884+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-08T07:57:34.912+0000] {spark_read_mongo_dag.py:256} INFO - create_dremio_iceberg_source: start
+[2025-12-08T07:57:34.914+0000] {spark_read_mongo_dag.py:327} INFO - Will try 17 Nessie URI candidates
+[2025-12-08T07:57:34.919+0000] {spark_read_mongo_dag.py:345} INFO - Dremio source exists=False id=None
+[2025-12-08T07:57:34.921+0000] {spark_read_mongo_dag.py:350} ERROR - Failed to obtain Dremio token/headers: HTTPConnectionPool(host='dremio', port=9047): Max retries exceeded with url: /apiv2/login (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.9/http/client.py", line 1285, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1331, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='dremio', port=9047): Max retries exceeded with url: /apiv2/login (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 348, in create_dremio_iceberg_source
+    headers = dremio_headers()
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 228, in dremio_headers
+    token = dremio_login_token()
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 222, in dremio_login_token
+    r = requests.post(url, json=payload)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='dremio', port=9047): Max retries exceeded with url: /apiv2/login (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2025-12-08T07:57:34.929+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-08T07:57:34.929+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.9/http/client.py", line 1285, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1331, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='dremio', port=9047): Max retries exceeded with url: /apiv2/login (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 348, in create_dremio_iceberg_source
+    headers = dremio_headers()
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 228, in dremio_headers
+    token = dremio_login_token()
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 222, in dremio_login_token
+    r = requests.post(url, json=payload)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='dremio', port=9047): Max retries exceeded with url: /apiv2/login (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/spark_read_mongo_dag.py", line 351, in create_dremio_iceberg_source
+    raise RuntimeError(f"Failed to obtain Dremio token: {ex}")
+RuntimeError: Failed to obtain Dremio token: HTTPConnectionPool(host='dremio', port=9047): Max retries exceeded with url: /apiv2/login (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2025-12-08T07:57:34.947+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_iceberg_dremio_dag, task_id=configure_dremio_source, run_id=manual__2025-12-08T07:51:05.123855+00:00, execution_date=20251208T075105, start_date=20251208T075733, end_date=20251208T075734
+[2025-12-08T07:57:35.041+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 78 for task configure_dremio_source (Failed to obtain Dremio token: HTTPConnectionPool(host='dremio', port=9047): Max retries exceeded with url: /apiv2/login (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7d160efe2d90>: Failed to establish a new connection: [Errno 111] Connection refused')); 185)
+[2025-12-08T07:57:35.064+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-08T07:57:35.096+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-08T07:57:35.215+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
