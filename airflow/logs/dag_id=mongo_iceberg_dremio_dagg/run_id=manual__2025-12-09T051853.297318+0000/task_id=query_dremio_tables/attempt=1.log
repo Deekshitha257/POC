@@ -23,3 +23,32 @@
 [2025-12-09T05:21:22.069+0000] {spark_read_mongo_dag.py:546} INFO - Executing query: SHOW TABLES IN "iceberg"."ai_segmentation"
 [2025-12-09T05:21:22.173+0000] {spark_read_mongo_dag.py:475} INFO - Submitting query to Dremio: SHOW TABLES IN "iceberg"."ai_segmentation"
 [2025-12-09T05:21:22.194+0000] {spark_read_mongo_dag.py:483} INFO - Dremio job started: 16c84e2d-446b-cdfe-abbf-888db54fbe00
+[2025-12-09T05:21:52.450+0000] {spark_read_mongo_dag.py:521} ERROR - Error executing Dremio query: Timed out waiting for Dremio job 16c84e2d-446b-cdfe-abbf-888db54fbe00 to finish after 30 seconds
+[2025-12-09T05:21:52.451+0000] {spark_read_mongo_dag.py:576} WARNING - Query timed out: SHOW TABLES IN "iceberg"."ai_segmentation"
+[2025-12-09T05:21:52.452+0000] {spark_read_mongo_dag.py:546} INFO - Executing query: SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"
+[2025-12-09T05:21:52.529+0000] {spark_read_mongo_dag.py:475} INFO - Submitting query to Dremio: SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"
+[2025-12-09T05:21:52.549+0000] {spark_read_mongo_dag.py:483} INFO - Dremio job started: 16c84e0f-0ff4-b78b-36a8-54d628d44f00
+[2025-12-09T05:22:22.797+0000] {spark_read_mongo_dag.py:521} ERROR - Error executing Dremio query: Timed out waiting for Dremio job 16c84e0f-0ff4-b78b-36a8-54d628d44f00 to finish after 30 seconds
+[2025-12-09T05:22:22.798+0000] {spark_read_mongo_dag.py:576} WARNING - Query timed out: SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"
+[2025-12-09T05:22:22.799+0000] {spark_read_mongo_dag.py:546} INFO - Executing query: SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5
+[2025-12-09T05:22:22.878+0000] {spark_read_mongo_dag.py:475} INFO - Submitting query to Dremio: SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5
+[2025-12-09T05:22:22.895+0000] {spark_read_mongo_dag.py:483} INFO - Dremio job started: 16c84df0-b200-c0f6-6c50-3c31f320ff00
+[2025-12-09T05:22:53.173+0000] {spark_read_mongo_dag.py:521} ERROR - Error executing Dremio query: Timed out waiting for Dremio job 16c84df0-b200-c0f6-6c50-3c31f320ff00 to finish after 30 seconds
+[2025-12-09T05:22:53.174+0000] {spark_read_mongo_dag.py:576} WARNING - Query timed out: SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5
+[2025-12-09T05:22:53.176+0000] {spark_read_mongo_dag.py:591} INFO - === All Query Attempts Summary ===
+[2025-12-09T05:22:53.176+0000] {spark_read_mongo_dag.py:594} INFO - [✗] 1. SHOW SCHEMAS IN "iceberg"
+[2025-12-09T05:22:53.177+0000] {spark_read_mongo_dag.py:596} INFO -    Error: Timeout
+[2025-12-09T05:22:53.177+0000] {spark_read_mongo_dag.py:594} INFO - [✗] 2. SHOW TABLES IN "iceberg"
+[2025-12-09T05:22:53.177+0000] {spark_read_mongo_dag.py:596} INFO -    Error: Timeout
+[2025-12-09T05:22:53.178+0000] {spark_read_mongo_dag.py:594} INFO - [✗] 3. SHOW TABLES IN "iceberg"."ai_segmentation"
+[2025-12-09T05:22:53.178+0000] {spark_read_mongo_dag.py:596} INFO -    Error: Timeout
+[2025-12-09T05:22:53.179+0000] {spark_read_mongo_dag.py:594} INFO - [✗] 4. SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"
+[2025-12-09T05:22:53.179+0000] {spark_read_mongo_dag.py:596} INFO -    Error: Timeout
+[2025-12-09T05:22:53.180+0000] {spark_read_mongo_dag.py:594} INFO - [✗] 5. SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5
+[2025-12-09T05:22:53.180+0000] {spark_read_mongo_dag.py:596} INFO -    Error: Timeout
+[2025-12-09T05:22:53.309+0000] {python.py:237} INFO - Done. Returned value was: {'status': 'partial_success', 'total_queries': 5, 'successful': 0, 'failed': 5, 'results': [{'query': 'SHOW SCHEMAS IN "iceberg"', 'success': False, 'error': 'Timeout', 'message': 'Timed out waiting for Dremio job 16c84e6a-c18b-25a0-ad5f-f7e9ee709d00 to finish after 30 seconds'}, {'query': 'SHOW TABLES IN "iceberg"', 'success': False, 'error': 'Timeout', 'message': 'Timed out waiting for Dremio job 16c84e4c-7f48-5ff1-ff8c-a79563770c00 to finish after 30 seconds'}, {'query': 'SHOW TABLES IN "iceberg"."ai_segmentation"', 'success': False, 'error': 'Timeout', 'message': 'Timed out waiting for Dremio job 16c84e2d-446b-cdfe-abbf-888db54fbe00 to finish after 30 seconds'}, {'query': 'SELECT COUNT(*) as row_count FROM "iceberg"."ai_segmentation"."conversations"', 'success': False, 'error': 'Timeout', 'message': 'Timed out waiting for Dremio job 16c84e0f-0ff4-b78b-36a8-54d628d44f00 to finish after 30 seconds'}, {'query': 'SELECT * FROM "iceberg"."ai_segmentation"."conversations" LIMIT 5', 'success': False, 'error': 'Timeout', 'message': 'Timed out waiting for Dremio job 16c84df0-b200-c0f6-6c50-3c31f320ff00 to finish after 30 seconds'}]}
+[2025-12-09T05:22:53.311+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-09T05:22:53.402+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mongo_iceberg_dremio_dagg, task_id=query_dremio_tables, run_id=manual__2025-12-09T05:18:53.297318+00:00, execution_date=20251209T051853, start_date=20251209T052019, end_date=20251209T052253
+[2025-12-09T05:22:53.548+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-12-09T05:22:53.590+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-09T05:22:53.626+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

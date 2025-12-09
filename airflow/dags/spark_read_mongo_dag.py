@@ -367,7 +367,7 @@ def create_dremio_iceberg_source(**context):
     })
 
     attempts.append({
-        "type": "HIVE",
+        "type": "NESSIE",
         "config": {
             "propertyList": [
                 {"name": "fs.s3a.endpoint", "value": "minio:9000"},
